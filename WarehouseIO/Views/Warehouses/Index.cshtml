@@ -1,0 +1,138 @@
+﻿
+@{
+    ViewBag.Title = "Manage Warehouses";
+}
+
+<form class="type2-add-edit-view-page">
+    <header>
+        <h1>Manage Warehouses</h1>
+    </header>
+    <section class="warehouse-info-box">
+        <h5 class="warehouse-info-box-header">
+            <label for="warehouse-name">
+                Select Warehouse
+            </label>
+            <select id="warehouse-name">
+                <option>WH-1-Main</option>
+                <option>WH-2-Main</option>
+            </select>
+            <span></span>
+            <a class="btn-default btn-small background-color">
+                Add Warehouse
+            </a>
+        </h5>
+        <div class="warehouse-info-box-items">
+            <div class="warehouse-info-box-item">
+                <h5>Name:</h5>
+                <div>WH-1-MAIN</div>
+            </div>
+            <div class="warehouse-info-box-item">
+                <h5>Description:</h5>
+                <div>My Favourite Warehouse</div>
+            </div>
+            <div class="warehouse-info-box-item">
+                <h5>Location:</h5>
+                <div>Voin Draskoci</div>
+            </div>
+            <div class="warehouse-info-box-item">
+                <h5>Capacity:</h5>
+                <div><span>1200</span>/<span>1500</span> Units</div>
+            </div>
+            <div class="warehouse-info-box-item">
+                <a href="#" class="btn-default btn-small">Edit Warehouse Details</a>
+            </div>
+
+        </div>
+
+    </section>
+    <section class="table-interact-section">
+        <h5 class="table-interact-section-header">Warehouse Stored Items</h5>
+        <table class="entries-table">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Size (cm3)</th>
+                    <th>Est. Price</th>
+                    <th>Amount</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="item-image">
+                        <img src="https://5.imimg.com/data5/SELLER/Default/2021/12/HW/KG/SQ/143354869/syp-wood-timber-plank.jpg" alt="Item Image">
+                    </td>
+                    <td>Planks</td>
+                    <td>2x2 Planks</td>
+                    <td>Materials</td>
+                    <td>30</td>
+                    <td>70</td>
+                    <td>700</td>
+                    <td>
+                        <a href="#" class="btn-default btn-small">Edit</a>
+                        <a href="#" class="btn-default btn-small secondary-background">Remove</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="item-image">
+                        <img src="https://5.imimg.com/data5/SELLER/Default/2021/12/HW/KG/SQ/143354869/syp-wood-timber-plank.jpg" alt="Item Image">
+                    </td>
+                    <td>Planks</td>
+                    <td>2x2 Planks</td>
+                    <td>Materials</td>
+                    <td>30</td>
+                    <td>70</td>
+                    <td>700</td>
+                    <td>
+                        <a href="#" class="btn-default btn-small">Edit</a>
+                        <a href="#" class="btn-default btn-small secondary-background">Remove</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="item-image">
+                        <img src="https://5.imimg.com/data5/SELLER/Default/2021/12/HW/KG/SQ/143354869/syp-wood-timber-plank.jpg" alt="Item Image">
+                    </td>
+                    <td>Planks</td>
+                    <td>2x2 Planks</td>
+                    <td>Materials</td>
+                    <td>30</td>
+                    <td>70</td>
+                    <td>700</td>
+                    <td>
+                        <a href="#" class="btn-default btn-small">Edit</a>
+                        <a href="#" class="btn-default btn-small secondary-background">Remove</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="item-image">
+                        <img src="https://5.imimg.com/data5/SELLER/Default/2021/12/HW/KG/SQ/143354869/syp-wood-timber-plank.jpg" alt="Item Image">
+                    </td>
+                    <td>Planks</td>
+                    <td>2x2 Planks</td>
+                    <td>Materials</td>
+                    <td>30</td>
+                    <td>70</td>
+                    <td>700</td>
+                    <td>
+                        <a href="#" class="btn-default btn-small">Edit</a>
+                        <a href="#" class="btn-default btn-small secondary-background">Remove</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <footer>
+        <p class="page-error-message">Error Message: Fill all the inputs</p>
+    </footer>
+    <div class="page-main-buttons">
+        <button class="btn-default page-main-button">Add Item</button>
+        <button class="btn-default page-main-button">Make Shipment</button>
+        <button class="btn-default page-main-button primary-background">Make Transfer</button>
+        <button class="btn-default page-main-button shade3-background">Manage Operators</button>
+        <button class="btn-default page-main-button shade4-background">To Dashboard</button>
+    </div>
+</form>
+

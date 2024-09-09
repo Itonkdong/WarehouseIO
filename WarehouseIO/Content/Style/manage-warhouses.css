@@ -1,0 +1,17 @@
+.warehouse-info-box-header span
+{
+    flex-grow: 1;
+}
+
+.item-image
+{
+    display: flex;
+    justify-content: center;
+}
+
+.item-image img
+{
+    width: 30%;
+    border-radius: var(--br-sml);
+    /*mix-blend-mode: color-burn;*/
+}

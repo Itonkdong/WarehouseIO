@@ -1,0 +1,46 @@
+@import "global.css";
+
+/*Index*/
+@import "index.css";
+
+/*Landing*/
+@import "landing.css";
+
+/*Dashboard*/
+@import "dashboard.css";
+
+/*Login*/
+@import "auth.css";
+
+/*===========================*/
+
+/*General Add/Edit/View*/
+@import "general-add-edit-view.css";
+
+/*===========================*/
+
+/*Type 1 Add/Edit/View Page */
+@import "type1-add-edit-view.css";
+
+/*User Information*/
+@import "user-information.css";
+
+/*Add/Edit Warehouses*/
+@import "add-edit-warehouses.css";
+
+/*===========================*/
+
+/*Type 2 Add/Edit/view Page*/
+@import "type2-add-edit-view.css";
+
+/*Add/Edit Items*/
+@import "add-edit-items.css";
+
+/*Add/View Shipments*/
+@import "make-view-shipments.css";
+
+/*Manage Warehouses*/
+@import "manage-warhouses.css";
+
+/*Add/Edit/View Transfer*/
+@import "make-edit-view-transfer.css";

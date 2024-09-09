@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/Style/link.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+<div id="app">
+    <aside class="side-bar">
+        <div class="app-controls side-bar-element">
+            @Html.ActionLink("Warehouse.IO", "Index", "Home", routeValues: null, htmlAttributes: new { @class = "logo" })
+            <div class="app-control-options">
+                @Html.ActionLink("\ud83d\udcc8 Dashboard", "Dashboard", "Home", routeValues: null, htmlAttributes: new { @class = " app-control-option hover-up", id = "dashboard-button" })
+
+                @Html.ActionLink("\ud83c\udfed Warehouses", "Index", "Warehouses", routeValues: null, htmlAttributes: new { @class = "app-control-option hover-up", id = "warehouses-button" })
+
+                @Html.ActionLink("\ud83d\udcdc Transfers", "Index", "Transfers", routeValues: null, htmlAttributes: new { @class = "app-control-option hover-up", id = "transfers-button" })
+
+                @Html.ActionLink("\ud83c\udf10 Shipments", "Index", "Shipments", routeValues: null, htmlAttributes: new { @class = "app-control-option hover-up", id = "shipments-button" })
+
+                @Html.ActionLink("\ud83d\udc65 Operators", "Index", "Operators", routeValues: null, htmlAttributes: new { @class = "app-control-option hover-up", id = "operators-button" })
+
+            </div>
+
+
+        </div>
+        <div class="profile-controls side-bar-element">
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                @Html.ActionLink("\ud83d\udd11 Account", "Information", "Account", routeValues: null, htmlAttributes: new { @class = "app-control-option hover-up", id = "account-button" })
+
+                @Html.ActionLink("\ud83d\udcdb Sign Out", "LogOff", "Account", routeValues: null, htmlAttributes: new { @class = "app-control-option hover-up", id = "not-select" })
+            }
+            else
+            {
+                @Html.ActionLink("\ud83d\udd11 Sign In", "Login", "Account", routeValues: null, htmlAttributes: new { @class = "app-control-option hover-up", id = "login-button" })
+                @Html.ActionLink("\ud83d\udd12 Sign Up", "Register", "Account", routeValues: null, htmlAttributes: new { @class = "app-control-option hover-up", id = "register-button" })
+            }
+
+
+        </div>
+    </aside>
+    <main class="main-window">
+        @RenderBody()
+    </main>
+
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
+
+<script>
+
+    const controllerToButtons = {
+        "Dashboard": "dashboard-button",
+        "Warehouses": "warehouses-button",
+        "Transfers": "transfers-button",
+        "Shipments": "shipments-button",
+        "Operators": "operators-button",
+        "Login": "login-button",
+        "Register": "register-button",
+        "Account": "account-button"
+    }
+
+    document.addEventListener("DOMContentLoaded",
+        () => {
+            const currentUrl = window.location.href;
+            const protocolAndUri = currentUrl.split("//");
+            const uriParts = protocolAndUri[1].split("/");
+            if (uriParts[1] === "") {
+
+                return;
+            }
+
+            let controllerName = uriParts[1];
+            if (uriParts[1] === "Item") {
+
+                return;
+            }
+
+            if (uriParts[1] === "Home" && uriParts[2] === "Dashboard") {
+                controllerName = "Dashboard";
+            }
+
+            if (uriParts[1] === "Account") {
+                if (uriParts[2].includes("Login")) {
+                    controllerName = "Login";
+                }
+                else if (uriParts[2].includes("Information")) {
+                    controllerName = "Account";
+                }
+                else if (uriParts[2].includes("Register")) {
+                    controllerName = "Register";
+                }
+                else {
+                    return;
+                }
+                
+            }
+
+            const buttonName = controllerToButtons[controllerName];
+            const buttonElement = document.querySelector(`#${buttonName}`);
+            buttonElement.classList.add("app-control-option-selected");
+        });
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+.make-shipping-interact-section
+{
+    gap: 1rem;
+    font-weight: 700;
+}
+
+.make-shipping-interact-section-title
+{
+    flex-grow: 1;
+}
+
+.make-shipping-interact-section-input input
+{
+    border-radius: var(--br-sml);
+    padding: 0 0.5em;
+}
+
+.make-shipping-interact-section-input:nth-child(3) input
+{
+    width: 150px;
+}
+.include-checkbox
+{
+    scale: 200%;
+}
+.transfer-amount-input
+{
+    width: 30%;
+}

@@ -1,0 +1,23 @@
+.page-error-message {
+    font-size: var(--fs-mid);
+    text-align: center;
+    font-weight: 700;
+}
+
+.page-main-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.page-main-button {
+    min-width: 15%;
+    font-size: var(--fs-mid);
+    padding: 0.5em 1em;
+    box-shadow: var(--shadow-2-inverted);
+}
+
+.page-main-button:nth-child(2) {
+    background-color: var(--primary);
+}

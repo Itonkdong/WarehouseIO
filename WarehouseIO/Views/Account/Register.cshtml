@@ -1,0 +1,49 @@
+﻿@model WarehouseIO.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<div class="auth-page register-page ">
+    @using (@Html.BeginForm("Register", "Account", FormMethod.Post, htmlAttributes: new { @class = "auth-form register-form" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="login-form-header">
+            <h1>Register</h1>
+            <h5>
+                Already have an account?
+                @Html.ActionLink("Sign in", "Login", "Account")
+
+            </h5>
+        </div>
+
+        <div class="auth-form-inputs">
+            <div class="auth-form-input">
+                @Html.LabelFor(m => m.Name, new { @class = "" })
+                @Html.TextBoxFor(m => m.Name, new { @class = "" })
+            </div>
+            <div class="auth-form-input">
+                @Html.LabelFor(m => m.Email, new { @class = "" })
+                @Html.TextBoxFor(m => m.Email, new { @class = "" })
+            </div>
+            <div class="auth-form-input">
+                @Html.LabelFor(m => m.Password, new { @class = "" })
+                @Html.PasswordFor(m => m.Password, new { @class = "" })
+            </div>
+            <div class="auth-form-checkbox">
+                @Html.CheckBoxFor(m => m.AcceptThermsOfService)
+                @Html.LabelFor(m => m.AcceptThermsOfService)
+            </div>
+
+        </div>
+        <button class="btn-default">Register</button>
+        @* <p class="auth-error-message">Error: Fill all the inputs</p> *@
+        @Html.ValidationSummary("", new { @class = "auth-error-message" })
+    }
+    <div class="auth-image-container register-auth-image-container">
+        <img src="~/Content/Images/register-img.jpg" alt="Girl with on a computer">
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

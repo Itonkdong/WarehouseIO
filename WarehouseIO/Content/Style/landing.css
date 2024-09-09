@@ -1,0 +1,62 @@
+.lading-page
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 5em;
+    background-color: var(--background);
+    height: 100%;
+    color: var(--text);
+}
+
+.landing-text
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 3rem;
+}
+
+.landing-text h1
+{
+    font-size: var(--fs-ultra);
+    width: 90%;
+    font-weight: 900;
+
+}
+
+.landing-text p {
+    font-size: var(--fs-small);
+    font-weight: 700;
+    width: 90%;
+}
+
+.landing-image
+{
+    display: grid;
+    place-items: center;
+    position: relative;
+}
+.landing-image img
+{
+    border-radius: 50%;
+    position: absolute;
+    box-shadow: var(--shadow-2);
+
+}
+
+.landing-image img:nth-child(1)
+{
+    width: 40%;
+    top: 10%;
+    left: 15%;
+    z-index: 1;
+}
+
+.landing-image img:nth-child(2)
+{
+    z-index: 0;
+    width: 50%;
+    top: 40%;
+    left: 30%;
+}

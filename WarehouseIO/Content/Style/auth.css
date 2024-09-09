@@ -1,0 +1,116 @@
+.auth-page
+{
+    background-color: var(--background);
+    display: grid;
+    grid-template-columns: 1.5fr 2fr;
+    /*grid-template-columns:1fr 1fr;*/
+    height: 100%;
+    padding: 2rem 7rem;
+}
+.register-page
+{
+    grid-template-columns:  2fr 1.5fr;
+
+}
+
+.auth-form
+{
+    font-size: var(--fs-mid);
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    align-self: center;
+    gap: 3rem;
+    background-color: var(--shade-5);
+    color: var(--text);
+    box-shadow: var(--shadow-2);
+    padding: 2em;
+    border-radius: var(--br-sml);
+}
+
+.register-form
+{
+    height: 95%;
+    gap: 1.7rem;
+    grid-column: 2/span 1;
+}
+
+.auth-error-message
+{
+    text-align: center;
+    font-weight: 700;
+    color: var(--text-inverted);
+}
+
+.auth-form-inputs
+{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    flex-grow: 1;
+}
+
+.auth-form-input
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-form label
+{
+    font-weight: 500;
+}
+
+.auth-form input:not([type="checkbox"])
+{
+    padding: 0.5em 1em;
+    border-radius: var(--br-sml);
+    box-shadow: var(--shadow-2-inverted);
+
+}
+
+.auth-form-checkbox
+{
+    font-size: var(--fs-mid);
+}
+
+.auth-form-checkbox input
+{
+    scale: 150%;
+}
+
+.auth-form button
+{
+    /*background-color: var(--secondary);*/
+    box-shadow: var(--shadow-2-inverted);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: var(--fs-mid);
+
+}
+
+.auth-form button:hover
+{
+    box-shadow: var(--shadow-1-inverted);
+
+}
+
+.auth-image-container
+{
+    display: grid;
+    place-items: center;
+
+}
+
+.register-auth-image-container
+{
+    grid-column: 1/ span 1;
+    grid-row: 1/2;
+}
+
+.auth-image-container img
+{
+    width: 60%;
+    border-radius: 50%;
+    box-shadow: var(--shadow-2);
+}

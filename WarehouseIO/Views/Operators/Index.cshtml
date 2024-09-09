@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewBag.Title = "Manage Operators";
+}
+
+<form class="type2-add-edit-view-page">
+    <header>
+        <h1>Manage Operators</h1>
+    </header>
+    <section class="warehouse-info-box">
+        <h5 class="warehouse-info-box-header">
+            <label for="warehouse-name">
+                For
+            </label>
+            <select id="warehouse-name">
+                <option>WH-1-Main</option>
+                <option>WH-2-Main</option>
+            </select>
+        </h5>
+        <div class="warehouse-info-box-items">
+            <div class="warehouse-info-box-item">
+                <h5>Name:</h5>
+                <div>WH-1-MAIN</div>
+            </div>
+            <div class="warehouse-info-box-item">
+                <h5>Description:</h5>
+                <div>My Favourite Warehouse</div>
+            </div>
+            <div class="warehouse-info-box-item">
+                <h5>Location:</h5>
+                <div>Voin Draskoci</div>
+            </div>
+            <div class="warehouse-info-box-item">
+                <h5>Capacity:</h5>
+                <div><span>1200</span>/<span>1500</span> Units</div>
+            </div>
+            <div class="warehouse-info-box-item">
+                <a href="#" class="btn-default btn-small">Manage Warehouse</a>
+            </div>
+
+        </div>
+
+    </section>
+    <section class="half-table-form-interact-section">
+        <h5 class="table-interact-section-header">
+            <span>Current Operators</span><span>Add Operator</span>
+        </h5>
+        <div>
+            <table class="entries-table">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Email</th>
+                        <th>Option</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ItonkDong</td>
+                        <td>kostadinoskiviktor@yahoo.com</td>
+                        <td>
+                            <a href="#" class="btn-default btn-small">Remove</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ItonkDong</td>
+                        <td>kostadinoskiviktor@yahoo.com</td>
+                        <td>
+                            <a href="#" class="btn-default btn-small">Remove</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ItonkDong</td>
+                        <td>kostadinoskiviktor@yahoo.com</td>
+                        <td>
+                            <a href="#" class="btn-default btn-small">Remove</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="half-form-section">
+                <label for="operator-email">Operator's Email</label>
+                <input type="email" id="operator-email">
+                <button class="btn-default">Add</button>
+            </div>
+        </div>
+
+    </section>
+    <footer>
+        <p class="page-error-message">Error Message: Fill all the inputs</p>
+    </footer>
+    <div class="page-main-buttons">
+        <button class="btn-default page-main-button">To Dashboard</button>
+    </div>
+</form>
+

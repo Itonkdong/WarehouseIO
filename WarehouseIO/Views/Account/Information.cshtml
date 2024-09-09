@@ -1,0 +1,87 @@
+﻿@model WarehouseIO.Models.AccountInformationViewModel
+@{
+    ViewBag.Title = "Account Information";
+    var errorMessage = ViewData.ModelState["Email"]?.Errors.FirstOrDefault()?.ErrorMessage;
+}
+
+
+
+@using (@Html.BeginForm("Information", "Account", FormMethod.Post, htmlAttributes: new { @class = "type1-add-edit-view-page" }))
+{
+    <header>
+        <h1>Account Information</h1>
+    </header>
+    <div class="user-information-container">
+        <div class="user-information-items">
+            <div class="user-information-item">
+                @Html.LabelFor(m => m.Name, htmlAttributes: new { @class = "" })
+                @Html.TextBoxFor(m => m.Name, htmlAttributes: new { @class = "" })
+            </div>
+            <div class="user-information-item">
+                @Html.LabelFor(m => m.Email, htmlAttributes: new { @class = "" })
+                @Html.TextBoxFor(m => m.Email, htmlAttributes: new { @class = "" })
+
+            </div>
+            <div class="user-information-item">
+                @Html.LabelFor(m => m.ProfileImage, htmlAttributes: new { @class = "" })
+                @Html.TextBoxFor(m => m.ProfileImage, htmlAttributes: new { @class = "" })
+
+            </div>
+            <div class="user-information-item">
+                @Html.LabelFor(m => m.DateJoined, htmlAttributes: new { @class = "" })
+                @Html.TextBoxFor(m => m.DateJoined, htmlAttributes: new { @class = "", @readonly = true })
+
+            </div>
+        </div>
+        <div class="user-information-items">
+            <div class="user-information-item profile-picture">
+                @if (string.IsNullOrEmpty(Model.ProfileImage))
+                {
+                    <img src="~/Content/Images/default-profile-picture.jpg" alt="Profile Picture">
+                }
+                else
+                {
+                    <img src="@Model.ProfileImage" alt="Profile Picture">
+                }
+            </div>
+            <div class="user-information-item">
+                @Html.LabelFor(m => m.OldPassword, htmlAttributes: new { @class = "" })
+                @Html.PasswordFor(m => m.OldPassword, htmlAttributes: new { @class = ""})
+                @* <label for="user-info-old-password">Old Password</label> *@
+                @* <input type="email" id="user-info-old-password"> *@
+            </div>
+            <div class="user-information-item">
+                @Html.LabelFor(m => m.NewPassword, htmlAttributes: new { @class = "" })
+                @Html.PasswordFor(m => m.NewPassword, htmlAttributes: new { @class = ""})
+                @*<label for="user-info-new-password">New Password</label>
+                <input type="text" id="user-info-new-password">*@
+            </div>
+        </div>
+    </div>
+    <footer>
+        @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+        {
+            <p class="page-error-message">@Model.ErrorMessage</p>
+        }
+        else if (!string.IsNullOrEmpty(errorMessage))
+        {
+            @Html.ValidationSummary("", new { @class = "page-error-message" })
+            
+        }
+        else
+        {
+            <p class="page-error-message">
+                &#8203;
+            </p>
+        }
+    </footer>
+    <div class="page-main-buttons">
+        <button class="btn-default page-main-button">Save</button>
+        @Html.ActionLink("To Dashboard", "Dashboard", "Home", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button" })
+        @* <button class="btn-default page-main-button">To Dashboard</button> *@
+    </div>
+}
+
+@*@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}*@

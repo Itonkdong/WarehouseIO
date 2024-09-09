@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "Add Item";
+}
+
+<form class="type2-add-edit-view-page">
+    <header>
+        <h1>Add Item</h1>
+    </header>
+    <section class="warehouse-info-box">
+        <h4 class="warehouse-info-box-header">Warehouse Info</h4>
+        <div class="warehouse-info-box-items">
+            <div class="warehouse-info-box-item">
+                <h5>Name:</h5>
+                <div>WH-1-MAIN</div>
+            </div>
+            <div class="warehouse-info-box-item">
+                <h5>Description:</h5>
+                <div>My Favourite Warehouse</div>
+            </div>
+            <div class="warehouse-info-box-item">
+                <h5>Location:</h5>
+                <div>Voin Draskoci</div>
+            </div>
+            <div class="warehouse-info-box-item">
+                <h5>Capacity:</h5>
+                <div><span>1200</span>/<span>1500</span> Units</div>
+            </div>
+            <div class="warehouse-info-box-item">
+                <a href="#" class="btn-default btn-small">Manage Warehouse</a>
+            </div>
+
+        </div>
+
+    </section>
+    <section class="form-interact-section">
+        <h5>Item Info</h5>
+        <div class="add-item-items">
+            <div class="add-item-item">
+                <label for="item-name">Name</label>
+                <input id="item-name" type="text">
+            </div>
+            <div class="add-item-item">
+                <label for="item-description">Description</label>
+                <input id="item-description" type="text">
+            </div>
+            <div class="add-item-item">
+                <label for="item-type">Type</label>
+                <select id="item-type" type="text">
+                    <option>Material</option>
+                    <option>Electronics</option>
+                    <option>Gardening</option>
+                </select>
+            </div>
+            <div class="add-item-item">
+                <label for="item-image">Image (Optional)</label>
+                <input id="item-image" type="text">
+            </div>
+            <div class="add-item-item">
+                <label for="item-price">Est. Price</label>
+                <input id="item-price" type="number">
+            </div>
+            <div class="add-item-item">
+                <label for="item-size">Size (in cm3)</label>
+                <input id="item-size" type="number">
+            </div>
+            <div class="add-item-item">
+                <label for="item-amount">Amount</label>
+                <input id="item-amount" type="number">
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p class="page-error-message">Error Message: Fill all the inputs</p>
+    </footer>
+    <div class="page-main-buttons">
+        <button class="btn-default page-main-button">Add</button>
+        <button class="btn-default page-main-button">To Dashboard</button>
+    </div>
+</form>
+

@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<div class="lading-page">
+    <div class="landing-text">
+        <h1>Streamline Your Warehouse Operations</h1>
+        <p>
+            Efficiently manage your inventory, track shipments and transfers, and optimize your warehouse processes with our
+            intuitive Warehouse Management System. Simplify daily operations, reduce errors, and gain real-time
+            visibility into your stock levels, all from a user-friendly interface designed to enhance
+            productivity and accuracy.
+        </p>
+        @if (User.Identity.IsAuthenticated)
+        {
+            @Html.ActionLink("To Dashboard", "Dashboard", "Home", routeValues: null, htmlAttributes: new { @class = "btn-default btn-big accent-background" })
+        }
+        else
+        {
+            @Html.ActionLink("Sign Up", "Register", "Account", routeValues: null, htmlAttributes: new { @class = "btn-default btn-big accent-background" })
+        }
+
+    </div>
+    <div class="landing-image">
+        <img alt="Warehouse Boxes" src="~/Content/Images/landing-image-1.jpg">
+        <img alt="Warehouse Boxes" src="~/Content/Images/landing-image-2.jpg">
+    </div>
+
+</div>

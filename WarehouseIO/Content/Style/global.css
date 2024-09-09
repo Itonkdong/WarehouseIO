@@ -1,0 +1,376 @@
+/*Font Imports*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+/*Your CSS Variables*/
+/*DISCLAIMER: DO NOT FORGET TO EDIT THE 'PER APPLICATION' PARTS BELOW*/
+
+:root {
+    --root-font: 62.5%;
+    --ff-main: Poppins;
+
+    --br-sml: 10px;
+    --br-big: 20px;
+
+
+    --text: #fbd1f0;
+    --text-inverted: black;
+    --background: #210319;
+    --primary: #dc70c3;
+    --secondary: #a00e23;
+    --accent: #ed402f;
+
+
+    --accent-1: #460610;
+    --accent-2: #5e0815;
+    --shade-1: #460635;
+    --shade-2: #5e0847;
+    --shade-3: #750a59;
+    --shade-4: #d2149f;
+    --shade-5: #d246b2;
+
+    --alert: #bb3d3d;
+    --border-subtile: #f1ecec;
+
+    /*Light Mode*/
+
+      --shadow-1-inverted: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+      --shadow-2-inverted: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+
+    /*Dark Mode*/
+
+    /* --shadow-1: rgba(255, 255, 255, 0.3) 0px 19px 38px, rgba(255, 255, 255, 0.22) 0px 15px 12px;
+     --shadow-2: rgba(255, 255, 255, 0.19) 0px 10px 20px, rgba(255, 255, 255, 0.23) 0px 6px 6px;
+
+    --shadow-2: rgba(255, 255, 255, 0.15) 0px 10px 20px, rgba(255, 255, 255, 0.18) 0px 6px 6px;
+    --shadow-1: rgba(255, 255, 255, 0.2) 0px 19px 38px, rgba(255, 255, 255, 0.15) 0px 15px 12px;*/
+
+    --shadow-1: rgba(255, 255, 255, 0.15) 0px 19px 38px, rgba(255, 255, 255, 0.10) 0px 15px 12px;
+    --shadow-2: rgba(255, 255, 255, 0.10) 0px 10px 20px, rgba(255, 255, 255, 0.12) 0px 6px 6px;
+
+
+    --fs-ultra: clamp(2rem, 5vh + 1rem, 5rem);
+    --fs-big: clamp(1rem, 1.5vw + 0.5rem, 3rem);
+    --fs-mid: clamp(0.8rem, 1.5vw + 0.2rem, 2rem);
+    --fs-mid-big: clamp(0.8rem, 2vw + 0.4rem, 2.5rem);
+    --fs-small: clamp(0.3rem, 0.85vw + 0.2rem, 1.5rem);
+    --fs-very-small: clamp(0.3rem, 0.6vw + 0.2rem, 1.3rem);
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Remove default margin and padding*/
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote,
+dl,
+dd,
+ul,
+ol {
+    margin: 0;
+}
+
+ul, ol
+{
+    padding: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+    list-style: none;
+}
+
+/* Set core root defaults */
+
+html
+{
+    font-size: var(--root-font);
+    font-family: var(--ff-main), sans-serif;
+
+}
+
+
+
+/* Set core body defaults */
+body {
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+    padding: 0;
+    scrollbar-width: thin; /* Width of the scrollbar */
+}
+
+
+body:focus-within {
+    scroll-behavior: smooth;
+}
+
+body::-webkit-scrollbar {
+    width: 9px;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: var(--primary);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--shade-1);
+    border-radius: 4px;
+}
+
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: normal;
+}
+
+
+/* Make images easier to work with */
+img,
+picture {
+    max-width: 100%;
+    display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
+/* Styling for the title tooltip */
+.custom-tooltip {
+    position: relative;
+}
+
+.custom-tooltip::after {
+    content: attr(data-title);
+    position: absolute;
+    top: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s;
+    font-size: 1.3rem;
+}
+
+.custom-tooltip:hover::after {
+    opacity: 80%;
+}
+
+.hover-elevate:hover
+{
+    transform: translateY(-3px);
+}
+
+/*Global element styles*/
+
+
+/*===Per Application===*/
+table, thead, tbody, tr, th
+{
+    display: block;
+}
+/*=====================*/
+
+.shadow {
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.shadow2{
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+
+.btn-default
+{
+    /*===Per Application===*/
+    background-color: var(--accent);
+    color: var(--text);
+    /*=====================*/
+    border: none;
+    font-size: var(--fs-small);
+    padding: 1em 1.1em;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-default:hover
+{
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-2);
+}
+
+.btn-default:active
+{
+    transform: translateY(4px);
+}
+
+.btn-small
+{
+    font-size: var(--fs-very-small);
+    padding: 0.7em 1.2em;
+}
+
+.btn-big
+{
+    font-size: var(--fs-big);
+    padding: 0.5em 1.0em;
+}
+
+input, textarea
+{
+    border: none;
+    transition: border 0.5s ease;
+    /*===Per Application===*/
+    border-radius: var(--br-sml);
+    padding: 0.3rem 0.7rem;
+    /*=====================*/
+}
+select
+{
+    border-radius: var(--br-sml);
+    padding: 0.3rem 0.7rem;
+}
+
+input:focus, select:focus, textarea:focus
+{
+    outline: none;
+}
+
+input:active
+{
+    outline: none;
+}
+
+/*Animations*/
+.hover-scale:hover
+{
+    scale: 102%;
+    box-shadow: var(--shadow-2);
+    transition: all 0.1s ease;
+}
+
+.hover-scale:active
+{
+    scale: 100%;
+}
+
+
+.hover-up:hover
+{
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-2);
+    transition: all 0.3s ease;
+
+}
+
+.hover-up:active
+{
+    transform: translateY(4px);
+}
+
+.validation-summary-errors li {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+
+/*Palette*/
+.text-color {
+    color: var(--text);
+}
+
+.background-color {
+    background-color: var(--background); !important;
+}
+
+.primary-color {
+    color: var(--primary); !important;
+}
+
+.secondary-color {
+    color: var(--secondary); !important;
+}
+
+.accent-color {
+    color: var(--accent); !important;
+}
+
+.primary-background {
+    background-color: var(--primary); !important;
+}
+
+.secondary-background {
+    background-color: var(--secondary); !important;
+}
+
+.accent-background {
+    background-color: var(--accent); !important;
+}
+
+.shade1-background{
+    background-color: var(--shade-1); !important;
+}
+
+.shade2-background{
+    background-color: var(--shade-2); !important;
+}
+
+.shade3-background{
+    background-color: var(--shade-3); !important;
+}
+
+.shade4-background{
+    background-color: var(--shade-4); !important;
+}
+
+.shade5-background{
+    background-color: var(--shade-5); !important;
+}
+
+/*====================================*/

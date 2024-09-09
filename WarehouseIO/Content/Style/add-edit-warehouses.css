@@ -1,0 +1,32 @@
+.add-warehouse-wrapper
+{
+    display: flex;
+    justify-content: center;
+    /*align-items: center;*/
+}
+
+.add-warehouse-container
+{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5em 4em;
+    justify-content: center;
+    background-color: var(--primary);
+    border-radius: var(--br-sml);
+    box-shadow: var(--shadow-2);
+
+}
+.add-warehouse-item
+{
+    font-size: var(--fs-mid-big);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.add-warehouse-item input
+{
+    padding: 0.2em 0.4em;
+    border-radius: var(--br-sml);
+    box-shadow: var(--shadow-2-inverted);
+}

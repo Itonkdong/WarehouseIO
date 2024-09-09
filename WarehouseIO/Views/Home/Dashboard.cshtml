@@ -1,0 +1,214 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<div class="dashboard-page">
+    <header>
+        <div>
+            <h1>Analytics</h1>
+            <label for="warehouse-dashboard-selector">
+                <select id="warehouse-dashboard-selector">
+                    <option>WH-1-Main</option>
+                    <option>WH-2-Main</option>
+                </select>
+            </label>
+            <a href="#" class="btn-default btn-small">Manage Warehouse</a>
+        </div>
+        <h3>
+            WH-1-Main
+        </h3>
+
+
+    </header>
+    <div class="dashboard-summary-container">
+        <div class="dashboard-summary-element">
+            <div class="dashboard-summary-element-header">
+                <h5>Transfers</h5>
+                <div class="dashboard-summary-icon">&#128470;</div>
+            </div>
+            <div class="dashboard-summary-value">
+                756
+            </div>
+
+        </div>
+        <div class="dashboard-summary-element">
+            <div class="dashboard-summary-element-header">
+                <h5>Shipments</h5>
+                <div class="dashboard-summary-icon">&#128470;</div>
+            </div>
+            <div class="dashboard-summary-value">
+                12
+            </div>
+
+        </div>
+        <div class="dashboard-summary-long-element">
+            <div class="dashboard-summary-element-header">
+                <h5>Operators</h5>
+                <div class="dashboard-summary-icon">&#128470;</div>
+            </div>
+            <div class="dashboard-summary-value">
+                12
+            </div>
+            <div class="dashboard-summary-graph-container">
+                <div class="dashboard-summary-legend">
+                    <div class="legend-item">
+                        <div class="legend-color"></div>
+                        <div class="legend-meaning">Old</div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color"></div>
+                        <div class="legend-meaning">New</div>
+                    </div>
+                </div>
+                <div class="dashboard-summary-graph-wrapper">
+                    <div class="graph">
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="dashboard-summary-long-element">
+            <div class="dashboard-summary-element-header">
+                <h5>Current Capacity (Units)</h5>
+                <div class="dashboard-summary-icon">&#128470;</div>
+            </div>
+            <div class="dashboard-summary-value">
+                1200/1500
+            </div>
+            <div class="dashboard-summary-graph-container">
+                <div class="dashboard-summary-legend">
+                    <div class="legend-item">
+                        <div class="legend-color"></div>
+                        <div class="legend-meaning">Free</div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color"></div>
+                        <div class="legend-meaning">Occupied</div>
+                    </div>
+                </div>
+                <div class="dashboard-summary-graph-wrapper">
+                    <div class="graph">
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="dashboard-summary-element">
+            <div class="dashboard-summary-element-header">
+                <h5>Total Capacity</h5>
+                <div class="dashboard-summary-icon">&#128470;</div>
+            </div>
+            <div class="dashboard-summary-value">
+                1500
+            </div>
+
+        </div>
+        <div class="dashboard-summary-element">
+            <div class="dashboard-summary-element-header">
+                <h5>Warehouse Value</h5>
+                <div class="dashboard-summary-icon">&#128470;</div>
+            </div>
+            <div class="dashboard-summary-value">
+                45 000
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-analytics-container">
+        <div class="storage-info-container  ">
+            <h3>Storage Info</h3>
+            <div class="storage-graph-container">
+                <div class="y-axis">
+                    <div>400</div>
+                    <div>200</div>
+                    <div>100</div>
+                    <div>50</div>
+                    <div>0</div>
+                </div>
+                <div class="storage-graph">
+                    <div class="tube">
+                        <div class="water"></div>
+                    </div>
+                    <div class="tube">
+                        <div class="water"></div>
+                    </div>
+                    <div class="tube">
+                        <div class="water"></div>
+                    </div>
+                    <div class="tube">
+                        <div class="water"></div>
+                    </div>
+                    <div class="tube">
+                        <div class="water"></div>
+                    </div>
+                    <div class="tube">
+                        <div class="water"></div>
+                    </div>
+                </div>
+                <div></div>
+                <div class="x-axis">
+                    <div>Wood</div>
+                    <div>Metal</div>
+                    <div>Electric</div>
+                    <div>Grass</div>
+                    <div>Mud</div>
+                    <div>Stone</div>
+                </div>
+            </div>
+        </div>
+        <div class="notifications-container">
+            <h3>
+                Notification Center
+            </h3>
+            <p>
+                Low Warehouse Stock!
+            </p>
+
+        </div>
+        <div class="transfer-history-container">
+            <div class="transfer-history-header">
+                <h3>Transfers History</h3>
+                <a href="#" class="btn-small btn-default">Manage Transfers</a>
+            </div>
+            <div class="transfer-history-wrapper">
+                <div class="transfer-history-table-header">
+                    <div>To Warehouse</div>
+                    <div>Location</div>
+                    <div>Made On</div>
+                    <div># Items</div>
+                    <div>Options</div>
+                </div>
+                <div class="transfer-history-items">
+                    <div class="transfer-history-item">
+                        <div>WH-1-Main</div>
+                        <div>Voin Draskoci</div>
+                        <div>17.05.2023</div>
+                        <div>12</div>
+                        <a class="btn-default btn-small shade2-background" href="#">Details</a>
+                    </div>
+                    <div class="transfer-history-item">
+                        <div>WH-1-Main</div>
+                        <div>Voin Draskoci</div>
+                        <div>17.05.2023</div>
+                        <div>12</div>
+                        <a class="btn-default btn-small shade2-background" href="#">Details</a>
+                    </div>
+                    <div class="transfer-history-item">
+                        <div>WH-1-Main</div>
+                        <div>Voin Draskoci</div>
+                        <div>17.05.2023</div>
+                        <div>12</div>
+                        <a class="btn-default btn-small shade2-background" href="#">Details</a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
