@@ -57,14 +57,17 @@
 <script>
 
     const controllerToButtons = {
-        "Dashboard": "dashboard-button",
         "Warehouses": "warehouses-button",
         "Transfers": "transfers-button",
         "Shipments": "shipments-button",
-        "Operators": "operators-button",
+        "Operators": "operators-button"
+    }
+
+    const actionsToButtons = {
+        "Dashboard": "dashboard-button",
         "Login": "login-button",
         "Register": "register-button",
-        "Account": "account-button"
+        "Information": "account-button"
     }
 
     document.addEventListener("DOMContentLoaded",
@@ -78,34 +81,31 @@
             }
 
             let controllerName = uriParts[1];
-            if (uriParts[1] === "Item") {
+            let actionName = uriParts[2];
 
-                return;
-            }
+            for (const key in controllerToButtons) {
+                console.log(key);
 
-            if (uriParts[1] === "Home" && uriParts[2] === "Dashboard") {
-                controllerName = "Dashboard";
-            }
+                if (controllerName.includes(key)) {
 
-            if (uriParts[1] === "Account") {
-                if (uriParts[2].includes("Login")) {
-                    controllerName = "Login";
-                }
-                else if (uriParts[2].includes("Information")) {
-                    controllerName = "Account";
-                }
-                else if (uriParts[2].includes("Register")) {
-                    controllerName = "Register";
-                }
-                else {
+                    const buttonName = controllerToButtons[key];
+                    const buttonElement = document.querySelector(`#${buttonName}`);
+                    buttonElement.classList.add("app-control-option-selected");
                     return;
                 }
-                
             }
 
-            const buttonName = controllerToButtons[controllerName];
-            const buttonElement = document.querySelector(`#${buttonName}`);
-            buttonElement.classList.add("app-control-option-selected");
+            for (const key in actionsToButtons) {
+
+                if (actionName.includes(key)) {
+
+                    const buttonName = actionsToButtons[key];
+                    const buttonElement = document.querySelector(`#${buttonName}`);
+                    buttonElement.classList.add("app-control-option-selected");
+                    return;
+                }
+            }
+            
         });
 
 

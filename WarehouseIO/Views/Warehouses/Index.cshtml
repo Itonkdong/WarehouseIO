@@ -1,45 +1,56 @@
-﻿
+﻿@using WarehouseIO.ControlClasses
+@using WarehouseIO.CustomHtmlHelpers
+@using WarehouseIO.Models
+@model WarehouseIO.ViewModels.ManageWarehouseViewModel
 @{
     ViewBag.Title = "Manage Warehouses";
 }
 
-<form class="type2-add-edit-view-page">
+
+@using (@Html.BeginForm("Index", "Warehouses", FormMethod.Get, htmlAttributes: new { @class = "type2-add-edit-view-page" }))
+{
     <header>
         <h1>Manage Warehouses</h1>
     </header>
     <section class="warehouse-info-box">
         <h5 class="warehouse-info-box-header">
             <label for="warehouse-name">
-                Select Warehouse
+                Warehouse:
             </label>
-            <select id="warehouse-name">
-                <option>WH-1-Main</option>
-                <option>WH-2-Main</option>
-            </select>
+            @Html.DropDownListFor(m => m.WarehouseId, new SelectList(Model.AllWarehouses, "Id", "Name"), htmlAttributes: new { onchange = "this.form.submit();" })
             <span></span>
-            <a class="btn-default btn-small background-color">
-                Add Warehouse
-            </a>
+            @Html.ActionLink("Add Warehouse", "Add", "Warehouses", routeValues: null, htmlAttributes: new { @class = "btn-default btn-small background-color" })
+            @Html.ActionLink("Delete Warehouse", "Add", "Warehouses", routeValues: null, htmlAttributes: new { @class = "btn-default btn-small secondary-background" })
+
         </h5>
-        <div class="warehouse-info-box-items">
+        <div class="warehouse-info-box-items ">
             <div class="warehouse-info-box-item">
-                <h5>Name:</h5>
-                <div>WH-1-MAIN</div>
+                <h5>
+                    @Html.DisplayNameFor(m => m.Warehouse.Name):
+                </h5>
+                <div>@Html.DisplayTextFor(m => m.Warehouse.Name)</div>
             </div>
             <div class="warehouse-info-box-item">
-                <h5>Description:</h5>
-                <div>My Favourite Warehouse</div>
+                <h5>
+                    @Html.DisplayNameFor(m => m.Warehouse.Description):
+                </h5>
+                <div>@Html.DisplayTextFor(m => m.Warehouse.Description)</div>
             </div>
             <div class="warehouse-info-box-item">
-                <h5>Location:</h5>
-                <div>Voin Draskoci</div>
+                <h5>
+                    @Html.DisplayNameFor(m => m.Warehouse.Location):
+                </h5>
+                <div>@Html.DisplayTextFor(m => m.Warehouse.Location)</div>
             </div>
             <div class="warehouse-info-box-item">
-                <h5>Capacity:</h5>
-                <div><span>1200</span>/<span>1500</span> Units</div>
+                <h5>
+                    @Html.DisplayNameFor(m => m.Warehouse.CurrentCapacity):
+                </h5>
+                <div>@Html.DisplayTextFor(m => m.Warehouse.CurrentCapacity)/@Html.DisplayTextFor(m => m.Warehouse.MaxCapacity) Units <span class="custom-tooltip" data-title="1 Unit = 1 m3">🛈</span> </div>
             </div>
             <div class="warehouse-info-box-item">
-                <a href="#" class="btn-default btn-small">Edit Warehouse Details</a>
+                @Html.ActionLink("Edit Warehouse Details", "Edit", "Warehouses", routeValues: new { warehouseId = Model.Warehouse.Id }, htmlAttributes: new { @class = "btn-default btn-small" })
+
             </div>
 
         </div>
@@ -49,90 +60,67 @@
         <h5 class="table-interact-section-header">Warehouse Stored Items</h5>
         <table class="entries-table">
             <thead>
-                <tr>
-                    <th>Image</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Size (cm3)</th>
-                    <th>Est. Price</th>
-                    <th>Amount</th>
-                    <th>Options</th>
-                </tr>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Size <span class="custom-tooltip" data-title="In cm3">🛈</span></th>
+                <th>Est. Price @Html.ToolTip("In $ (Dollars)")</th>
+                <th>Amount</th>
+                <th>Options</th>
+            </tr>
             </thead>
             <tbody>
+
+            @if (Model.Warehouse.StoredItems.Count == 0)
+            {
                 <tr>
-                    <td class="item-image">
-                        <img src="https://5.imimg.com/data5/SELLER/Default/2021/12/HW/KG/SQ/143354869/syp-wood-timber-plank.jpg" alt="Item Image">
-                    </td>
-                    <td>Planks</td>
-                    <td>2x2 Planks</td>
-                    <td>Materials</td>
-                    <td>30</td>
-                    <td>70</td>
-                    <td>700</td>
-                    <td>
-                        <a href="#" class="btn-default btn-small">Edit</a>
-                        <a href="#" class="btn-default btn-small secondary-background">Remove</a>
-                    </td>
+                    <td>The warehouse does not have any stored items</td>
                 </tr>
-                <tr>
-                    <td class="item-image">
-                        <img src="https://5.imimg.com/data5/SELLER/Default/2021/12/HW/KG/SQ/143354869/syp-wood-timber-plank.jpg" alt="Item Image">
-                    </td>
-                    <td>Planks</td>
-                    <td>2x2 Planks</td>
-                    <td>Materials</td>
-                    <td>30</td>
-                    <td>70</td>
-                    <td>700</td>
-                    <td>
-                        <a href="#" class="btn-default btn-small">Edit</a>
-                        <a href="#" class="btn-default btn-small secondary-background">Remove</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="item-image">
-                        <img src="https://5.imimg.com/data5/SELLER/Default/2021/12/HW/KG/SQ/143354869/syp-wood-timber-plank.jpg" alt="Item Image">
-                    </td>
-                    <td>Planks</td>
-                    <td>2x2 Planks</td>
-                    <td>Materials</td>
-                    <td>30</td>
-                    <td>70</td>
-                    <td>700</td>
-                    <td>
-                        <a href="#" class="btn-default btn-small">Edit</a>
-                        <a href="#" class="btn-default btn-small secondary-background">Remove</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="item-image">
-                        <img src="https://5.imimg.com/data5/SELLER/Default/2021/12/HW/KG/SQ/143354869/syp-wood-timber-plank.jpg" alt="Item Image">
-                    </td>
-                    <td>Planks</td>
-                    <td>2x2 Planks</td>
-                    <td>Materials</td>
-                    <td>30</td>
-                    <td>70</td>
-                    <td>700</td>
-                    <td>
-                        <a href="#" class="btn-default btn-small">Edit</a>
-                        <a href="#" class="btn-default btn-small secondary-background">Remove</a>
-                    </td>
-                </tr>
+            }
+            else
+            {
+                foreach (Item item in Model.Warehouse.StoredItems)
+                {
+                    <tr>
+                        <td class="item-image">
+                            @if (!string.IsNullOrEmpty(item.ImageUrl))
+                            {
+                                <img src="@item.ImageUrl" alt="Item Image">
+                            }
+                            else
+                            {
+                                <img src="~/Content/Images/default-item-picture.png" alt="Item Image">
+                            }
+                        </td>
+                        <td>@item.Name</td>
+                        <td>@item.Description</td>
+                        <td>@EnumHandler.GetDisplayName(item.Type)</td>
+                        <td>@item.Size</td>
+                        <td>@item.EstPrice</td>
+                        <td>@item.Amount</td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", "Item", routeValues: new { warehouseId = Model.Warehouse.Id, itemId = item.Id }, htmlAttributes: new { @class = "btn-default btn-small" })
+                            <a href="#" class="btn-default btn-small secondary-background">Remove</a>
+                        </td>
+                    </tr>
+                }
+            }
+
             </tbody>
         </table>
     </section>
-    <footer>
-        <p class="page-error-message">Error Message: Fill all the inputs</p>
-    </footer>
+    @* <footer> *@
+    @*     <p class="page-error-message">Error Message: Fill all the inputs</p> *@
+    @* </footer> *@
     <div class="page-main-buttons">
-        <button class="btn-default page-main-button">Add Item</button>
-        <button class="btn-default page-main-button">Make Shipment</button>
-        <button class="btn-default page-main-button primary-background">Make Transfer</button>
-        <button class="btn-default page-main-button shade3-background">Manage Operators</button>
-        <button class="btn-default page-main-button shade4-background">To Dashboard</button>
-    </div>
-</form>
+        @Html.ActionLink("Add Item", "Add", "Item", routeValues: new { warehouseId = Model.Warehouse.Id }, htmlAttributes: new { @class = "btn-default page-main-button" })
+        @Html.ActionLink("Make Shipment", "Make", "Shipments", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button primary-background text-inverted-color" })
+        @Html.ActionLink("Make Transfer", "Make", "Transfers", routeValues: new {fromWarehouseId = Model.WarehouseId}, htmlAttributes: new { @class = "btn-default page-main-button primary-background text-inverted-color" })
+        @Html.ActionLink("Manage Operators", "Index", "Operators", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button shade3-background" })
+        @* @Html.ActionLink("To Dashboard", "Dashboard", "Home", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button shade4-background" }) *@
+        @Html.ActionLinkButton("To Dashboard", "Dashboard", "Home", classList: "shade4-background")
 
+    </div>
+}

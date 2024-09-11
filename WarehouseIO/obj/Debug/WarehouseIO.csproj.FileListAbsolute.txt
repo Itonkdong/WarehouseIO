@@ -109,3 +109,8 @@ D:\Fax\IT MVC Project\WarehouseIO\WarehouseIO\WarehouseIO\obj\Debug\WarehouseIO.
 D:\Fax\IT MVC Project\WarehouseIO\WarehouseIO\WarehouseIO\obj\Debug\WarehouseIO.Migrations.InitialCreate.resources
 D:\Fax\IT MVC Project\WarehouseIO\WarehouseIO\WarehouseIO\obj\Debug\WarehouseIO.csproj.GenerateResource.cache
 D:\Fax\IT MVC Project\WarehouseIO\WarehouseIO\WarehouseIO\obj\Debug\WarehouseIO.Migrations.UpdatedApplicationUser.resources
+D:\Fax\IT MVC Project\WarehouseIO\WarehouseIO\WarehouseIO\obj\Debug\WarehouseIO.Migrations.InitialModelCreation.resources
+D:\Fax\IT MVC Project\WarehouseIO\WarehouseIO\WarehouseIO\obj\Debug\WarehouseIO.Migrations.UpdatedWarehouseModel.resources
+D:\Fax\IT MVC Project\WarehouseIO\WarehouseIO\WarehouseIO\obj\Debug\WarehouseIO.Migrations.FixedEnumType.resources
+D:\Fax\IT MVC Project\WarehouseIO\WarehouseIO\WarehouseIO\obj\Debug\WarehouseIO.Migrations.AddedImageUrlInItemModel.resources
+D:\Fax\IT MVC Project\WarehouseIO\WarehouseIO\WarehouseIO\obj\Debug\WarehouseIO.Migrations.AddedTransferStatusStringAndEstPricePerMovingItem.resources

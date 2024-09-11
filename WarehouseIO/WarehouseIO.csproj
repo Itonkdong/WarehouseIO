@@ -170,7 +170,11 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="ControlClasses\ControllerExtender.cs" />
+    <Compile Include="ControlClasses\EnumHandler.cs" />
+    <Compile Include="ControlClasses\ErrorHandler.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\UserFetchOptions.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -178,7 +182,10 @@
     <Compile Include="Controllers\ShipmentsController.cs" />
     <Compile Include="Controllers\TransfersController.cs" />
     <Compile Include="Controllers\WarehousesController.cs" />
+    <Compile Include="Controllers\WarehousesTestController.cs" />
     <Compile Include="CustomAttributes\MustBeTrue.cs" />
+    <Compile Include="CustomHtmlHelpers\CustomHtmlHelper.cs" />
+    <Compile Include="Exceptions\InvalidAmountValueException.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -190,9 +197,30 @@
     <Compile Include="Migrations\202409090950278_UpdatedApplicationUser.Designer.cs">
       <DependentUpon>202409090950278_UpdatedApplicationUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202409091744484_InitialModelCreation.cs" />
+    <Compile Include="Migrations\202409091744484_InitialModelCreation.Designer.cs">
+      <DependentUpon>202409091744484_InitialModelCreation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202409091930277_UpdatedWarehouseModel.cs" />
+    <Compile Include="Migrations\202409091930277_UpdatedWarehouseModel.Designer.cs">
+      <DependentUpon>202409091930277_UpdatedWarehouseModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202409100816165_FixedEnumType.cs" />
+    <Compile Include="Migrations\202409100816165_FixedEnumType.Designer.cs">
+      <DependentUpon>202409100816165_FixedEnumType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202409100855203_AddedImageUrlInItemModel.cs" />
+    <Compile Include="Migrations\202409100855203_AddedImageUrlInItemModel.Designer.cs">
+      <DependentUpon>202409100855203_AddedImageUrlInItemModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202409110952108_AddedTransferStatusStringAndEstPricePerMovingItem.cs" />
+    <Compile Include="Migrations\202409110952108_AddedTransferStatusStringAndEstPricePerMovingItem.Designer.cs">
+      <DependentUpon>202409110952108_AddedTransferStatusStringAndEstPricePerMovingItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\IPropertySupplier.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\ItemType.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -203,6 +231,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Models\Warehouse.cs" />
+    <Compile Include="ViewModels\AddEditItemViewModel.cs" />
+    <Compile Include="ViewModels\MakeEditTransferViewModel.cs" />
+    <Compile Include="ViewModels\ManageTransfersViewModel.cs" />
+    <Compile Include="ViewModels\ManageWarehouseViewModel.cs" />
+    <Compile Include="ViewModels\MovingItemViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -221,6 +254,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Images\default-item-picture.png" />
     <Content Include="Content\Images\default-profile-picture.jpg" />
     <Content Include="Content\Images\landing-image-1.jpg" />
     <Content Include="Content\Images\landing-image-2.jpg" />
@@ -314,6 +348,11 @@
     <Content Include="Views\Item\Edit.cshtml" />
     <Content Include="Views\Operators\Index.cshtml" />
     <Content Include="Views\Account\Information.cshtml" />
+    <Content Include="Views\WarehousesTest\Create.cshtml" />
+    <Content Include="Views\WarehousesTest\Delete.cshtml" />
+    <Content Include="Views\WarehousesTest\Details.cshtml" />
+    <Content Include="Views\WarehousesTest\Edit.cshtml" />
+    <Content Include="Views\WarehousesTest\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -351,6 +390,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202409090950278_UpdatedApplicationUser.resx">
       <DependentUpon>202409090950278_UpdatedApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202409091744484_InitialModelCreation.resx">
+      <DependentUpon>202409091744484_InitialModelCreation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202409091930277_UpdatedWarehouseModel.resx">
+      <DependentUpon>202409091930277_UpdatedWarehouseModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202409100816165_FixedEnumType.resx">
+      <DependentUpon>202409100816165_FixedEnumType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202409100855203_AddedImageUrlInItemModel.resx">
+      <DependentUpon>202409100855203_AddedImageUrlInItemModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202409110952108_AddedTransferStatusStringAndEstPricePerMovingItem.resx">
+      <DependentUpon>202409110952108_AddedTransferStatusStringAndEstPricePerMovingItem.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

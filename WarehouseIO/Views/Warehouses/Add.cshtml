@@ -1,39 +1,57 @@
-﻿
+﻿@using WarehouseIO.ControlClasses
+@using WarehouseIO.Models
+@model WarehouseIO.Models.Warehouse
 @{
     ViewBag.Title = "Add Warehouse";
+    string errorMessage = ErrorHandler.MissingInputsErrorMessage<Warehouse>(ViewData, Warehouse.GetPropertiesNames());
+    string viewBagErrorMessage = (string) ViewBag.ErrorMessage;
+    string tempDataErrorMessage = (string)TempData["ErrorMessage"];
 }
 
-<form class="type1-add-edit-view-page">
+@using (@Html.BeginForm("Add", "Warehouses", FormMethod.Post, htmlAttributes: new { @class = "type1-add-edit-view-page" }))
+{
     <header>
         <h1>Add Warehouse</h1>
     </header>
     <div class="add-warehouse-wrapper">
         <div class="add-warehouse-container">
             <div class="add-warehouse-item">
-                <label for="warehouse-name" >Name</label>
-                <input type="text" id="warehouse-name">
+                @Html.LabelFor(m => m.Name, htmlAttributes: new { @class = "" })
+                @Html.TextBoxFor(m => m.Name, htmlAttributes: new { @class = "" })
             </div>
             <div class="add-warehouse-item">
-                <label for="warehouse-description" >Description</label>
-                <input type="text" id="warehouse-description">
+
+                @Html.LabelFor(m => m.Description, htmlAttributes: new { @class = "" })
+                @Html.TextBoxFor(m => m.Description, htmlAttributes: new { @class = "" })
             </div>
             <div class="add-warehouse-item">
-                <label for="warehouse-location" >Location</label>
-                <input type="text" id="warehouse-location">
+
+                @Html.LabelFor(m => m.Location, htmlAttributes: new { @class = "" })
+                @Html.TextBoxFor(m => m.Location, htmlAttributes: new { @class = "" })
             </div>
             <div class="add-warehouse-item">
-                <label for="warehouse-max-capacity" >Max Capacity</label>
-                <input type="text" id="warehouse-max-capacity">
+
+                @Html.LabelFor(m => m.MaxCapacity, htmlAttributes: new { @class = "" })
+                @Html.TextBoxFor(m => m.MaxCapacity, htmlAttributes: new { @class = "", type = "number"})
             </div>
 
         </div>
     </div>
     <footer>
-        <p class="page-error-message">Error Message: Fill all the inputs</p>
+        @if (ErrorHandler.DoesErrorExist(errorMessage, viewBagErrorMessage, tempDataErrorMessage))
+        {
+            <p class="page-error-message">@ErrorHandler.GetFirstExistingError(errorMessage, viewBagErrorMessage, tempDataErrorMessage)</p>
+        }
+        else
+        {
+            <p class="page-error-message">
+                &#8203;
+            </p>
+        }
     </footer>
     <div class="page-main-buttons">
         <button class="btn-default page-main-button">Add</button>
-        <button class="btn-default page-main-button">To Dashboard</button>
-    </div>
-</form>
+        @Html.ActionLink("To Dashboard", "Dashboard", "Home", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button" })
 
+    </div>
+}

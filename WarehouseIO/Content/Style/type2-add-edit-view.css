@@ -25,7 +25,7 @@
     gap: 0.5rem;
     padding: 0.4em 2em;
     background-color: var(--primary);
-    color: var(--text);
+    color: var(--text-inverted);
     margin: 0 1rem;
     border-radius: var(--br-big);
 
@@ -178,8 +178,22 @@
 
 .entries-table tr td,th
 {
-    flex-basis: 0;
+    flex-basis: 0; 
     flex-grow: 1;
+}
+
+.colapse-column {
+    /* flex-basis: 100px; */
+    flex-grow: 0.6 !important;
+    /* flex-shrink: 0 !important; */
+    /* flex-basis: 70px !important; */
+    /* width: 100px !important; */
+    /* background-color: yellow; */
+}
+
+.expand-column {
+    flex-grow: 1.5 !important;
+    /* background-color: grey; */
 }
 
 .entries-table a

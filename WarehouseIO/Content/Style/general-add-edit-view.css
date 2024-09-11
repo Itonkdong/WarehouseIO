@@ -16,8 +16,11 @@
     font-size: var(--fs-mid);
     padding: 0.5em 1em;
     box-shadow: var(--shadow-2-inverted);
+    text-align: center;
+    font-weight: 500;
 }
 
 .page-main-button:nth-child(2) {
     background-color: var(--primary);
+    color: var(--text-inverted);
 }

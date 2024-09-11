@@ -1,9 +1,10 @@
-﻿/*#nullable enable
+﻿#nullable enable
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using WarehouseIO.ViewModels;
 
 namespace WarehouseIO.Models
 {
@@ -16,21 +17,28 @@ namespace WarehouseIO.Models
 
         public virtual Item Item { get; set; }
 
-        [ForeignKey("Transfer")]
         public int? TransferId { get; set; }
 
         public virtual Transfer? Transfer { get; set; }
 
-        [ForeignKey("Shipment")]
         public int? ShipmentId { get; set; }
 
         public virtual Shipment? Shipment { get; set; }
 
         public int Amount  { get; set; }
 
+        public double EstPrice { get; set; }
+
         public MovingItem()
         {
                 
         }
+
+        public MovingItem(MovingItemViewModel item)
+        {
+            this.ItemId = item.Id;
+            this.Amount = item.TransferAmount;
+            this.EstPrice = item.EstPrice;
+        }
     }
-}*/
+}

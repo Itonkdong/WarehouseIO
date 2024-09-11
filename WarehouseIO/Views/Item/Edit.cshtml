@@ -1,9 +1,16 @@
-﻿
+﻿@using WarehouseIO.ControlClasses
+@using WarehouseIO.Models
+@using WarehouseIO.ViewModels
+@model WarehouseIO.ViewModels.AddEditItemViewModel
+
 @{
     ViewBag.Title = "Edit Item";
+    string errorMessage = ErrorHandler.MissingInputsErrorMessage<AddEditItemViewModel>(ViewData, AddEditItemViewModel.GetPropertiesNames());
 }
 
-<form class="type2-add-edit-view-page">
+
+@using (Html.BeginForm("Edit", "Item", FormMethod.Post, htmlAttributes: new { @class = "type2-add-edit-view-page" }))
+{
     <header>
         <h1>Edit Item</h1>
     </header>
@@ -11,67 +18,92 @@
         <h4 class="warehouse-info-box-header">Warehouse Info</h4>
         <div class="warehouse-info-box-items">
             <div class="warehouse-info-box-item">
-                <h5>Name:</h5>
-                <div>WH-1-MAIN</div>
+                <h5>
+                    @Html.DisplayNameFor(m => m.Warehouse.Name):
+                </h5>
+                <div>@Html.DisplayTextFor(m => m.Warehouse.Name)</div>
+                @Html.HiddenFor(m => m.WarehouseId)
             </div>
             <div class="warehouse-info-box-item">
-                <h5>Description:</h5>
-                <div>My Favourite Warehouse</div>
+                <h5>
+                    @Html.DisplayNameFor(m => m.Warehouse.Description):
+                </h5>
+                <div>@Html.DisplayTextFor(m => m.Warehouse.Description)</div>
             </div>
             <div class="warehouse-info-box-item">
-                <h5>Location:</h5>
-                <div>Voin Draskoci</div>
+                <h5>
+                    @Html.DisplayNameFor(m => m.Warehouse.Location):
+                </h5>
+                <div>@Html.DisplayTextFor(m => m.Warehouse.Location)</div>
             </div>
             <div class="warehouse-info-box-item">
-                <h5>Capacity:</h5>
-                <div><span>1200</span>/<span>1500</span> Units</div>
+                <h5>
+                    @Html.DisplayNameFor(m => m.Warehouse.CurrentCapacity):
+                </h5>
+                <div>@Html.DisplayTextFor(m => m.Warehouse.CurrentCapacity)/@Html.DisplayTextFor(m => m.Warehouse.MaxCapacity) Units</div>
             </div>
             <div class="warehouse-info-box-item">
-                <a href="#" class="btn-default btn-small">Manage Warehouse</a>
+                @Html.ActionLink("Manage Warehouse", "Index", "Warehouses", new { warehouseId = Model.WarehouseId }, new { @class = "btn-default btn-small" })
             </div>
-
         </div>
-
     </section>
     <section class="form-interact-section">
         <h5>Item Info</h5>
         <div class="add-item-items">
             <div class="add-item-item">
-                <label for="item-name">Name</label>
-                <input id="item-name" type="text">
+                @Html.LabelFor(m => m.Name, htmlAttributes: new { @class = "" })
+                @Html.TextBoxFor(m => m.Name, htmlAttributes: new { @class = "" })
             </div>
             <div class="add-item-item">
-                <label for="item-description">Description</label>
-                <input id="item-description" type="text">
+                @Html.LabelFor(m => m.Description, htmlAttributes: new { @class = "" })
+                @Html.TextBoxFor(m => m.Description, htmlAttributes: new { @class = "" })
             </div>
             <div class="add-item-item">
-                <label for="item-type">Type</label>
-                <select id="item-type" type="text">
-                    <option>Material</option>
-                    <option>Electronics</option>
-                    <option>Gardening</option>
-                </select>
+                @Html.LabelFor(m => m.Type, htmlAttributes: new { @class = "" })
+                @Html.DropDownListFor(m => m.Type, EnumHandler.GetSelectList<ItemType>(Model.AllItemTypes.ToList()), htmlAttributes: new { })
+
+
             </div>
             <div class="add-item-item">
-                <label for="item-image">Image (Optional)</label>
-                <input id="item-image" type="text">
+                @Html.LabelFor(m => m.ImageUrl, htmlAttributes: new { @class = "" })
+                @Html.TextBoxFor(m => m.ImageUrl, htmlAttributes: new { @class = "" })
             </div>
             <div class="add-item-item">
-                <label for="item-price">Est. Price</label>
-                <input id="item-price" type="number">
+                @Html.LabelFor(m => m.EstPrice, htmlAttributes: new { @class = "" })
+                @Html.TextBoxFor(m => m.EstPrice, htmlAttributes: new { @class = "" })
             </div>
             <div class="add-item-item">
-                <label for="item-size">Size (in cm3)</label>
-                <input id="item-size" type="number">
+                @Html.LabelFor(m => m.Size, htmlAttributes: new { @class = "custom-tooltip", data_title = "In cm3" })
+                @Html.TextBoxFor(m => m.Size, htmlAttributes: new { @class = "" })
             </div>
+            <div class="add-item-item">
+                @Html.LabelFor(m => m.Amount, htmlAttributes: new { @class = ""})
+                @Html.TextBoxFor(m => m.Amount, htmlAttributes: new { @class = "" })
+            </div>
+            @Html.HiddenFor(m => m.Id, htmlAttributes: new { @class = "" })
+
         </div>
     </section>
     <footer>
-        <p class="page-error-message">Error Message: Fill all the inputs</p>
+        @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+        {
+            <p class="page-error-message">@Model.ErrorMessage</p>
+        }
+        else if (!string.IsNullOrEmpty(errorMessage))
+        {
+            @Html.ValidationSummary("", new { @class = "page-error-message" })
+    
+        }
+        else
+        {
+            <p class="page-error-message">
+                &#8203;
+            </p>
+        }
     </footer>
     <div class="page-main-buttons">
         <button class="btn-default page-main-button">Save</button>
-        <button class="btn-default page-main-button">To Dashboard</button>
+        @Html.ActionLink("To Dashboard", "Dashboard", "Home", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button " })
     </div>
-</form>
+}
 

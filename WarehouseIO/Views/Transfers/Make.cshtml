@@ -1,9 +1,17 @@
-﻿
+﻿@using WarehouseIO.ControlClasses
+@using WarehouseIO.CustomHtmlHelpers
+@using WarehouseIO.ViewModels
+@model WarehouseIO.ViewModels.MakeEditTransferViewModel
+
 @{
     ViewBag.Title = "Make Transfer";
+    // string errorMessage = ErrorHandler.MissingInputsErrorMessage<Warehouse>(ViewData, Warehouse.GetPropertiesNames());
+    string tempDataErrorMessage = (string)TempData["ErrorMessage"];
 }
 
-<form class="type2-add-edit-view-page">
+
+@using (Html.BeginForm("Make", "Transfers", FormMethod.Post, htmlAttributes: new { @class = "type2-add-edit-view-page" }))
+{
     <header>
         <h1>Make Transfer</h1>
     </header>
@@ -13,145 +21,160 @@
                 <label for="from-warehouse-name">
                     From Warehouse
                 </label>
-                <select id="from-warehouse-name">
-                    <option>WH-1-Main</option>
-                    <option>WH-2-Main</option>
-                </select>
+                @Html.DropDownListFor(m => m.FromWarehouseId, new SelectList(Model.AllWarehouses, "Id", "Name"), htmlAttributes: new { id = "from-warehouse-name" })
+
             </span>
             <span>
                 <label for="to-warehouse-name">
                     To Warehouse
                 </label>
-                <select id="to-warehouse-name">
-                    <option>WH-1-Main</option>
-                    <option>WH-2-Main</option>
-                </select>
+                @Html.DropDownListFor(m => m.ToWarehouseId, new SelectList(Model.AllWarehouses.Where(w=>w.Id != Model.FromWarehouseId), "Id", "Name"), htmlAttributes: new { id = "to-warehouse-name" })
             </span>
-
-
         </h5>
         <div class="warehouse-double-info-box-wrapper">
             <div class="warehouse-info-box-items">
                 <div class="warehouse-info-box-item">
-                    <h5>Name:</h5>
-                    <div>WH-1-MAIN</div>
+                    <h5>
+                        @Html.DisplayNameFor(m => m.FromWarehouse.Name):
+                    </h5>
+                    <div>@Html.DisplayTextFor(m => m.FromWarehouse.Name)</div>
+                </div>
+
+                <div class="warehouse-info-box-item">
+                    <h5>
+                        @Html.DisplayNameFor(m => m.FromWarehouse.Location):
+                    </h5>
+                    <div>@Html.DisplayTextFor(m => m.FromWarehouse.Location)</div>
                 </div>
                 <div class="warehouse-info-box-item">
-                    <h5>Location:</h5>
-                    <div>Voin Draskoci</div>
+                    <h5>
+                        @Html.DisplayNameFor(m => m.FromWarehouse.CurrentCapacity):
+                    </h5>
+                    <div>@Html.DisplayTextFor(m => m.FromWarehouse.CurrentCapacity)/@Html.DisplayTextFor(m => m.FromWarehouse.MaxCapacity) Units <span class="custom-tooltip" data-title="1 Unit = 1 m3">🛈</span> </div>
                 </div>
                 <div class="warehouse-info-box-item">
-                    <h5>Capacity:</h5>
-                    <div><span>1200</span>/<span>1500</span> Units</div>
-                </div>
-                <div class="warehouse-info-box-item">
-                    <a href="#" class="btn-default btn-small">Manage Warehouse</a>
+                    @Html.ActionLink("Manage Warehouse", "Index", "Warehouses", routeValues: new { warehouseId = Model.FromWarehouse.Id }, htmlAttributes: new { @class = "btn-default btn-small" })
                 </div>
             </div>
+
             <div class="warehouse-info-box-items">
+
                 <div class="warehouse-info-box-item">
-                    <h5>Name:</h5>
-                    <div>WH-1-MAIN</div>
+                    <h5>
+                        @Html.DisplayNameFor(m => m.ToWarehouse.Name):
+                    </h5>
+                    <div>@Html.DisplayTextFor(m => m.ToWarehouse.Name)</div>
+                </div>
+
+                <div class="warehouse-info-box-item">
+                    <h5>
+                        @Html.DisplayNameFor(m => m.ToWarehouse.Location):
+                    </h5>
+                    <div>@Html.DisplayTextFor(m => m.ToWarehouse.Location)</div>
                 </div>
                 <div class="warehouse-info-box-item">
-                    <h5>Location:</h5>
-                    <div>Voin Draskoci</div>
+                    <h5>
+                        @Html.DisplayNameFor(m => m.ToWarehouse.CurrentCapacity):
+                    </h5>
+                    <div>@Html.DisplayTextFor(m => m.ToWarehouse.CurrentCapacity)/@Html.DisplayTextFor(m => m.ToWarehouse.MaxCapacity) Units <span class="custom-tooltip" data-title="1 Unit = 1 m3">🛈</span> </div>
                 </div>
                 <div class="warehouse-info-box-item">
-                    <h5>Capacity:</h5>
-                    <div><span>1200</span>/<span>1500</span> Units</div>
-                </div>
-                <div class="warehouse-info-box-item">
-                    <a href="#" class="btn-default btn-small">Manage Warehouse</a>
+                    @Html.ActionLink("Manage Warehouse", "Index", "Warehouses", routeValues: new { warehouseId = Model.ToWarehouse.Id }, htmlAttributes: new { @class = "btn-default btn-small" })
                 </div>
             </div>
         </div>
-
     </section>
     <section class="table-interact-section">
         <h5 class="table-interact-section-header">Transfer Will Include Items:</h5>
         <table class="entries-table">
             <thead>
-                <tr>
-                    <th>Include</th>
-                    <th>Image</th>
-                    <th>Name</th>
-                    <th>Size (cm3)</th>
-                    <th>Type</th>
-                    <th>Available Amount</th>
-                    <th>Transfer Amount</th>
-                </tr>
+            <tr>
+                <th>Include</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Size @Html.ToolTip("In cm3")</th>
+                <th>Type</th>
+                <th>Available Amount</th>
+                <th>Transfer Amount</th>
+            </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        <input type="checkbox" class="include-checkbox">
-                    </td>
-                    <td class="item-image">
-                        <img src="https://5.imimg.com/data5/SELLER/Default/2021/12/HW/KG/SQ/143354869/syp-wood-timber-plank.jpg" alt="Item Image">
-                    </td>
-                    <td>Planks</td>
-                    <td>30</td>
-                    <td>Material</td>
-                    <td>700</td>
-                    <td>
-                        <input type="number" class="transfer-amount-input">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" class="include-checkbox">
-                    </td>
-                    <td class="item-image">
-                        <img src="https://5.imimg.com/data5/SELLER/Default/2021/12/HW/KG/SQ/143354869/syp-wood-timber-plank.jpg" alt="Item Image">
-                    </td>
-                    <td>Planks</td>
-                    <td>30</td>
-                    <td>Material</td>
-                    <td>700</td>
-                    <td>
-                        <input type="number" class="transfer-amount-input">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" class="include-checkbox">
-                    </td>
-                    <td class="item-image">
-                        <img src="https://5.imimg.com/data5/SELLER/Default/2021/12/HW/KG/SQ/143354869/syp-wood-timber-plank.jpg" alt="Item Image">
-                    </td>
-                    <td>Planks</td>
-                    <td>30</td>
-                    <td>Material</td>
-                    <td>700</td>
-                    <td>
-                        <input type="number" class="transfer-amount-input">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" class="include-checkbox">
-                    </td>
-                    <td class="item-image">
-                        <img src="https://5.imimg.com/data5/SELLER/Default/2021/12/HW/KG/SQ/143354869/syp-wood-timber-plank.jpg" alt="Item Image">
-                    </td>
-                    <td>Planks</td>
-                    <td>30</td>
-                    <td>Material</td>
-                    <td>700</td>
-                    <td>
-                        <input type="number" class="transfer-amount-input">
-                    </td>
-                </tr>
+            
+            @if (Model.AllFromWarehouseItems.Count == 0)
+            {
+                <td>The Warehouse: @Model.FromWarehouse.Name does not have any items</td>
+            }
+            else
+            {
+                for (var i = 0; i < Model.AllFromWarehouseItems.Count; i++)
+                {
+                    <tr>
+                        <td>
+                            @Html.CheckBoxFor(model => model.AllFromWarehouseItems[i].Included, htmlAttributes: new { @class = "include-checkbox" })
+                        </td>
+                        <td class="item-image">
+                            @if (!string.IsNullOrEmpty(Model.AllFromWarehouseItems[i].ImageUrl))
+                            {
+                                <img src="@Model.AllFromWarehouseItems[i].ImageUrl" alt="Item Image">
+                            }
+                            else
+                            {
+                                <img src="~/Content/Images/default-item-picture.png" alt="Item Image">
+                            }
+                        </td>
+                        <td>@Html.DisplayTextFor(model => model.AllFromWarehouseItems[i].Name)</td>
+                        <td>@Html.DisplayTextFor(model => model.AllFromWarehouseItems[i].Size)</td>
+                        <td>@EnumHandler.GetDisplayName(Model.AllFromWarehouseItems[i].Type)</td>
+                        <td>@Html.DisplayTextFor(model => model.AllFromWarehouseItems[i].AvailableAmount)</td>
+                        <td>
+                            @Html.TextBoxFor(model => model.AllFromWarehouseItems[i].TransferAmount, htmlAttributes: new { @class = "transfer-amount-input", type = "number" })
+                        </td>
+                        @Html.HiddenFor(model => model.AllFromWarehouseItems[i].Id)
+                        @Html.HiddenFor(model => model.AllFromWarehouseItems[i].Name)
+                        @Html.HiddenFor(model => model.AllFromWarehouseItems[i].Size)
+                        @Html.HiddenFor(model => model.AllFromWarehouseItems[i].Type)
+                        @Html.HiddenFor(model => model.AllFromWarehouseItems[i].AvailableAmount)
+                    </tr>
+                }
+            }
             </tbody>
         </table>
     </section>
     <footer>
-        <p class="page-error-message">Error Message: Fill all the inputs</p>
+        @Html.ErrorMessageSummary(Model.ErrorMessage, tempDataErrorMessage)
     </footer>
     <div class="page-main-buttons">
         <button class="btn-default page-main-button">Make Transfer</button>
-        <button class="btn-default page-main-button">To Dashboard</button>
-    </div>
-</form>
+        @Html.ActionLink("To Dashboard", "Dashboard", "Home", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button" })
 
+    </div>
+}
+
+@section scripts
+{
+    <script>
+        function handleSelectListChange(fromWarehouseList, toWarehouseList) {
+            var fromWarehouseId = fromWarehouseList.value;  // Get the selected From Warehouse ID
+            var toWarehouseId = toWarehouseList.value; // Get the selected To Warehouse ID
+
+            var url;
+            if (fromWarehouseId === toWarehouseId) {
+                url = '@Url.Action("Make", "Transfers")' + '?fromWarehouseId=' + fromWarehouseId;
+            }
+            else {
+                url = '@Url.Action("Make", "Transfers")' + '?fromWarehouseId=' + fromWarehouseId + '&toWarehouseId=' + toWarehouseId;
+            }
+
+            window.location.href = url;
+        }
+
+        const fromWarehouseList = document.getElementById('from-warehouse-name'); 
+        const toWarehouseList = document.getElementById('to-warehouse-name');
+        [fromWarehouseList, toWarehouseList]
+            .forEach(list => {
+                list.addEventListener('change',() => {
+                    handleSelectListChange(fromWarehouseList, toWarehouseList);
+                });
+            });
+    </script>
+}

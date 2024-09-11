@@ -206,7 +206,7 @@ namespace WarehouseIO.Controllers
 
         }
 
-        public ApplicationUser GetActiveUser()
+        private ApplicationUser GetActiveUser()
         {
            return this.UserManager.FindByEmail(User.Identity.Name);
         }
