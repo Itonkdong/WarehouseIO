@@ -43,6 +43,7 @@ namespace WarehouseIO.Models
         public virtual ICollection<Transfer> TransfersToWarehouse { get; set; } = new List<Transfer>();
 
         public virtual ICollection<ApplicationUser> Operators { get; set; } = new List<ApplicationUser>();
+        public virtual ICollection<ApplicationUser> Managers { get; set; } = new List<ApplicationUser>();
 
         public Warehouse()
         { 

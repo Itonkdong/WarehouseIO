@@ -115,3 +115,5 @@ D:\Fax\IT MVC Project\WarehouseIO\WarehouseIO\WarehouseIO\obj\Debug\WarehouseIO.
 D:\Fax\IT MVC Project\WarehouseIO\WarehouseIO\WarehouseIO\obj\Debug\WarehouseIO.Migrations.AddedImageUrlInItemModel.resources
 D:\Fax\IT MVC Project\WarehouseIO\WarehouseIO\WarehouseIO\obj\Debug\WarehouseIO.Migrations.AddedTransferStatusStringAndEstPricePerMovingItem.resources
 D:\Fax\IT MVC Project\WarehouseIO\WarehouseIO\WarehouseIO\obj\Debug\WarehouseIO.Migrations.CascadeDeleteTransferItemsInTransfer.resources
+D:\Fax\IT MVC Project\WarehouseIO\WarehouseIO\WarehouseIO\obj\Debug\WarehouseIO.Migrations.AddedManagersToWarehouseModel.resources
+D:\Fax\IT MVC Project\WarehouseIO\WarehouseIO\WarehouseIO\obj\Debug\WarehouseIO.Migrations.UpdatedItemModelChangedWarehouseToNullable.resources

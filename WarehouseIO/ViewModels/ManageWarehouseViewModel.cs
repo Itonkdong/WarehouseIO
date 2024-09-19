@@ -14,24 +14,6 @@ namespace WarehouseIO.ViewModels
         public int WarehouseId { get; set; }
         public Warehouse Warehouse { get; set; }
 
-        /*
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-
-        public string Location { get; set; }
-
-        public long MaxCapacity { get; set; }
-
-        public List<Item> StoredItems { get; set; } = new List<Item>();
-
-        [Display(Name = "Capacity")]
-        public long CurrentCapacity =>
-            StoredItems.ToList()
-                .Select(item => item.Size)
-                .Sum() / 1000;
-                */
-
         public ManageWarehouseViewModel()
         {
             
@@ -41,12 +23,13 @@ namespace WarehouseIO.ViewModels
         {
             this.Warehouse = warehouse;
             this.WarehouseId = warehouse.Id;
-            /*this.Name = warehouse.Name;
-            this.Description = warehouse.Description;
-            this.Location = warehouse.Location;
-            this.MaxCapacity = warehouse.MaxCapacity;
-            this.Id = warehouse.Id;
-            this.StoredItems = warehouse.StoredItems.ToList();*/
+        }
+
+        public bool IsUserManagerInWarehouse(string userEmail)
+        {
+            return this.Warehouse
+                .Managers
+                .Any(m => m.Email == userEmail);
         }
     }
 }

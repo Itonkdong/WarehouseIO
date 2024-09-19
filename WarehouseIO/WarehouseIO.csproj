@@ -221,6 +221,14 @@
     <Compile Include="Migrations\202409161906463_CascadeDeleteTransferItemsInTransfer.Designer.cs">
       <DependentUpon>202409161906463_CascadeDeleteTransferItemsInTransfer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202409191136101_AddedManagersToWarehouseModel.cs" />
+    <Compile Include="Migrations\202409191136101_AddedManagersToWarehouseModel.Designer.cs">
+      <DependentUpon>202409191136101_AddedManagersToWarehouseModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202409192007121_UpdatedItemModelChangedWarehouseToNullable.cs" />
+    <Compile Include="Migrations\202409192007121_UpdatedItemModelChangedWarehouseToNullable.Designer.cs">
+      <DependentUpon>202409192007121_UpdatedItemModelChangedWarehouseToNullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -240,6 +248,7 @@
     <Compile Include="ViewModels\AViewModel.cs" />
     <Compile Include="ViewModels\DetailsTransferHistoryViewModel.cs" />
     <Compile Include="ViewModels\MakeEditTransferViewModel.cs" />
+    <Compile Include="ViewModels\MakeShipmentViewModel.cs" />
     <Compile Include="ViewModels\ManageOperatorsViewModel.cs" />
     <Compile Include="ViewModels\ManageTransfersViewModel.cs" />
     <Compile Include="ViewModels\ManageWarehouseViewModel.cs" />
@@ -416,6 +425,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202409161906463_CascadeDeleteTransferItemsInTransfer.resx">
       <DependentUpon>202409161906463_CascadeDeleteTransferItemsInTransfer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202409191136101_AddedManagersToWarehouseModel.resx">
+      <DependentUpon>202409191136101_AddedManagersToWarehouseModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202409192007121_UpdatedItemModelChangedWarehouseToNullable.resx">
+      <DependentUpon>202409192007121_UpdatedItemModelChangedWarehouseToNullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

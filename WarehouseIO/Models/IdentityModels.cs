@@ -28,6 +28,7 @@ namespace WarehouseIO.Models
         public DateTime DateJoined { get; set; }
 
         public virtual ICollection<Warehouse> Warehouses { get; set; } = new List<Warehouse>();
+        public virtual ICollection<Warehouse> ManagedWarehouses { get; set; } = new List<Warehouse>();
 
         [ForeignKey("MadeByUserId")]
         public virtual ICollection<Transfer> Transfers { get; set; } = new List<Transfer>();
@@ -161,6 +162,8 @@ namespace WarehouseIO.Models
                 _ => throw new ArgumentOutOfRangeException(nameof(options), options, null)
             };
         }
+
+
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -201,6 +204,17 @@ namespace WarehouseIO.Models
                 .HasMany(t => t.TransferItems) // Transfer has many MovingItems
                 .WithRequired(i=>i.Transfer) // MovingItem must be associated with a Transfer
                 .WillCascadeOnDelete(true); // Enable cascade delete
+
+
+            modelBuilder.Entity<Warehouse>()
+                .HasMany(w => w.Managers)
+                .WithMany(u => u.ManagedWarehouses)
+                .Map(m =>
+                {
+                    m.ToTable("WarehouseManagers");
+                    m.MapLeftKey("WarehouseId");
+                    m.MapRightKey("UserId");
+                });
 
 
             base.OnModelCreating(modelBuilder);

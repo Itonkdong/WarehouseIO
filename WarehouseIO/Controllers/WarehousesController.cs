@@ -89,6 +89,7 @@ namespace WarehouseIO.Controllers
 
             ApplicationUser activeUser = this.GetActiveUser();
             model.Operators.Add(activeUser);
+            model.Managers.Add(activeUser);
             this._db.Warehouses.Add(model);
 
             this._db.SaveChanges();

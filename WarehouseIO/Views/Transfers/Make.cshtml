@@ -113,14 +113,7 @@
                             @Html.CheckBoxFor(model => model.AllFromWarehouseItems[i].Included, htmlAttributes: new { @class = "include-checkbox" })
                         </td>
                         <td class="item-image">
-                            @if (!string.IsNullOrEmpty(Model.AllFromWarehouseItems[i].ImageUrl))
-                            {
-                                <img src="@Model.AllFromWarehouseItems[i].ImageUrl" alt="Item Image">
-                            }
-                            else
-                            {
-                                <img src="~/Content/Images/default-item-picture.png" alt="Item Image">
-                            }
+                            <img src="@Model.AllFromWarehouseItems[i].ImageUrlRender" alt="Item Image">
                         </td>
                         <td>@Html.DisplayTextFor(model => model.AllFromWarehouseItems[i].Name)</td>
                         <td>@Html.DisplayTextFor(model => model.AllFromWarehouseItems[i].Size)</td>

@@ -183,5 +183,29 @@ namespace WarehouseIO.Controllers
             return RedirectToAction("Index", "Warehouses", routeValues: new { warehouseId = model.WarehouseId });
 
         }
+
+        public ActionResult Remove(int itemId, int warehouseId)
+        {
+            Item item = this._db
+                .Items
+                .FirstOrDefault(i => i.Id == itemId);
+
+            if (item is null)
+            {
+                this.SetError("Item is null.");
+
+                return RedirectToAction("Index", "Warehouses", routeValues: new {warehouseId = warehouseId});
+            }
+
+            item.Warehouse = null;
+            item.WarehouseId = null;
+
+            this._db.Entry(item).State = EntityState.Modified;
+            this._db.SaveChanges();
+
+            return RedirectToAction("Index", "Warehouses", routeValues: new { warehouseId = warehouseId });
+
+
+        }
     }
 }

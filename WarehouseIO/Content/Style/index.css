@@ -22,14 +22,13 @@
     font-weight: bold;
 }
 
-.app-controls
-{
+.app-controls {
     grid-row: span 2;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     gap: 2rem;
-    border-bottom: 2px black solid;
+    border-bottom: 2px solid var(--shade-3);
 }
 
 .app-control-options

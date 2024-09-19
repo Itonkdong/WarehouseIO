@@ -22,6 +22,22 @@ namespace WarehouseIO.ViewModels
                 
         }
 
+        public bool IsUserManagerInWarehouse(string userEmail)
+        {
+            return this.Warehouse
+                .Managers
+                .Any(m => m.Email == userEmail);
+        }
+
+        public string GetUsersRoles(string userEmail)
+        {
+            return this.Warehouse.Managers.Any(m => m.Email == userEmail) switch
+            {
+                true => "Manager",
+                false => "Operator"
+            };
+        }
+
 
     }
 }

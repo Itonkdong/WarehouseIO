@@ -20,7 +20,7 @@
             @Html.DropDownListFor(m => m.WarehouseId, new SelectList(Model.AllWarehouses, "Id", "Name"), htmlAttributes: new { onchange = "this.form.submit();" })
             <span></span>
             @Html.ActionLink("Add Warehouse", "Add", "Warehouses", routeValues: null, htmlAttributes: new { @class = "btn-default btn-small background-color" })
-            @Html.ActionLink("Delete Warehouse", "Add", "Warehouses", routeValues: null, htmlAttributes: new { @class = "btn-default btn-small secondary-background" })
+            @* @Html.ActionLink("Delete Warehouse", "Add", "Warehouses", routeValues: null, htmlAttributes: new { @class = "btn-default btn-small secondary-background" }) *@
 
         </h5>
         <div class="warehouse-info-box-items ">
@@ -49,7 +49,11 @@
                 <div>@Html.DisplayTextFor(m => m.Warehouse.CurrentCapacity)/@Html.DisplayTextFor(m => m.Warehouse.MaxCapacity) Units @Html.ToolTip("1 Unit = 1 m3") </div>
             </div>
             <div class="warehouse-info-box-item">
-                @Html.ActionLink("Edit Warehouse Details", "Edit", "Warehouses", routeValues: new { warehouseId = Model.Warehouse.Id }, htmlAttributes: new { @class = "btn-default btn-small" })
+                @if (Model.IsUserManagerInWarehouse(User.Identity.Name))
+                {
+                    @Html.ActionLink("Delete Warehouse", "Add", "Warehouses", routeValues: null, htmlAttributes: new { @class = "btn-default btn-small secondary-background" })
+                    @Html.ActionLink("Edit Warehouse Details", "Edit", "Warehouses", routeValues: new { warehouseId = Model.Warehouse.Id }, htmlAttributes: new { @class = "btn-default btn-small" })
+                }
 
             </div>
 
@@ -103,7 +107,8 @@
                         <td>@item.Amount</td>
                         <td class="entries-table-options">
                             @Html.ActionLink("Edit", "Edit", "Item", routeValues: new { warehouseId = Model.Warehouse.Id, itemId = item.Id }, htmlAttributes: new { @class = "btn-default btn-small" })
-                            <a href="#" class="btn-default btn-small secondary-background">Remove</a>
+                            @Html.ActionLink("Remove", "Remove", "Item", routeValues: new { itemId = item.Id, warehouseId = Model.Warehouse.Id }, htmlAttributes: new { @class = "btn-default btn-small secondary-background" })
+                            @* <a href="#" class="btn-default btn-small secondary-background">Remove</a> *@
                         </td>
                     </tr>
                 }
@@ -119,7 +124,7 @@
         @Html.ActionLink("Add Item", "Add", "Item", routeValues: new { warehouseId = Model.Warehouse.Id }, htmlAttributes: new { @class = "btn-default page-main-button" })
         @Html.ActionLink("Make Shipment", "Make", "Shipments", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button primary-background text-inverted-color" })
         @Html.ActionLink("Make Transfer", "Make", "Transfers", routeValues: new {fromWarehouseId = Model.WarehouseId}, htmlAttributes: new { @class = "btn-default page-main-button primary-background text-inverted-color" })
-        @Html.ActionLink("Manage Operators", "Index", "Operators", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button shade3-background" })
+        @Html.ActionLink("Manage Operators", "Index", "Operators", routeValues: new {warehouseId = Model.WarehouseId }, htmlAttributes: new { @class = "btn-default page-main-button shade3-background" })
         @* @Html.ActionLink("To Dashboard", "Dashboard", "Home", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button shade4-background" }) *@
         @Html.ActionLinkButton("To Dashboard", "Dashboard", "Home", classList: "shade4-background")
 

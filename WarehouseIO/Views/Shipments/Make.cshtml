@@ -1,9 +1,13 @@
-﻿
+﻿@using WarehouseIO.ControlClasses
+@using WarehouseIO.CustomHtmlHelpers
+@model WarehouseIO.ViewModels.MakeShipmentViewModel
 @{
     ViewBag.Title = "Make Shipment";
+    string tempError = (string)TempData["ErrorMessage"];
 }
 
-<form class="type2-add-edit-view-page">
+@using (Html.BeginForm("Make", "Shipments", FormMethod.Post, htmlAttributes: new { @class = "type2-add-edit-view-page" }))
+{
     <header>
         <h1>Make Shipment</h1>
     </header>
@@ -12,32 +16,36 @@
             <label for="warehouse-name">
                 From
             </label>
-            <select id="warehouse-name">
-                <option>WH-1-Main</option>
-                <option>WH-2-Main</option>
-            </select>
+            @Html.DropDownListFor(m => m.WarehouseId, new SelectList(Model.AllWarehouses, "Id", "Name"), htmlAttributes: new { id = "warehouse-name" })
         </h5>
-        <div class="warehouse-info-box-items">
+        <div class="warehouse-info-box-items ">
             <div class="warehouse-info-box-item">
-                <h5>Name:</h5>
-                <div>WH-1-MAIN</div>
+                <h5>
+                    @Html.DisplayNameFor(m => m.Warehouse.Name):
+                </h5>
+                <div>@Html.DisplayTextFor(m => m.Warehouse.Name)</div>
             </div>
             <div class="warehouse-info-box-item">
-                <h5>Description:</h5>
-                <div>My Favourite Warehouse</div>
+                <h5>
+                    @Html.DisplayNameFor(m => m.Warehouse.Description):
+                </h5>
+                <div>@Html.DisplayTextFor(m => m.Warehouse.Description)</div>
             </div>
             <div class="warehouse-info-box-item">
-                <h5>Location:</h5>
-                <div>Voin Draskoci</div>
+                <h5>
+                    @Html.DisplayNameFor(m => m.Warehouse.Location):
+                </h5>
+                <div>@Html.DisplayTextFor(m => m.Warehouse.Location)</div>
             </div>
             <div class="warehouse-info-box-item">
-                <h5>Capacity:</h5>
-                <div><span>1200</span>/<span>1500</span> Units</div>
+                <h5>
+                    @Html.DisplayNameFor(m => m.Warehouse.CurrentCapacity):
+                </h5>
+                <div>@Html.DisplayTextFor(m => m.Warehouse.CurrentCapacity)/@Html.DisplayTextFor(m => m.Warehouse.MaxCapacity) Units @Html.ToolTip("1 Unit = 1 m3") </div>
             </div>
             <div class="warehouse-info-box-item">
-                <a href="#" class="btn-default btn-small">Manage Warehouse</a>
+                @Html.ActionLink("Manage Warehouse", "Index", "Warehouses", routeValues: new { warehouseId = Model.Warehouse.Id }, htmlAttributes: new { @class = "btn-default btn-small" })
             </div>
-
         </div>
 
     </section>
@@ -47,98 +55,95 @@
                 Shipping Items:
             </div>
             <div class="make-shipping-interact-section-input">
-                <label for="shipping-to">Shipping To</label>
-                <input type="text" id="shipping-to">
+                @Html.LabelFor(m => m.ShippingTo)
+                @Html.TextBoxFor(m=>m.ShippingTo)
             </div>
-            <div class="make-shipping-interact-section-input">
+            @*<div class="make-shipping-interact-section-input">
                 <label for="est-price">Est. Price</label>
                 <input type="text" id="est-price" disabled>
-            </div>
-
-
+            </div>*@
         </div>
         <table class="entries-table">
             <thead>
-                <tr>
-                    <th>Include</th>
-                    <th>Name</th>
-                    <th>Size (cm3)</th>
-                    <th>Type</th>
-                    <th>Available Amount</th>
-                    <th>Shipping Amount</th>
-                </tr>
+            <tr>
+                <th>Include</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Size @Html.ToolTip("In cm3")</th>
+                <th>Type</th>
+                <th>Available Amount</th>
+                <th>Shipping Amount</th>
+            </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        <input type="checkbox" class="include-checkbox">
-                    </td>
-                    <td>Planks</td>
-                    <td>30</td>
-                    <td>Material</td>
-                    <td>700</td>
-                    <td>
-                        <input type="number" class="transfer-amount-input">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" class="include-checkbox">
-                    </td>
-                    <td>Planks</td>
-                    <td>30</td>
-                    <td>Material</td>
-                    <td>700</td>
-                    <td>
-                        <input type="number" class="transfer-amount-input">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" class="include-checkbox">
-                    </td>
-                    <td>Planks</td>
-                    <td>30</td>
-                    <td>Material</td>
-                    <td>700</td>
-                    <td>
-                        <input type="number" class="transfer-amount-input">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" class="include-checkbox">
-                    </td>
-                    <td>Planks</td>
-                    <td>30</td>
-                    <td>Material</td>
-                    <td>700</td>
-                    <td>
-                        <input type="number" class="transfer-amount-input">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" class="include-checkbox">
-                    </td>
-                    <td>Planks</td>
-                    <td>30</td>
-                    <td>Material</td>
-                    <td>700</td>
-                    <td>
-                        <input type="number" class="transfer-amount-input">
-                    </td>
-                </tr>
+
+            @if (Model.AllWarehouseItem.Count == 0)
+            {
+                <td>The Warehouse: @Model.Warehouse.Name does not have any items</td>
+            }
+            else
+            {
+                for (var i = 0; i < Model.AllWarehouseItem.Count; i++)
+                {
+                    <tr>
+                        <td>
+                            @Html.CheckBoxFor(model => model.AllWarehouseItem[i].Included, htmlAttributes: new { @class = "include-checkbox" })
+                        </td>
+                        <td class="item-image">
+                            <img src="@Model.AllWarehouseItem[i].ImageUrlRender" alt="Item Image">
+                        </td>
+                        <td>@Html.DisplayTextFor(model => model.AllWarehouseItem[i].Name)</td>
+                        <td>@Html.DisplayTextFor(model => model.AllWarehouseItem[i].Size)</td>
+                        <td>@EnumHandler.GetDisplayName(Model.AllWarehouseItem[i].Type)</td>
+                        <td>@Html.DisplayTextFor(model => model.AllWarehouseItem[i].AvailableAmount)</td>
+                        <td>
+                            @Html.TextBoxFor(model => model.AllWarehouseItem[i].TransferAmount, htmlAttributes: new { @class = "transfer-amount-input", type = "number" })
+                        </td>
+                        @Html.HiddenFor(model => model.AllWarehouseItem[i].Id)
+                        @Html.HiddenFor(model => model.AllWarehouseItem[i].Name)
+                        @Html.HiddenFor(model => model.AllWarehouseItem[i].Size)
+                        @Html.HiddenFor(model => model.AllWarehouseItem[i].Type)
+                        @Html.HiddenFor(model => model.AllWarehouseItem[i].AvailableAmount)
+                        @Html.HiddenFor(model => model.AllWarehouseItem[i].EstPrice)
+                    </tr>
+                }
+            }
+            @*<tr>
+                <td>
+                    <input type="checkbox" class="include-checkbox">
+                </td>
+                <td>Planks</td>
+                <td>30</td>
+                <td>Material</td>
+                <td>700</td>
+                <td>
+                    <input type="number" class="transfer-amount-input">
+                </td>
+            </tr>*@
+
 
             </tbody>
         </table>
     </section>
     <footer>
-        <p class="page-error-message">Error Message: Fill all the inputs</p>
+        @Html.ErrorMessageSummary(Model.ErrorMessage, tempError)
     </footer>
     <div class="page-main-buttons">
         <button class="btn-default page-main-button">Commit Shipment</button>
-        <button class="btn-default page-main-button">To Dashboard</button>
+        @Html.ActionLink("To Dashboard", "Dashboard", "Home", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button" })
     </div>
-</form>
+}
 
+@section scripts
+{
+    <script>
+
+        const warehousesList = document.getElementById('warehouse-name');
+
+        warehousesList.addEventListener('change',
+            () => {
+                const url = '@Url.Action("Make", "Shipments")' + '?warehouseId=' + warehousesList.value;
+                window.location.href = url;
+            });
+    </script>
+}

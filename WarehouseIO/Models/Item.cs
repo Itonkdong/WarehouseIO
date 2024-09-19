@@ -46,9 +46,9 @@ namespace WarehouseIO.Models
 
         public int Amount { get; set; }
 
-        public int WarehouseId { get; set; }
+        public int? WarehouseId { get; set; }
 
-        public virtual Warehouse Warehouse { get; set; }
+        public virtual Warehouse? Warehouse { get; set; }
 
         public string? ImageUrl { get; set; }
 
@@ -119,7 +119,7 @@ namespace WarehouseIO.Models
                 hashCode = (hashCode * 397) ^ Size;
                 hashCode = (hashCode * 397) ^ EstPrice.GetHashCode();
                 hashCode = (hashCode * 397) ^ Amount;
-                hashCode = (hashCode * 397) ^ WarehouseId;
+                hashCode = (int)((hashCode * 397) ^ WarehouseId);
                 hashCode = (hashCode * 397) ^ (ImageUrl != null ? ImageUrl.GetHashCode() : 0);
                 return hashCode;
             }

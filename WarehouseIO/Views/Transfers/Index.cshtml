@@ -19,10 +19,11 @@
             <thead>
 
             <tr>
-                <th>Transfer Id</th>
+                <th class="colapse-column">Transfer Id</th>
                 <th>From Warehouse</th>
                 <th>To Warehouse</th>
                 <th>Made On</th>
+                <th class="expand-column">By</th>
                 <th>Closed On</th>
                 <th>Options</th>
             </tr>
@@ -39,10 +40,11 @@
                 for (var i = 0; i < Model.AllTransfers.Count; i++)
                 {
                     <tr>
-                        <td>@Html.DisplayTextFor(m => m.AllTransfers[i].Id)</td>
+                        <td class="colapse-column">@Html.DisplayTextFor(m => m.AllTransfers[i].Id)</td>
                         <td>@Html.DisplayTextFor(m => m.AllTransfers[i].FromWarehouse.Name)</td>
                         <td>@Html.DisplayTextFor(m => m.AllTransfers[i].ToWarehouse.Name)</td>
                         <td>@Html.DisplayTextFor(m => m.AllTransfers[i].MadeOn)</td>
+                        <td class="expand-column">@Html.DisplayTextFor(m => m.AllTransfers[i].MadeByUser.Email)</td>
                         @if (Model.AllTransfers[i].Status == TransferStatus.StillPending)
                         {
                             <td>

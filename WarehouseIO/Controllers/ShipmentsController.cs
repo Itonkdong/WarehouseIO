@@ -1,14 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using WarehouseIO.ControlClasses;
+using WarehouseIO.Models;
+using WarehouseIO.ViewModels;
 
 namespace WarehouseIO.Controllers
 {
     [Authorize]
     public class ShipmentsController : Controller
     {
+
+        private readonly ApplicationDbContext _db = new ApplicationDbContext();
         // GET: Shipment
         public ActionResult Index()
         {
@@ -22,25 +27,108 @@ namespace WarehouseIO.Controllers
         }
 
         // GET: Shipment/Create
-        public ActionResult Make()
+        public ActionResult Make(int? warehouseId)
         {
-            return View();
+
+
+            if (allWarehouses.Count <= 0)
+            {
+                this.SetError("You must own or be part of at least one warehouse to make a shipment. Create or become an operator in one.");
+                return RedirectToAction("Add", "Warehouses");
+            }
+
+            Warehouse warehouse = warehouseId is null ? allWarehouses.First() : allWarehouses.First(w => w.Id == warehouseId);
+
+            if (warehouse is null)
+            {
+                this.SetError("Warehouse is null");
+                return RedirectToAction("Index", "Shipments");
+            }
+
+
+            warehouse = this._db
+                .Warehouses
+                .Include(w => w.StoredItems)
+                .First(w => w.Id == warehouse.Id);
+
+            MakeShipmentViewModel model = this.GetViewModel(warehouse);
+
+            return View(model);
+        }
+
+        public MakeShipmentViewModel GetViewModel(Warehouse warehouse)
+        {
+
+            var (activeUser, _) = this.GetActiveUser(this._db);
+
+            List<Warehouse> allWarehouses = activeUser.GetAllMyWarehouses(this._db, UserFetchOptions.Default);
+
+
+            return new MakeShipmentViewModel
+            {
+                WarehouseId = warehouse.Id,
+                Warehouse = warehouse,
+                AllWarehouseItem = warehouse.GetMovingItemViewModels(),
+                AllWarehouses = allWarehouses
+            };
         }
 
         // POST: Shipment/Create
         [HttpPost]
-        public ActionResult Make(FormCollection collection)
+        public ActionResult Make(MakeShipmentViewModel model)
         {
-            try
+            Warehouse warehouse;
+            if (!ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                this.SetError("Shipping Address is required");
+                warehouse = this._db
+                    .Warehouses
+                    .Include(w => w.StoredItems)
+                    .First(w => w.Id == model.WarehouseId);
+                model = this.GetViewModel(warehouse);
+                return View(model);
+            }
 
-                return RedirectToAction("Index");
-            }
-            catch
+
+            List<MovingItem> movingItems = model.AllWarehouseItem
+                .Where(item => item.Included)
+                .Where(item => item.TransferAmount != 0)
+                .Select(item => new MovingItem(item))
+                .ToList();
+
+            if (movingItems.Count == 0)
             {
-                return View();
+                this.SetError("A shipment must include at least one item.");
+                return RedirectToAction("Make", "Shipments",
+                    routeValues: new { warehouseId = model.WarehouseId});
             }
+
+            warehouse = this._db
+                .Warehouses
+                .FirstOrDefault(w => w.Id == model.WarehouseId);
+
+            if (warehouse == null)
+            {
+                this.SetError("Warehouse is null");
+                return RedirectToAction("Make", "Shipments");
+            }
+
+            Shipment shipment = new Shipment
+            {
+                FromWarehouseId = warehouse.Id,
+                FromWarehouse = warehouse,
+                ShippingTo = model.ShippingTo,
+                ShippingItems = movingItems,
+                MadeOn = DateTime.Now
+            };
+
+            db.Transfers
+                .Add(shipment);
+
+            db.SaveChanges();
+
+
+
         }
 
         /*// GET: Shipment/Edit/5
