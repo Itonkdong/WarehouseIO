@@ -1,68 +1,80 @@
-﻿
+﻿@using WarehouseIO.CustomHtmlHelpers
+@using WarehouseIO.Models
+@using WarehouseIO.ViewModels
+
+@model WarehouseIO.ViewModels.MakeEditTransferViewModel
+
 @{
     ViewBag.Title = "Edit Pending Transfer";
 }
 
-<form class="type2-add-edit-view-page">
+@using (Html.BeginForm("Edit", "Transfers", FormMethod.Post, htmlAttributes: new { @class = "type2-add-edit-view-page", id = "pending-transfer-form" }))
+{
     <header>
-        <h1>Edit Pending Transfer: 123123</h1>
+        <h1>Edit Pending Transfer - ID: @Model.Transfer.Id</h1>
     </header>
     <section class="warehouse-double-info-box">
         <h5 class="warehouse-info-box-header">
             <span>
-                <label for="from-warehouse-name">
-                    From Warehouse
-                </label>
-                <select id="from-warehouse-name">
-                    <option>WH-1-Main</option>
-                    <option>WH-2-Main</option>
-                </select>
+                From Warehouse
             </span>
             <span>
                 <label for="to-warehouse-name">
                     To Warehouse
                 </label>
-                <select id="to-warehouse-name">
-                    <option>WH-1-Main</option>
-                    <option>WH-2-Main</option>
-                </select>
+                @Html.DropDownListFor(m => m.ToWarehouseId, new SelectList(Model.AllWarehouses.Where(w => w.Id != Model.FromWarehouseId), "Id", "Name"), htmlAttributes: new { id = "to-warehouse-name" })
+
             </span>
-
-
         </h5>
         <div class="warehouse-double-info-box-wrapper">
             <div class="warehouse-info-box-items">
                 <div class="warehouse-info-box-item">
-                    <h5>Name:</h5>
-                    <div>WH-1-MAIN</div>
+                    <h5>
+                        @Html.DisplayNameFor(m => m.FromWarehouse.Name):
+                    </h5>
+                    <div>@Html.DisplayTextFor(m => m.FromWarehouse.Name)</div>
+                </div>
+
+                <div class="warehouse-info-box-item">
+                    <h5>
+                        @Html.DisplayNameFor(m => m.FromWarehouse.Location):
+                    </h5>
+                    <div>@Html.DisplayTextFor(m => m.FromWarehouse.Location)</div>
                 </div>
                 <div class="warehouse-info-box-item">
-                    <h5>Location:</h5>
-                    <div>Voin Draskoci</div>
+                    <h5>
+                        @Html.DisplayNameFor(m => m.FromWarehouse.CurrentCapacity):
+                    </h5>
+                    <div>@Html.DisplayTextFor(m => m.FromWarehouse.CurrentCapacity)/@Html.DisplayTextFor(m => m.FromWarehouse.MaxCapacity) Units @Html.ToolTip("1 Unite = 1 cm3") </div>
                 </div>
                 <div class="warehouse-info-box-item">
-                    <h5>Capacity:</h5>
-                    <div><span>1200</span>/<span>1500</span> Units</div>
-                </div>
-                <div class="warehouse-info-box-item">
-                    <a href="#" class="btn-default btn-small">Manage Warehouse</a>
+                    @Html.ActionLink("Manage Warehouse", "Index", "Warehouses", routeValues: new { warehouseId = Model.FromWarehouse.Id }, htmlAttributes: new { @class = "btn-default btn-small" })
+
                 </div>
             </div>
             <div class="warehouse-info-box-items">
+
                 <div class="warehouse-info-box-item">
-                    <h5>Name:</h5>
-                    <div>WH-1-MAIN</div>
+                    <h5>
+                        @Html.DisplayNameFor(m => m.ToWarehouse.Name):
+                    </h5>
+                    <div>@Html.DisplayTextFor(m => m.ToWarehouse.Name)</div>
+                </div>
+
+                <div class="warehouse-info-box-item">
+                    <h5>
+                        @Html.DisplayNameFor(m => m.ToWarehouse.Location):
+                    </h5>
+                    <div>@Html.DisplayTextFor(m => m.ToWarehouse.Location)</div>
                 </div>
                 <div class="warehouse-info-box-item">
-                    <h5>Location:</h5>
-                    <div>Voin Draskoci</div>
+                    <h5>
+                        @Html.DisplayNameFor(m => m.ToWarehouse.CurrentCapacity):
+                    </h5>
+                    <div>@Html.DisplayTextFor(m => m.ToWarehouse.CurrentCapacity)/@Html.DisplayTextFor(m => m.ToWarehouse.MaxCapacity) Units @Html.ToolTip("1 Unit = 1 m3") </div>
                 </div>
                 <div class="warehouse-info-box-item">
-                    <h5>Capacity:</h5>
-                    <div><span>1200</span>/<span>1500</span> Units</div>
-                </div>
-                <div class="warehouse-info-box-item">
-                    <a href="#" class="btn-default btn-small">Manage Warehouse</a>
+                    @Html.ActionLink("Manage Warehouse", "Index", "Warehouses", routeValues: new { warehouseId = Model.ToWarehouse.Id }, htmlAttributes: new { @class = "btn-default btn-small" })
                 </div>
             </div>
         </div>
@@ -72,86 +84,83 @@
         <h5 class="table-interact-section-header">Transfer Includes Items:</h5>
         <table class="entries-table">
             <thead>
-                <tr>
-                    <th>Include</th>
-                    <th>Image</th>
-                    <th>Name</th>
-                    <th>Size (cm3)</th>
-                    <th>Type</th>
-                    <th>Available Amount</th>
-                    <th>Transfer Amount</th>
-                </tr>
+            <tr>
+                <th>Include</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Size @Html.ToolTip("In cm3")</th>
+                <th>Type</th>
+                <th>Available Amount</th>
+                <th>Transfer Amount</th>
+            </tr>
             </thead>
             <tbody>
+
+            @for (var i = 0; i < Model.AllFromWarehouseItems.Count; i++)
+            {
+                MovingItem item = Model.GetAppropriateMovingItem(Model.AllFromWarehouseItems[i]);
+                if (item != null)
+                {
+                    Model.AllFromWarehouseItems[i].Included = true;
+                    Model.AllFromWarehouseItems[i].TransferAmount = item.Amount;
+                }
+
                 <tr>
                     <td>
-                        <input type="checkbox" class="include-checkbox">
+                        @Html.CheckBoxFor(m => m.AllFromWarehouseItems[i].Included, htmlAttributes: new { @class = "include-checkbox" })
                     </td>
                     <td class="item-image">
-                        <img src="https://5.imimg.com/data5/SELLER/Default/2021/12/HW/KG/SQ/143354869/syp-wood-timber-plank.jpg" alt="Item Image">
+                        <img src="@Model.AllFromWarehouseItems[i].ImageUrlRender" alt="Item Image">
                     </td>
-                    <td>Planks</td>
-                    <td>30</td>
-                    <td>Material</td>
-                    <td>700</td>
+                    <td>@Html.DisplayTextFor(m => m.AllFromWarehouseItems[i].Name)</td>
+                    <td>@Html.DisplayTextFor(m => m.AllFromWarehouseItems[i].Size)</td>
+                    <td>@Html.DisplayTextFor(m => m.AllFromWarehouseItems[i].Type)</td>
+                    <td>@Html.DisplayTextFor(m => m.AllFromWarehouseItems[i].AvailableAmount)</td>
                     <td>
-                        <input type="number" class="transfer-amount-input">
+                        @Html.TextBoxFor(m => m.AllFromWarehouseItems[i].TransferAmount, htmlAttributes: new { @class = "transfer-amount-input" })
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" class="include-checkbox">
-                    </td>
-                    <td class="item-image">
-                        <img src="https://5.imimg.com/data5/SELLER/Default/2021/12/HW/KG/SQ/143354869/syp-wood-timber-plank.jpg" alt="Item Image">
-                    </td>
-                    <td>Planks</td>
-                    <td>30</td>
-                    <td>Material</td>
-                    <td>700</td>
-                    <td>
-                        <input type="number" class="transfer-amount-input">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" class="include-checkbox">
-                    </td>
-                    <td class="item-image">
-                        <img src="https://5.imimg.com/data5/SELLER/Default/2021/12/HW/KG/SQ/143354869/syp-wood-timber-plank.jpg" alt="Item Image">
-                    </td>
-                    <td>Planks</td>
-                    <td>30</td>
-                    <td>Material</td>
-                    <td>700</td>
-                    <td>
-                        <input type="number" class="transfer-amount-input">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" class="include-checkbox">
-                    </td>
-                    <td class="item-image">
-                        <img src="https://5.imimg.com/data5/SELLER/Default/2021/12/HW/KG/SQ/143354869/syp-wood-timber-plank.jpg" alt="Item Image">
-                    </td>
-                    <td>Planks</td>
-                    <td>30</td>
-                    <td>Material</td>
-                    <td>700</td>
-                    <td>
-                        <input type="number" class="transfer-amount-input">
-                    </td>
-                </tr>
+                @Html.HiddenFor(model => model.AllFromWarehouseItems[i].Id)
+                @Html.HiddenFor(model => model.AllFromWarehouseItems[i].Name)
+                @Html.HiddenFor(model => model.AllFromWarehouseItems[i].Size)
+                @Html.HiddenFor(model => model.AllFromWarehouseItems[i].Type)
+                @Html.HiddenFor(model => model.AllFromWarehouseItems[i].AvailableAmount)
+                @Html.HiddenFor(model => model.AllFromWarehouseItems[i].EstPrice)
+            }
+            @Html.HiddenFor(model => model.Transfer.Id)
+            @Html.HiddenFor(model=>model.LastChangedToWarehouseId)
             </tbody>
         </table>
     </section>
     <footer>
-        <p class="page-error-message">Error Message: Fill all the inputs</p>
+        @Html.ErrorMessageSummary(Model.ErrorMessage)
     </footer>
     <div class="page-main-buttons">
-        <button class="btn-default page-main-button">Delete</button>
         <button class="btn-default page-main-button">Save</button>
-        <button class="btn-default page-main-button shade2-background">Manage Transfers</button>
+        @Html.ActionLink("Delete", "Delete", "Transfers", routeValues: new { transferId = Model.Transfer.Id }, htmlAttributes: new { @class = "btn-default page-main-button" })
+        @Html.ActionLink("Manage Transfers", "Index", "Transfers", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button shade2-background" })
     </div>
-</form>
+}
+
+@section scripts
+{
+    <script>
+        const form = document.getElementById("pending-transfer-form");
+
+        function handleSelectListChange(toWarehouseList) {
+            form.submit();
+        }
+
+        const toWarehouseList = document.getElementById('to-warehouse-name');
+
+        toWarehouseList.addEventListener('change',
+            () => {
+                handleSelectListChange(toWarehouseList);
+            });
+
+        console.log(form);
+        console.log(toWarehouseList);
+
+
+    </script>
+}

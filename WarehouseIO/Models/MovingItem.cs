@@ -10,6 +10,8 @@ namespace WarehouseIO.Models
 {
     public class MovingItem
     {
+
+
         public int Id { get; set; }
 
         [ForeignKey("Item")]
@@ -28,6 +30,11 @@ namespace WarehouseIO.Models
         public int Amount  { get; set; }
 
         public double EstPrice { get; set; }
+
+        [NotMapped]
+        public long SpaceTaken => (long)Math.Ceiling(this.Item.Size * this.Amount / 1000.0);
+
+
 
         public MovingItem()
         {

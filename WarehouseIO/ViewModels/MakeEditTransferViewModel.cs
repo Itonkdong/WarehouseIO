@@ -16,9 +16,21 @@ namespace WarehouseIO.ViewModels
         public ICollection<Warehouse> AllWarehouses { get; set; } = new List<Warehouse>();
         public string? ErrorMessage { get; set; }
 
+        public Transfer Transfer { get; set; }
+
+        public int LastChangedToWarehouseId {get; set; }
+
+
         public MakeEditTransferViewModel()
         {
             
+        }
+
+
+        public MovingItem? GetAppropriateMovingItem(MovingItemViewModel item)
+        {
+            return this.Transfer.TransferItems
+                .FirstOrDefault(i => i.Item.Name == item.Name);
         }
 
     }

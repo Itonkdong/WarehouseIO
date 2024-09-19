@@ -1,11 +1,11 @@
-﻿
-@using WarehouseIO.ControlClasses
+﻿@using WarehouseIO.ControlClasses
 @using WarehouseIO.CustomHtmlHelpers
 @using WarehouseIO.Models
 @model WarehouseIO.ViewModels.ManageTransfersViewModel
 
 @{
     ViewBag.Title = "Manage Transfers";
+    string tempError = (string)TempData["ErrorMessage"];
 }
 
 <form class="type2-add-edit-view-page type2-two-tables-modification">
@@ -18,50 +18,73 @@
         <table class="entries-table">
             <thead>
 
-                <tr>
-                    <th>Transfer Id</th>
-                    <th>From Warehouse</th>
-                    <th>To Warehouse</th>
-                    <th>Made On</th>
-                    @* <th>Status</th> *@
-                    <th>Closed On</th>
-                    <th>Options</th>
-                </tr>
+            <tr>
+                <th>Transfer Id</th>
+                <th>From Warehouse</th>
+                <th>To Warehouse</th>
+                <th>Made On</th>
+                <th>Closed On</th>
+                <th>Options</th>
+            </tr>
             </thead>
             <tbody>
-                @if (Model.AllTransfers.Count == 0)
+            @if (Model.AllTransfers.Count == 0)
+            {
+                <tr>
+                    <td>Empty transfer history</td>
+                </tr>
+            }
+            else
+            {
+                for (var i = 0; i < Model.AllTransfers.Count; i++)
                 {
                     <tr>
-                        <td>Empty transfer history</td>
-                    </tr>
-                }
-                else
-                {
-                    for (var i = 0; i < Model.AllTransfers.Count; i++)
-                    {
-                        <tr>
-                            <td>@Html.DisplayTextFor(m => m.AllTransfers[i].Id)</td>
-                            <td>@Html.DisplayTextFor(m => m.AllTransfers[i].FromWarehouse.Name)</td>
-                            <td>@Html.DisplayTextFor(m => m.AllTransfers[i].ToWarehouse.Name)</td>
-                            <td>@Html.DisplayTextFor(m => m.AllTransfers[i].MadeOn)</td>
-                            @if (Model.AllTransfers[i].Status == TransferStatus.StillPending)
+                        <td>@Html.DisplayTextFor(m => m.AllTransfers[i].Id)</td>
+                        <td>@Html.DisplayTextFor(m => m.AllTransfers[i].FromWarehouse.Name)</td>
+                        <td>@Html.DisplayTextFor(m => m.AllTransfers[i].ToWarehouse.Name)</td>
+                        <td>@Html.DisplayTextFor(m => m.AllTransfers[i].MadeOn)</td>
+                        @if (Model.AllTransfers[i].Status == TransferStatus.StillPending)
+                        {
+                            <td>
+                                @EnumHandler.GetDisplayName(Model.AllTransfers[i].Status)
+                            </td>
+                        }
+                        else
+                        {
+                            if (Model.AllTransfers[i].Status == TransferStatus.Rejected)
                             {
-                                <td>
-                                    @EnumHandler.GetDisplayName(Model.AllTransfers[i].Status)
-                                </td>
+                                <td>@Html.DisplayTextFor(m => m.AllTransfers[i].ClosedOn) @Html.ToolTip(Model.AllTransfers[i].TransferStatusString, tooltipIcon: "\u274e")</td>
                             }
                             else
                             {
-                                <td>@Html.DisplayTextFor(m => m.AllTransfers[i].ClosedOn) @Html.ToolTip(Model.AllTransfers[i].TransferStatusString)</td>
+                                <td>@Html.DisplayTextFor(m => m.AllTransfers[i].ClosedOn) @Html.ToolTip(Model.AllTransfers[i].TransferStatusString, tooltipIcon: "\u2705")</td>
                             }
-                            <td>
-                                @Html.ActionLink("Edit", "Edit", "Transfers", routeValues: new { transferId = Model.AllTransfers[i].Id }, htmlAttributes: new { @class = "btn-default btn-small " })
-                                <a href="#" class="btn-default btn-small secondary-background">Delete</a>
-                            </td>
-                        </tr>
+                        }
+                        <td class="entries-table-options">
+                            @if (Model.AllTransfers[i].Status == TransferStatus.StillPending)
+                            {
+                                if (Model.AllTransfers[i].MadeByUser.Email == User.Identity.Name)
+                                {
+                                    @Html.ActionLink("Delete", "Delete", "Transfers", routeValues: new { transferId = Model.AllTransfers[i].Id }, htmlAttributes: new { @class = "btn-default btn-small secondary-background" })
+                                    @Html.ActionLink("Edit", "Edit", "Transfers", routeValues: new { transferId = Model.AllTransfers[i].Id }, htmlAttributes: new { @class = "btn-default btn-small " })
 
-                    }
+                                }
+                                @Html.ActionLink("Details", "DetailsTransferHistory", "Transfers", routeValues: new { transferId = Model.AllTransfers[i].Id }, htmlAttributes: new { @class = "btn-default btn-small shade2-background" })
+
+                            }
+                            else
+                            {
+                                if (User.Identity.Name == Model.AllTransfers[i].MadeByUser.Email)
+                                {
+                                    @Html.ActionLink("Delete", "Delete", "Transfers", routeValues: new { transferId = Model.AllTransfers[i].Id }, htmlAttributes: new { @class = "btn-default btn-small secondary-background" })
+                                }
+
+                                @Html.ActionLink("Details", "DetailsTransferHistory", "Transfers", routeValues: new { transferId = Model.AllTransfers[i].Id }, htmlAttributes: new { @class = "btn-default btn-small shade2-background" })
+                            }
+                        </td>
+                    </tr>
                 }
+            }
             </tbody>
         </table>
     </section>
@@ -69,48 +92,48 @@
         <h5 class="table-interact-section-header">Pending Transfers</h5>
         <table class="entries-table">
             <thead>
-                <tr>
-                    <th class="colapse-column">Transfer Id</th>
-                    <th>From Warehouse</th>
-                    <th>To Warehouse</th>
-                    <th>Made On</th>
-                    <th class="expand-column">By Operator</th>
-                    <th>Est. Price ($)</th>
-                    <th>Options</th>
-                </tr>
+            <tr>
+                <th class="colapse-column">Transfer Id</th>
+                <th>From Warehouse</th>
+                <th>To Warehouse</th>
+                <th>Made On</th>
+                <th class="expand-column">Made By Operator</th>
+                <th>Est. Price @Html.ToolTip("$ (In Dollars)")</th>
+                <th>Options</th>
+            </tr>
             </thead>
             <tbody>
-                @if (Model.TransfersToAcceptOrReject.Count == 0)
+            @if (Model.TransfersToAcceptOrReject.Count == 0)
+            {
+                <tr>
+                    <td>No pending transfers</td>
+                </tr>
+            }
+            else
+            {
+                for (var i = 0; i < Model.TransfersToAcceptOrReject.Count; i++)
                 {
                     <tr>
-                        <td>No pending transfers</td>
+                        <td class="colapse-column">@Html.DisplayTextFor(m => m.TransfersToAcceptOrReject[i].Id)</td>
+                        <td>@Html.DisplayTextFor(m => m.TransfersToAcceptOrReject[i].FromWarehouse.Name)</td>
+                        <td>@Html.DisplayTextFor(m => m.TransfersToAcceptOrReject[i].ToWarehouse.Name)</td>
+                        <td>@Html.DisplayTextFor(m => m.TransfersToAcceptOrReject[i].MadeOn)</td>
+                        <td class="expand-column">@Html.DisplayTextFor(m => m.TransfersToAcceptOrReject[i].MadeByUser.Email)</td>
+                        <td>@Html.DisplayTextFor(m => m.TransfersToAcceptOrReject[i].EstTransferValue)</td>
+                        <td class="entries-table-options">
+                            @Html.ActionLink("Reject", "Reject", "Transfers", routeValues: new { transferId = Model.TransfersToAcceptOrReject[i].Id }, htmlAttributes: new { @class = "btn-default btn-small secondary-background" })
+                            @Html.ActionLink("Accept", "Accept", "Transfers", routeValues: new { transferId = Model.TransfersToAcceptOrReject[i].Id }, htmlAttributes: new { @class = "btn-default btn-small " })
+                            @Html.ActionLink("Details", "DetailsPendingTransfer", "Transfers", routeValues: new { transferId = Model.TransfersToAcceptOrReject[i].Id }, htmlAttributes: new { @class = "btn-default btn-small shade2-background" })
+
+                        </td>
                     </tr>
                 }
-                else
-                {
-                    for (var i = 0; i < Model.TransfersToAcceptOrReject.Count; i++)
-                    {
-                        <tr>
-                            <td class="colapse-column">@Html.DisplayTextFor(m => m.TransfersToAcceptOrReject[i].Id)</td>
-                            <td>@Html.DisplayTextFor(m => m.TransfersToAcceptOrReject[i].FromWarehouse.Name)</td>
-                            <td>@Html.DisplayTextFor(m => m.TransfersToAcceptOrReject[i].ToWarehouse.Name)</td>
-                            <td>@Html.DisplayTextFor(m => m.TransfersToAcceptOrReject[i].MadeOn)</td>
-                            <td class="expand-column">@Html.DisplayTextFor(m => m.TransfersToAcceptOrReject[i].MadeByUser.Email)</td>
-                            <td>@Html.DisplayTextFor(m => m.TransfersToAcceptOrReject[i].EstTransferValue)</td>
-                            <td>
-                                @Html.ActionLink("Reject", "Edit", "Transfers", routeValues: new { transferId = Model.AllTransfers[i].Id }, htmlAttributes: new { @class = "btn-default btn-small secondary-background" })
-                                @Html.ActionLink("Accept", "Edit", "Transfers", routeValues: new { transferId = Model.AllTransfers[i].Id }, htmlAttributes: new { @class = "btn-default btn-small " })
-                                @Html.ActionLink("Details", "Edit", "Transfers", routeValues: new { transferId = Model.AllTransfers[i].Id }, htmlAttributes: new { @class = "btn-default btn-small shade2-background" })
-
-                            </td>
-                        </tr>
-                    }
-                }
+            }
             </tbody>
         </table>
-</section>
+    </section>
     <footer>
-        @Html.ErrorMessageSummary(Model.ErrorMessage)
+        @Html.ErrorMessageSummary(Model.ErrorMessage, tempError)
     </footer>
     <div class="page-main-buttons">
         @Html.ActionLink("Delete All", "DeleteAll", "Transfers", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button " })

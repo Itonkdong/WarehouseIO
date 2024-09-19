@@ -217,6 +217,10 @@
     <Compile Include="Migrations\202409110952108_AddedTransferStatusStringAndEstPricePerMovingItem.Designer.cs">
       <DependentUpon>202409110952108_AddedTransferStatusStringAndEstPricePerMovingItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202409161906463_CascadeDeleteTransferItemsInTransfer.cs" />
+    <Compile Include="Migrations\202409161906463_CascadeDeleteTransferItemsInTransfer.Designer.cs">
+      <DependentUpon>202409161906463_CascadeDeleteTransferItemsInTransfer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -228,11 +232,15 @@
     <Compile Include="Models\Shipment.cs" />
     <Compile Include="Models\Transfer.cs" />
     <Compile Include="Models\TransferStatus.cs" />
+    <Compile Include="Models\TryResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Models\Warehouse.cs" />
     <Compile Include="ViewModels\AddEditItemViewModel.cs" />
+    <Compile Include="ViewModels\AViewModel.cs" />
+    <Compile Include="ViewModels\DetailsTransferHistoryViewModel.cs" />
     <Compile Include="ViewModels\MakeEditTransferViewModel.cs" />
+    <Compile Include="ViewModels\ManageOperatorsViewModel.cs" />
     <Compile Include="ViewModels\ManageTransfersViewModel.cs" />
     <Compile Include="ViewModels\ManageWarehouseViewModel.cs" />
     <Compile Include="ViewModels\MovingItemViewModel.cs" />
@@ -340,7 +348,7 @@
     <Content Include="Views\Transfers\Make.cshtml" />
     <Content Include="Views\Transfers\DetailsTransferHistory.cshtml" />
     <Content Include="Views\Transfers\Edit.cshtml" />
-    <Content Include="Views\Transfers\DetailsTransferToAccept.cshtml" />
+    <Content Include="Views\Transfers\DetailsPendingTransfer.cshtml" />
     <Content Include="Views\Shipments\Index.cshtml" />
     <Content Include="Views\Shipments\Make.cshtml" />
     <Content Include="Views\Shipments\Details.cshtml" />
@@ -405,6 +413,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202409110952108_AddedTransferStatusStringAndEstPricePerMovingItem.resx">
       <DependentUpon>202409110952108_AddedTransferStatusStringAndEstPricePerMovingItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202409161906463_CascadeDeleteTransferItemsInTransfer.resx">
+      <DependentUpon>202409161906463_CascadeDeleteTransferItemsInTransfer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

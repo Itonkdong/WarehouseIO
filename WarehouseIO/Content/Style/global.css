@@ -330,6 +330,10 @@ input:active
     transform: translateY(4px);
 }
 
+.cursor-pointer {
+    cursor: pointer
+}
+
 .validation-summary-errors li {
     list-style-type: none;
     padding-left: 0;

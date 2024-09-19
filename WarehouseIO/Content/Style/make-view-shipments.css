@@ -25,5 +25,6 @@
 }
 .transfer-amount-input
 {
-    width: 30%;
+    width: 80%;
+    text-align: center;
 }

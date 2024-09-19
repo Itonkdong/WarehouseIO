@@ -43,5 +43,28 @@ namespace WarehouseIO.ControlClasses
                 .FirstOrDefault(item => item.Id == itemId);
             return (item,db);
         }
+
+
+        public static void SetLocalError(this Controller controller, string errorMessage)
+        {
+            controller.ViewBag["ErrorMessage"] = errorMessage;
+        }
+
+        public static void SetError(this Controller controller, string errorMessage)
+        {
+            controller.TempData["ErrorMessage"] = errorMessage;
+        }
+
+        public static string GetError(this Controller controller)
+        {
+            return (string) controller.TempData["ErrorMessage"];
+        }
+
+        public static string GetLocalError(this Controller controller)
+        {
+            return (string) controller.ViewBag["ErrorMessage"];
+        }
+
+
     }
 }

@@ -15,6 +15,7 @@ namespace WarehouseIO.CustomHtmlHelpers
             // Create the <span> tag
             TagBuilder spanTag = new TagBuilder("span");
             spanTag.AddCssClass("custom-tooltip");
+            spanTag.AddCssClass("cursor-pointer");
             spanTag.MergeAttribute("data-title", tooltipText);
             spanTag.SetInnerText(tooltipIcon); // Tooltip icon
 

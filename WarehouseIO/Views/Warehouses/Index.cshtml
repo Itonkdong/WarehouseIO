@@ -46,7 +46,7 @@
                 <h5>
                     @Html.DisplayNameFor(m => m.Warehouse.CurrentCapacity):
                 </h5>
-                <div>@Html.DisplayTextFor(m => m.Warehouse.CurrentCapacity)/@Html.DisplayTextFor(m => m.Warehouse.MaxCapacity) Units <span class="custom-tooltip" data-title="1 Unit = 1 m3">🛈</span> </div>
+                <div>@Html.DisplayTextFor(m => m.Warehouse.CurrentCapacity)/@Html.DisplayTextFor(m => m.Warehouse.MaxCapacity) Units @Html.ToolTip("1 Unit = 1 m3") </div>
             </div>
             <div class="warehouse-info-box-item">
                 @Html.ActionLink("Edit Warehouse Details", "Edit", "Warehouses", routeValues: new { warehouseId = Model.Warehouse.Id }, htmlAttributes: new { @class = "btn-default btn-small" })
@@ -61,11 +61,11 @@
         <table class="entries-table">
             <thead>
             <tr>
-                <th>Image</th>
+                <th class="colapse-column">Image</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Type</th>
-                <th>Size <span class="custom-tooltip" data-title="In cm3">🛈</span></th>
+                <th>Size @Html.ToolTip("In cm3")</th>
                 <th>Est. Price @Html.ToolTip("In $ (Dollars)")</th>
                 <th>Amount</th>
                 <th>Options</th>
@@ -84,7 +84,7 @@
                 foreach (Item item in Model.Warehouse.StoredItems)
                 {
                     <tr>
-                        <td class="item-image">
+                        <td class="item-image colapse-column">
                             @if (!string.IsNullOrEmpty(item.ImageUrl))
                             {
                                 <img src="@item.ImageUrl" alt="Item Image">
@@ -97,10 +97,11 @@
                         <td>@item.Name</td>
                         <td>@item.Description</td>
                         <td>@EnumHandler.GetDisplayName(item.Type)</td>
+
                         <td>@item.Size</td>
                         <td>@item.EstPrice</td>
                         <td>@item.Amount</td>
-                        <td>
+                        <td class="entries-table-options">
                             @Html.ActionLink("Edit", "Edit", "Item", routeValues: new { warehouseId = Model.Warehouse.Id, itemId = item.Id }, htmlAttributes: new { @class = "btn-default btn-small" })
                             <a href="#" class="btn-default btn-small secondary-background">Remove</a>
                         </td>

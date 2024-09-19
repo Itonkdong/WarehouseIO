@@ -1,62 +1,134 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WarehouseIO.ControlClasses;
 using WarehouseIO.Models;
 using WarehouseIO.ViewModels;
+using WebGrease.Css.Extensions;
 
 namespace WarehouseIO.Controllers
 {
     [Authorize]
     public class TransfersController : Controller
     {
-        // GET: Transfer
-        public ActionResult Index()
+        private readonly ApplicationDbContext _db = new ApplicationDbContext();
+
+
+        public List<Transfer> GetAllTransfers(List<Warehouse> allUserWarehouses)
         {
-            var (activeUser, db) = this.GetActiveUser();
+            List<Transfer> allTransfers = new List<Transfer>();
 
-            List<Warehouse> allUserWarehouses = activeUser.GetAllMyWarehouses(db, UserFetchOptions.IncludeTransfers);
-
-            List<Transfer> allTransfers = new List<Transfer>(); 
-                
-                allUserWarehouses
+            allUserWarehouses
                 .ForEach(w =>
                 {
                     allTransfers.AddRange(w.TransfersFromWarehouse
                         .Where(t => !allTransfers.Contains(t)));
                     allTransfers.AddRange(w.TransfersToWarehouse
                         .Where(t => !allTransfers.Contains(t)));
-
                 });
 
-            List<Transfer> transfersToAcceptOrReject = allTransfers
+            return allTransfers;
+        }
+
+        public List<Transfer> GetAllPendingTransfers(List<Transfer> allTransfers,List<Warehouse> allUserWarehouses,ApplicationUser activeUser= null)
+        {
+            activeUser = activeUser ?? this.GetActiveUser().Item1;
+
+            return allTransfers
                 .Where(t => t.MadeByUserId != activeUser.Id)
+                .Where(t => t.Status == TransferStatus.StillPending)
+                .Where(t => allUserWarehouses.Contains(t.ToWarehouse))
                 .ToList();
+
+        }
+
+        public MakeEditTransferViewModel GetReturnBackModel(Transfer transfer)
+        {
+            MakeEditTransferViewModel model = new MakeEditTransferViewModel();
+
+
+            model.Transfer = transfer;
+            var (activeUser, _) = this.GetActiveUser(this._db);
+            model.AllWarehouses = activeUser.GetAllMyWarehouses(this._db, UserFetchOptions.Default);
+            model.FromWarehouse = transfer.FromWarehouse;
+            model.ToWarehouse = transfer.ToWarehouse;
+            model.FromWarehouseId = transfer.FromWarehouseId;
+            model.ToWarehouseId = transfer.ToWarehouseId;
+            model.AllFromWarehouseItems = transfer.FromWarehouse.GetMovingItemViewModels();
+            model.LastChangedToWarehouseId = transfer.ToWarehouseId;
+
+            return model;
+        }
+
+        public ActionResult Index()
+        {
+            var (activeUser, db) = this.GetActiveUser();
+
+            List<Warehouse> allUserWarehouses =
+                activeUser.GetAllMyWarehouses(db, UserFetchOptions.IncludeTransfersWithTransferItems);
+
+            List<Transfer> allTransfers = this.GetAllTransfers(allUserWarehouses);
+
+            List<Transfer> pendingTransfers = this.GetAllPendingTransfers(allTransfers, allUserWarehouses, activeUser);
 
             ManageTransfersViewModel model = new ManageTransfersViewModel()
             {
                 AllTransfers = allTransfers,
-                TransfersToAcceptOrReject = transfersToAcceptOrReject,
+                TransfersToAcceptOrReject = pendingTransfers,
             };
-
 
             return View(model);
         }
 
-        // GET: Transfer/Details/5
-        public ActionResult DetailsTransferHistory(int? id)
+        public ActionResult DetailsTransferHistory(int transferId)
         {
-            return View();
+            Transfer? transfer = _db.Transfers
+                .Include(t => t.TransferItems.Select(t => t.Item))
+                .Include(transfer => transfer.FromWarehouse)
+                .Include(transfer => transfer.ToWarehouse)
+                .FirstOrDefault(t => t.Id == transferId);
+
+            if (transfer is null)
+            {
+                return RedirectToAction("Index", "Transfers");
+            }
+
+            DetailsTransferHistoryViewModel model = new DetailsTransferHistoryViewModel()
+            {
+                Transfer = transfer,
+                FromWarehouse = transfer.FromWarehouse,
+                ToWarehouse = transfer.ToWarehouse,
+            };
+
+            return View(model);
         }
 
-        public ActionResult DetailsTransferToAccept(int? id)
+        public ActionResult DetailsPendingTransfer(int transferId)
         {
-            return View();
+            Transfer? transfer = this._db.Transfers
+                .Include(t => t.TransferItems.Select(t => t.Item))
+                .Include(transfer => transfer.FromWarehouse)
+                .Include(transfer => transfer.ToWarehouse)
+                .FirstOrDefault(t => t.Id == transferId);
+
+            if (transfer is null)
+            {
+                return RedirectToAction("Index", "Transfers");
+            }
+
+            DetailsTransferHistoryViewModel model = new DetailsTransferHistoryViewModel()
+            {
+                Transfer = transfer,
+                FromWarehouse = transfer.FromWarehouse,
+                ToWarehouse = transfer.ToWarehouse,
+            };
+
+            return View(model);
         }
 
-        // GET: Transfer/Create
         public ActionResult Make(int fromWarehouseId, int? toWarehouseId)
         {
             (ApplicationUser activeUser, ApplicationDbContext db) = this.GetActiveUser();
@@ -64,7 +136,7 @@ namespace WarehouseIO.Controllers
             if (activeUser.Warehouses.Count < 2)
             {
                 TempData["ErrorMessage"] = ErrorHandler.ErrorMessages.MUST_HAVE_AT_LEAST_TWO_WAREHOUSES;
-                    
+
                 return RedirectToAction("Add", "Warehouses");
             }
 
@@ -98,11 +170,9 @@ namespace WarehouseIO.Controllers
             return View(model);
         }
 
-        // POST: Transfer/Create
         [HttpPost]
         public ActionResult Make(MakeEditTransferViewModel model)
         {
-
             var (activeUser, db) = this.GetActiveUser();
             Warehouse fromWarehouse = activeUser.GetWarehouse(model.FromWarehouseId);
             Warehouse toWarehouse = activeUser.GetWarehouse(model.ToWarehouseId);
@@ -137,80 +207,412 @@ namespace WarehouseIO.Controllers
             db.SaveChanges();
 
             return RedirectToAction("Index", "Transfers");
-
         }
 
-
-        public ActionResult RejectAll()
+        public ActionResult Edit(int transferId)
         {
-            throw new NotImplementedException();
+            var (activeUser, db) = this.GetActiveUser();
+
+            List<Warehouse> allUserWarehouses = activeUser.GetAllMyWarehouses(db, UserFetchOptions.Default);
+
+            Transfer? transfer = this._db.Transfers
+                .Include(t => t.TransferItems.Select(t => t.Item))
+                .Include(transfer => transfer.FromWarehouse.StoredItems)
+                .Include(transfer => transfer.ToWarehouse)
+                .FirstOrDefault(t => t.Id == transferId);
+
+            if (transfer is null)
+            {
+                this.SetError("Transfer is null.");
+                return RedirectToAction("Index", "Transfers");
+            }
+
+
+            MakeEditTransferViewModel model = new MakeEditTransferViewModel()
+            {
+                Transfer = transfer,
+                AllWarehouses = allUserWarehouses,
+                FromWarehouse = transfer.FromWarehouse,
+                ToWarehouse = transfer.ToWarehouse,
+                AllFromWarehouseItems = transfer.FromWarehouse.GetMovingItemViewModels(),
+                FromWarehouseId = transfer.FromWarehouseId,
+                ToWarehouseId = transfer.ToWarehouseId,
+                LastChangedToWarehouseId = transfer.ToWarehouseId,
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(MakeEditTransferViewModel model)
+        {
+            //TODO: The include part can be optimized to be called only when needed
+            Transfer transfer = this._db.Transfers
+                .Include(transfer => transfer.TransferItems.Select(t => t.Item))
+                .Include(transfer => transfer.FromWarehouse.StoredItems)
+                .Include(transfer => transfer.ToWarehouse)
+                .FirstOrDefault(t => t.Id == model.Transfer.Id);
+
+
+            if (transfer is null)
+            {
+                this.SetError("Transfer does not exist anymore.");
+                return RedirectToAction("Index", "Transfers");
+            }
+
+            bool changeInWarehousePost = false;
+
+            if (model.ToWarehouseId != model.LastChangedToWarehouseId)
+            {
+                Warehouse changedWarehouse = this._db
+                    .Warehouses
+                    .First(w => w.Id == model.ToWarehouseId);
+
+                transfer.ToWarehouse = changedWarehouse;
+                transfer.ToWarehouseId = changedWarehouse.Id;
+                model.LastChangedToWarehouseId = transfer.ToWarehouseId;
+                this._db.Entry(transfer).State = EntityState.Modified;
+                changeInWarehousePost = true;
+            }
+
+
+            List<MovingItemViewModel> updatedTransferItems = model.AllFromWarehouseItems
+                .Where(i => i.Included)
+                .Where(i => i.TransferAmount > 0)
+                .ToList();
+
+
+            List<MovingItem> removeTheseItems = transfer.TransferItems
+                .ToList()
+                .Where(transferItem =>
+                {
+                    // ReSharper disable once SimplifyLinqExpressionUseAll
+                    bool found = updatedTransferItems
+                        .Any(movingItemVm => movingItemVm.Id == transferItem.ItemId);
+                    return !found;
+                })
+                .ToList();
+
+            removeTheseItems.ForEach(item =>
+            {
+                this._db.MovingItems.Remove(item);
+                transfer.TransferItems.Remove(item);
+            });
+
+            List<string> invalidTransferAmounts = new List<string>();
+
+            foreach (var movingItemVm in updatedTransferItems)
+            {
+                MovingItem transferItem = transfer
+                    .TransferItems
+                    .FirstOrDefault(item => item.ItemId == movingItemVm.Id);
+
+
+                if (movingItemVm.TransferAmount > movingItemVm.AvailableAmount || movingItemVm.TransferAmount < 0)
+                {
+                    invalidTransferAmounts.Add(movingItemVm.Name);
+                }
+
+                if (transferItem == null)
+                {
+                    transferItem = new MovingItem
+                    {
+                        ItemId = movingItemVm.Id,
+                        Item = this._db
+                            .Items.First(i => i.Id == movingItemVm.Id),
+                        Amount = movingItemVm.TransferAmount,
+                        EstPrice = movingItemVm.EstPrice,
+                    };
+                    transfer.TransferItems.Add(transferItem);
+                }
+                else
+                {
+                    transferItem.Amount = movingItemVm.TransferAmount;
+                    transferItem.EstPrice = movingItemVm.EstPrice;
+                    this._db.Entry(transferItem).State = EntityState.Modified;
+                }
+            }
+
+
+            if (changeInWarehousePost)
+            {
+                // MVC PLEASE GO AND UNALIVE YOURSELF.....
+                ModelState.Remove(nameof(model.LastChangedToWarehouseId));
+            }
+
+            if (invalidTransferAmounts.Count > 0)
+            {
+                model = this.GetReturnBackModel(transfer);
+                model.ErrorMessage =
+                    $"Items: {string.Join(", ", invalidTransferAmounts)} have invalid transfer amount.";
+
+                return View(model);
+            }
+
+            if (transfer.TransferItems.Count == 0)
+            {
+                model = this.GetReturnBackModel(transfer);
+                model.ErrorMessage = "Transfer edit was not saved, because a transfer must include at least one item.";
+                return View(model);
+            }
+
+            if (changeInWarehousePost)
+            {
+                model = this.GetReturnBackModel(transfer);
+                return View(model);
+            }
+
+            if (model.ToWarehouseId != transfer.ToWarehouseId)
+            {
+                Warehouse changedWarehouse = this._db
+                    .Warehouses
+                    .First(w => w.Id == model.ToWarehouseId);
+
+                transfer.ToWarehouse = changedWarehouse;
+                transfer.ToWarehouseId = changedWarehouse.Id;
+            }
+
+            this
+                ._db
+                .SaveChanges();
+
+
+            return RedirectToAction("Index", "Transfers");
+        }
+
+        public TryResult TryRejectTransfer(Transfer transfer)
+        {
+            if (transfer is null)
+            {
+                return new TryResult(false, new NullReferenceException());
+            }
+
+            try
+            {
+                transfer.Status = TransferStatus.Rejected;
+                transfer.ClosedOn = DateTime.Now;
+
+                this._db.Entry(transfer).State = EntityState.Modified;
+                this._db.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                return new TryResult(false, e);
+            }
+
+            return new TryResult(true, null);
+        }
+
+        public TryResult TryAcceptTransfer(Transfer transfer)
+        {
+            if (transfer is null)
+            {
+                return new TryResult(false, new NullReferenceException($"Transfer is null"));
+            }
+
+            try
+            {
+                List<MovingItem> movingItems = transfer.TransferItems.ToList();
+
+                foreach (MovingItem movingItem in movingItems)
+                {
+                    Item item = movingItem.Item;
+                    if (item.Amount < movingItem.Amount)
+                    {
+                        return new TryResult(false, new Exception($"Insufficient amounts of the item: {item.Name}. Please inform the operator or reject the transfer with id {transfer.Id}."));
+                    }
+
+
+                    Item itemInToWarehouse =
+                        transfer.ToWarehouse.StoredItems.FirstOrDefault(i =>
+                            i.Name == item.Name && i.Description == item.Description);
+
+                    if (itemInToWarehouse is null)
+                    {
+                        itemInToWarehouse = new Item
+                        {
+                            Name = item.Name,
+                            Description = item.Description,
+                            Type = item.Type,
+                            Size = item.Size,
+                            EstPrice = item.Size,
+                            Amount = movingItem.Amount,
+                            ImageUrl = item.ImageUrl,
+                            WarehouseId = transfer.ToWarehouseId,
+                            Warehouse = transfer.ToWarehouse
+                        };
+
+                        this._db.Items.Add(itemInToWarehouse);
+                        transfer.ToWarehouse.StoredItems.Add(itemInToWarehouse);
+                    }
+                    else
+                    {
+                        itemInToWarehouse.Amount += movingItem.Amount;
+                        this._db.Entry(itemInToWarehouse).State = EntityState.Modified;
+                    }
+
+                    item.Amount -= movingItem.Amount;
+                }
+
+                if (!transfer.ToWarehouse.HasEnoughSpace())
+                {
+                    return new TryResult(false, new Exception($"Warehouse: {transfer.ToWarehouse.Name} does not have enough space for all items in the transfer with id {transfer.Id}."));
+                }
+
+                transfer.Status = TransferStatus.Accepted;
+                transfer.ClosedOn = DateTime.Now;
+
+                this._db.Entry(transfer).State = EntityState.Modified;
+                this._db.SaveChanges();
+
+            }
+            catch (Exception e)
+            {
+                return new TryResult(false, e);
+            }
+
+            return new TryResult(true, null);
+        }
+
+        public ActionResult Accept(int transferId)
+        {
+            Transfer? transfer = this._db.Transfers
+                .Include(t => t.FromWarehouse.StoredItems)
+                .Include(t => t.ToWarehouse.StoredItems)
+                .Include(t => t.TransferItems.Select(movingItem => movingItem.Item))
+                .FirstOrDefault(t => t.Id == transferId);
+
+            TryResult tryResult = this.TryAcceptTransfer(transfer);
+
+            if (!tryResult.Result)
+            {
+                this.SetError(tryResult.Exception!.Message);
+            }
 
             return RedirectToAction("Index", "Transfers");
         }
 
         public ActionResult AcceptAll()
         {
-            throw new NotImplementedException();
+            var (activeUser, _) = this.GetActiveUser(this._db);
+
+            List<Warehouse> allUserWarehouses = activeUser.GetAllMyWarehouses(this._db, UserFetchOptions.Default);
+
+            List<Transfer> allTransfers = this.GetAllTransfers(allUserWarehouses);
+            List<Transfer> pendingTransfers = this.GetAllPendingTransfers(allTransfers, allUserWarehouses, activeUser);
+
+            if (pendingTransfers.Count == 0)
+            {
+                this.SetError("You do not have any transfers to accept.");
+                return RedirectToAction("Index", "Transfers");
+
+            }
+
+            int numFailedAccepts = pendingTransfers
+                .Select(t => this.TryAcceptTransfer(t).Result)
+                .Count(result => !result);
+
+            if (numFailedAccepts == pendingTransfers.Count)
+            {
+                this.SetError("There was an error while trying to accept all transfers.");
+                return RedirectToAction("Index", "Transfers");
+
+            }
+
+            if (numFailedAccepts < pendingTransfers.Count && numFailedAccepts != 0)
+            {
+                this.SetError("Some transfers failed to be accepted.");
+            }
+
+            return RedirectToAction("Index", "Transfers");
+        }
+
+        public ActionResult Delete(int transferId)
+        {
+            Transfer transfer = this._db.Transfers.FirstOrDefault(t => t.Id == transferId);
+
+            if (transfer is null)
+            {
+                return RedirectToAction("Index", "Transfers");
+            }
+
+            this._db.Transfers.Remove(transfer);
+            this._db.SaveChanges();
 
             return RedirectToAction("Index", "Transfers");
         }
 
         public ActionResult DeleteAll()
         {
-            throw new NotImplementedException();
+            var (activeUser, _) = this.GetActiveUser(this._db);
+
+            List<Warehouse> allUserWarehouses = activeUser.GetAllMyWarehouses(this._db, UserFetchOptions.Default);
+
+            List<Transfer> allTransfers = this.GetAllTransfers(allUserWarehouses);
+
+            List<Transfer> transfersToDelete = allTransfers
+                .Where(t=>t.MadeByUserId == activeUser.Id)
+                .ToList();
+
+            if (transfersToDelete.Count == 0)
+            {
+                this.SetError("You do not have any transfers to delete.");
+                return RedirectToAction("Index", "Transfers");
+            }
+            transfersToDelete.ForEach(t => this._db.Transfers.Remove(t));
+
+            this._db.SaveChanges();
 
             return RedirectToAction("Index", "Transfers");
         }
 
-
-
-
-        // GET: Transfer/Edit/5
-        public ActionResult Edit(int transferId)
+        public ActionResult Reject(int transferId)
         {
-            throw new NotImplementedException();
+            Transfer? transfer = this._db.Transfers
+                .FirstOrDefault(t => t.Id == transferId);
 
-            return View();
+            TryResult tryResult = this.TryRejectTransfer(transfer);
+            if (!tryResult.Result)
+            {
+                this.SetError($"An error occured while trying to reject the transfer: {tryResult.Exception!.Message}");
+            }
+
+            return RedirectToAction("Index", "Transfers");
         }
 
-        // POST: Transfer/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult RejectAll()
         {
-            throw new NotImplementedException();
+            var (activeUser, _) = this.GetActiveUser(this._db);
 
-            try
-            {
-                // TODO: Add update logic here
+            List<Warehouse> allUserWarehouses = activeUser.GetAllMyWarehouses(this._db, UserFetchOptions.Default);
 
-                return RedirectToAction("Index");
-            }
-            catch
+            List<Transfer> allTransfers = this.GetAllTransfers(allUserWarehouses);
+            List<Transfer> pendingTransfers = this.GetAllPendingTransfers(allTransfers, allUserWarehouses, activeUser);
+
+            if (pendingTransfers.Count == 0)
             {
-                return View();
+                this.SetError("You do not have any transfers to reject.");
+                return RedirectToAction("Index", "Transfers");
+
             }
+
+            int numFailedRejects = pendingTransfers
+                .Select(t => this.TryRejectTransfer(t).Result)
+                .Count(result => !result);
+
+            if (numFailedRejects == pendingTransfers.Count)
+            {
+                this.SetError("There was an error while trying to reject all transfers.");
+                return RedirectToAction("Index", "Transfers");
+
+            }
+
+            if (numFailedRejects < pendingTransfers.Count && numFailedRejects != 0)
+            {
+                this.SetError("Rejections of some transfers failed.");
+            }
+
+            return RedirectToAction("Index", "Transfers");
         }
-
-        // GET: Transfer/Delete/5
-        /*public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Transfer/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }*/
     }
 }

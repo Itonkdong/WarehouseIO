@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using WarehouseIO.ViewModels;
 
 namespace WarehouseIO.Models
 {
@@ -47,6 +48,13 @@ namespace WarehouseIO.Models
         { 
 
             
+        }
+
+        public List<MovingItemViewModel> GetMovingItemViewModels()
+        {
+            return this.StoredItems
+                .Select(item => new MovingItemViewModel(item))
+                .ToList();
         }
 
         public static List<string> GetPropertiesNames()

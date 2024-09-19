@@ -12,6 +12,8 @@ namespace WarehouseIO.Models
 {
     public class Item
     {
+
+        public const string DEFAULT_IMAGE_URL = "/Content/Images/default-item-picture.png"; 
         public int Id { get; set; }
 
         [MaxLength(100)]
@@ -49,10 +51,21 @@ namespace WarehouseIO.Models
         public virtual Warehouse Warehouse { get; set; }
 
         public string? ImageUrl { get; set; }
+
+        [NotMapped]
+        public string ImageUrlRender => this.ImageUrl ?? DEFAULT_IMAGE_URL;
+
+        [NotMapped]
+        public long SpaceTaken => (long) Math.Ceiling(this.Size * this.Amount / 1000.0);
+
         public Item()
         {
         }
 
+        public long InTransferSpaceTaken(int amount)
+        {
+            return (long)Math.Ceiling(this.Size * amount / 1000.0);
+        }
 
         public bool TryUpdate(Item item)
         {

@@ -196,9 +196,23 @@
     /* background-color: grey; */
 }
 
-.entries-table a
-{
-    padding: 0.7rem ;
+.entries-table-options {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.entries-table a {
+    display: block;
+    padding: 0.7rem;
+    /* margin: 0 0.2rem; */
+    min-width: 50px;
+}
+.entries-table-disabled-input {
+    width: 100px;
+    color: var(--text);
+    text-align: center
 }
 
 .half-table-form-interact-section .table-interact-section-header

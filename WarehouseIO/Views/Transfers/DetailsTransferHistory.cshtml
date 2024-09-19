@@ -1,11 +1,29 @@
-﻿
+﻿@using WarehouseIO.CustomHtmlHelpers
+@using WarehouseIO.Models
+@model WarehouseIO.ViewModels.DetailsTransferHistoryViewModel
+
 @{
     ViewBag.Title = "Details Transfer History";
 }
 
 <form class="type2-add-edit-view-page">
     <header>
-        <h1>History Details For Transfer: 123123</h1>
+        <h1>
+            History Details For Transfer [ID: @Model.Transfer.Id, Status: 
+            @if (Model.Transfer.Status == TransferStatus.Accepted)
+            {
+                @Html.ToolTip("Accepted", "✅")
+            }
+            else if (Model.Transfer.Status == TransferStatus.Rejected)
+            {
+                @Html.ToolTip("Rejected", "❎")
+            }
+            else
+            {
+                @Html.ToolTip("Still Pending", "\u231b")
+
+            }]
+        </h1>
     </header>
     <section class="warehouse-double-info-box">
         <h5 class="warehouse-info-box-header">
@@ -21,36 +39,50 @@
         <div class="warehouse-double-info-box-wrapper">
             <div class="warehouse-info-box-items">
                 <div class="warehouse-info-box-item">
-                    <h5>Name:</h5>
-                    <div>WH-1-MAIN</div>
+                    <h5>
+                        @Html.DisplayNameFor(m => m.FromWarehouse.Name):
+                    </h5>
+                    <div>@Html.DisplayTextFor(m => m.FromWarehouse.Name)</div>
+                </div>
+
+                <div class="warehouse-info-box-item">
+                    <h5>
+                        @Html.DisplayNameFor(m => m.FromWarehouse.Location):
+                    </h5>
+                    <div>@Html.DisplayTextFor(m => m.FromWarehouse.Location)</div>
                 </div>
                 <div class="warehouse-info-box-item">
-                    <h5>Location:</h5>
-                    <div>Voin Draskoci</div>
+                    <h5>
+                        @Html.DisplayNameFor(m => m.FromWarehouse.CurrentCapacity):
+                    </h5>
+                    <div>@Html.DisplayTextFor(m => m.FromWarehouse.CurrentCapacity)/@Html.DisplayTextFor(m => m.FromWarehouse.MaxCapacity) Units @Html.ToolTip("1 Unite = 1 m3") </div>
                 </div>
                 <div class="warehouse-info-box-item">
-                    <h5>Capacity:</h5>
-                    <div><span>1200</span>/<span>1500</span> Units</div>
-                </div>
-                <div class="warehouse-info-box-item">
-                    <a href="#" class="btn-default btn-small">Manage Warehouse</a>
                 </div>
             </div>
+
             <div class="warehouse-info-box-items">
+
                 <div class="warehouse-info-box-item">
-                    <h5>Name:</h5>
-                    <div>WH-1-MAIN</div>
+                    <h5>
+                        @Html.DisplayNameFor(m => m.ToWarehouse.Name):
+                    </h5>
+                    <div>@Html.DisplayTextFor(m => m.ToWarehouse.Name)</div>
+                </div>
+
+                <div class="warehouse-info-box-item">
+                    <h5>
+                        @Html.DisplayNameFor(m => m.ToWarehouse.Location):
+                    </h5>
+                    <div>@Html.DisplayTextFor(m => m.ToWarehouse.Location)</div>
                 </div>
                 <div class="warehouse-info-box-item">
-                    <h5>Location:</h5>
-                    <div>Voin Draskoci</div>
+                    <h5>
+                        @Html.DisplayNameFor(m => m.ToWarehouse.CurrentCapacity):
+                    </h5>
+                    <div>@Html.DisplayTextFor(m => m.ToWarehouse.CurrentCapacity)/@Html.DisplayTextFor(m => m.ToWarehouse.MaxCapacity) Units @Html.ToolTip("1 Unite = 1 m3") </div>
                 </div>
                 <div class="warehouse-info-box-item">
-                    <h5>Capacity:</h5>
-                    <div><span>1200</span>/<span>1500</span> Units</div>
-                </div>
-                <div class="warehouse-info-box-item">
-                    <a href="#" class="btn-default btn-small">Manage Warehouse</a>
                 </div>
             </div>
         </div>
@@ -63,71 +95,43 @@
                 <tr>
                     <th>Image</th>
                     <th>Name</th>
-                    <th>Size (cm3)</th>
+                    <th>Size @Html.ToolTip("In cm3")</th>
                     <th>Type</th>
-                    <th>Available Amount</th>
+                    <th>Est. Price @Html.ToolTip("$ (In Dollars)")</th>
+                    <th>Total Price</th>
+                    <th>Space @(Model.Transfer.Status == TransferStatus.StillPending ? "Needed" : "Taken") @Html.ToolTip("In Units")</th>
                     <th>Transfer Amount</th>
                 </tr>
             </thead>
             <tbody>
+            @foreach (MovingItem movingItem in Model.Transfer.TransferItems)
+            {
                 <tr>
                     <td class="item-image">
-                        <img src="https://5.imimg.com/data5/SELLER/Default/2021/12/HW/KG/SQ/143354869/syp-wood-timber-plank.jpg" alt="Item Image">
+                        <img src="@movingItem.Item.ImageUrlRender" alt="Item Image">
                     </td>
-                    <td>Planks</td>
-                    <td>30</td>
-                    <td>Material</td>
-                    <td>700</td>
-                    <td>
-                        <input type="number" class="transfer-amount-input" disabled>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="item-image">
-                        <img src="https://5.imimg.com/data5/SELLER/Default/2021/12/HW/KG/SQ/143354869/syp-wood-timber-plank.jpg" alt="Item Image">
-                    </td>
-                    <td>Planks</td>
-                    <td>30</td>
-                    <td>Material</td>
-                    <td>700</td>
-                    <td>
-                        <input type="number" class="transfer-amount-input" disabled>
+                    <td>@movingItem.Item.Name</td>
+                    <td>@movingItem.Item.Size</td>
+                    <td>@movingItem.Item.Type</td>
+                    <td>@movingItem.EstPrice</td>
+                    
+                    <td>@(movingItem.Amount * movingItem.EstPrice)</td>
+                    <td>@movingItem.SpaceTaken</td>
+                    <td >
+                        <input type="number" class="transfer-amount-input entries-table-disabled-input" disabled value="@movingItem.Amount">
                     </td>
                 </tr>
-                <tr>
-                    <td class="item-image">
-                        <img src="https://5.imimg.com/data5/SELLER/Default/2021/12/HW/KG/SQ/143354869/syp-wood-timber-plank.jpg" alt="Item Image">
-                    </td>
-                    <td>Planks</td>
-                    <td>30</td>
-                    <td>Material</td>
-                    <td>700</td>
-                    <td>
-                        <input type="number" class="transfer-amount-input" disabled>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="item-image">
-                        <img src="https://5.imimg.com/data5/SELLER/Default/2021/12/HW/KG/SQ/143354869/syp-wood-timber-plank.jpg" alt="Item Image">
-                    </td>
-                    <td>Planks</td>
-                    <td>30</td>
-                    <td>Material</td>
-                    <td>700</td>
-                    <td>
-                        <input type="number" class="transfer-amount-input" disabled>
-                    </td>
-                </tr>
+            }
 
             </tbody>
         </table>
     </section>
     <footer>
-        <p class="page-error-message">Error Message: Fill all the inputs</p>
+        @Html.ErrorMessageSummary(Model.ErrorMessage)
     </footer>
     <div class="page-main-buttons">
-        <button class="btn-default page-main-button">Manage Transfers</button>
-        <button class="btn-default page-main-button">To Dashboard</button>
+        @Html.ActionLink("Manage Transfers", "Index", "Transfers", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button" })
+        @Html.ActionLink("To Dashboard", "Dashboard", "Home", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button" })
+
     </div>
 </form>
-

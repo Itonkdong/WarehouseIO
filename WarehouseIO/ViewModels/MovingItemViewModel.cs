@@ -8,6 +8,9 @@ namespace WarehouseIO.ViewModels
 {
     public class MovingItemViewModel
     {
+
+        public const string DEFAULT_IMAGE_URL = "/Content/Images/default-item-picture.png";
+
         public int Id { get; set; } 
         public bool Included { get; set; }
 
@@ -23,6 +26,9 @@ namespace WarehouseIO.ViewModels
         public int TransferAmount { get; set; }
 
         public double EstPrice { get; set; }
+
+        public string ImageUrlRender => this.ImageUrl ?? DEFAULT_IMAGE_URL;
+
 
         public MovingItemViewModel()
         {

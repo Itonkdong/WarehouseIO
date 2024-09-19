@@ -10,6 +10,7 @@ namespace WarehouseIO.Controllers
         Default,
         IncludeWarehouseStoredItems,
         IncludeTransfers,
+        IncludeTransfersWithTransferItems,
         IncludeWarehouseStoredItemsAndTransfers
     }
 }

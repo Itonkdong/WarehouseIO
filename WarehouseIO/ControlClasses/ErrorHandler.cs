@@ -13,6 +13,7 @@ namespace WarehouseIO.ControlClasses
         public static class ErrorMessages
         {
             public const string MUST_HAVE_AT_LEAST_TWO_WAREHOUSES = "You must be a part of at least two warehouses to make a transfer. Create one or become operator of another.";
+            public const string MUST_HAVE_AT_LEAST_ONE_WAREHOUSES = "You must be a part of at least one warehouse to add manage operatos. Create one or become operator of another.";
             public const string TRANSFER_HAS_NO_ITEMS = "You can not make a transfer without including any items";
         }
 

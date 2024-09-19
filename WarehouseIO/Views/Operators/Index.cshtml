@@ -1,9 +1,16 @@
-﻿
+﻿@using WarehouseIO.CustomHtmlHelpers
+@using WarehouseIO.Models
+
+@model WarehouseIO.ViewModels.ManageOperatorsViewModel
+
 @{
     ViewBag.Title = "Manage Operators";
+    string tempErrorMessage = (string)TempData["ErrorMessage"];
 }
 
-<form class="type2-add-edit-view-page">
+
+@using (Html.BeginForm("Add", "Operators", FormMethod.Post, htmlAttributes: new { @class = "type2-add-edit-view-page" }))
+{
     <header>
         <h1>Manage Operators</h1>
     </header>
@@ -12,34 +19,37 @@
             <label for="warehouse-name">
                 For
             </label>
-            <select id="warehouse-name">
-                <option>WH-1-Main</option>
-                <option>WH-2-Main</option>
-            </select>
+            @Html.DropDownListFor(m => m.WarehouseId, new SelectList(Model.AllWarehouses, "Id", "Name"), htmlAttributes: new { id = "warehouse-name" })
         </h5>
-        <div class="warehouse-info-box-items">
+        <div class="warehouse-info-box-items ">
             <div class="warehouse-info-box-item">
-                <h5>Name:</h5>
-                <div>WH-1-MAIN</div>
+                <h5>
+                    @Html.DisplayNameFor(m => m.Warehouse.Name):
+                </h5>
+                <div>@Html.DisplayTextFor(m => m.Warehouse.Name)</div>
             </div>
             <div class="warehouse-info-box-item">
-                <h5>Description:</h5>
-                <div>My Favourite Warehouse</div>
+                <h5>
+                    @Html.DisplayNameFor(m => m.Warehouse.Description):
+                </h5>
+                <div>@Html.DisplayTextFor(m => m.Warehouse.Description)</div>
             </div>
             <div class="warehouse-info-box-item">
-                <h5>Location:</h5>
-                <div>Voin Draskoci</div>
+                <h5>
+                    @Html.DisplayNameFor(m => m.Warehouse.Location):
+                </h5>
+                <div>@Html.DisplayTextFor(m => m.Warehouse.Location)</div>
             </div>
             <div class="warehouse-info-box-item">
-                <h5>Capacity:</h5>
-                <div><span>1200</span>/<span>1500</span> Units</div>
+                <h5>
+                    @Html.DisplayNameFor(m => m.Warehouse.CurrentCapacity):
+                </h5>
+                <div>@Html.DisplayTextFor(m => m.Warehouse.CurrentCapacity)/@Html.DisplayTextFor(m => m.Warehouse.MaxCapacity) Units @Html.ToolTip("1 Unit = 1 m3") </div>
             </div>
             <div class="warehouse-info-box-item">
-                <a href="#" class="btn-default btn-small">Manage Warehouse</a>
+                @Html.ActionLink("Manage Warehouse", "Index", "Warehouses", routeValues: new { warehouseId = Model.Warehouse.Id }, htmlAttributes: new { @class = "btn-default btn-small" })
             </div>
-
         </div>
-
     </section>
     <section class="half-table-form-interact-section">
         <h5 class="table-interact-section-header">
@@ -48,49 +58,64 @@
         <div>
             <table class="entries-table">
                 <thead>
-                    <tr>
-                        <th>Image</th>
-                        <th>Email</th>
-                        <th>Option</th>
-                    </tr>
+                <tr>
+                    <th class="colapse-column">Image</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Option</th>
+                </tr>
                 </thead>
                 <tbody>
+                @foreach (ApplicationUser warehouseOperator in Model.Warehouse.Operators)
+                {
                     <tr>
-                        <td>ItonkDong</td>
-                        <td>kostadinoskiviktor@yahoo.com</td>
-                        <td>
-                            <a href="#" class="btn-default btn-small">Remove</a>
+                        <td class="item-image colapse-column">
+                            <img src="@warehouseOperator.ProfileImageRender" alt="Profile Image">
+                        </td>
+                        <td>@warehouseOperator.Name
+                        @if (User.Identity.Name == warehouseOperator.Email)
+                        {
+                            @Html.ToolTip("This User");
+                        }
+                            </td>
+                        <td>@warehouseOperator.Email</td>
+                        <td class="entries-table-options">
+                            @Html.ActionLink("Remove", "Remove", "Operators", routeValues: new {email = warehouseOperator.Email}, htmlAttributes: new {@class = "btn-default btn-small" })
                         </td>
                     </tr>
-                    <tr>
-                        <td>ItonkDong</td>
-                        <td>kostadinoskiviktor@yahoo.com</td>
-                        <td>
-                            <a href="#" class="btn-default btn-small">Remove</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>ItonkDong</td>
-                        <td>kostadinoskiviktor@yahoo.com</td>
-                        <td>
-                            <a href="#" class="btn-default btn-small">Remove</a>
-                        </td>
-                    </tr>
+                }
+
                 </tbody>
             </table>
             <div class="half-form-section">
-                <label for="operator-email">Operator's Email</label>
-                <input type="email" id="operator-email">
+                @Html.LabelFor(m=>m.NewOperatorEmail)
+                @Html.TextBoxFor(m=>m.NewOperatorEmail)
                 <button class="btn-default">Add</button>
             </div>
         </div>
 
     </section>
     <footer>
-        <p class="page-error-message">Error Message: Fill all the inputs</p>
+        @Html.ErrorMessageSummary(Model.ErrorMessage, tempErrorMessage)
     </footer>
     <div class="page-main-buttons">
+        @Html.ActionLink("Remove Everyone But You", "Index", "Operators", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button " })
+
         <button class="btn-default page-main-button">To Dashboard</button>
     </div>
-</form>
+}
 
+
+@section scripts
+{
+<script>
+
+    const warehousesList = document.getElementById('warehouse-name');
+
+    warehousesList.addEventListener('change',
+        () => {
+            const url = '@Url.Action("Index", "Operators")' + '?warehouseId=' + warehousesList.value;
+            window.location.href = url;
+        });
+</script>
+}

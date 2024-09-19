@@ -41,7 +41,7 @@ namespace WarehouseIO.Models
         public string TransferStatusString
         {
             get => _status.ToString();
-            set => EnumHandler.GetValue<TransferStatus>(value);
+            set => _status = EnumHandler.GetValue<TransferStatus>(value);
         }
 
         [ForeignKey("TransferId")]

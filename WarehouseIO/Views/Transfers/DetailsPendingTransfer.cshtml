@@ -1,0 +1,120 @@
+﻿@using WarehouseIO.CustomHtmlHelpers
+@using WarehouseIO.Models
+@model WarehouseIO.ViewModels.DetailsTransferHistoryViewModel
+@{
+    ViewBag.Title = "Details Pending Transfer";
+}
+
+<form class="type2-add-edit-view-page">
+    <header>
+        <h1>Details For Pending Transfer [ID: @Model.Transfer.Id]</h1>
+    </header>
+    <section class="warehouse-double-info-box">
+        <h5 class="warehouse-info-box-header">
+            <span>
+                From Warehouse
+            </span>
+            <span>
+                To Warehouse
+            </span>
+        </h5>
+        <div class="warehouse-double-info-box-wrapper">
+            <div class="warehouse-info-box-items">
+                <div class="warehouse-info-box-item">
+                    <h5>
+                        @Html.DisplayNameFor(m => m.FromWarehouse.Name):
+                    </h5>
+                    <div>@Html.DisplayTextFor(m => m.FromWarehouse.Name)</div>
+                </div>
+
+                <div class="warehouse-info-box-item">
+                    <h5>
+                        @Html.DisplayNameFor(m => m.FromWarehouse.Location):
+                    </h5>
+                    <div>@Html.DisplayTextFor(m => m.FromWarehouse.Location)</div>
+                </div>
+                <div class="warehouse-info-box-item">
+                    <h5>
+                        @Html.DisplayNameFor(m => m.FromWarehouse.CurrentCapacity):
+                    </h5>
+                    <div>@Html.DisplayTextFor(m => m.FromWarehouse.CurrentCapacity)/@Html.DisplayTextFor(m => m.FromWarehouse.MaxCapacity) Units @Html.ToolTip("1 Unite = 1 m3") </div>
+                </div>
+                <div class="warehouse-info-box-item">
+                </div>
+            </div>
+
+            <div class="warehouse-info-box-items">
+
+                <div class="warehouse-info-box-item">
+                    <h5>
+                        @Html.DisplayNameFor(m => m.ToWarehouse.Name):
+                    </h5>
+                    <div>@Html.DisplayTextFor(m => m.ToWarehouse.Name)</div>
+                </div>
+
+                <div class="warehouse-info-box-item">
+                    <h5>
+                        @Html.DisplayNameFor(m => m.ToWarehouse.Location):
+                    </h5>
+                    <div>@Html.DisplayTextFor(m => m.ToWarehouse.Location)</div>
+                </div>
+                <div class="warehouse-info-box-item">
+                    <h5>
+                        @Html.DisplayNameFor(m => m.ToWarehouse.CurrentCapacity):
+                    </h5>
+                    <div>@Html.DisplayTextFor(m => m.ToWarehouse.CurrentCapacity)/@Html.DisplayTextFor(m => m.ToWarehouse.MaxCapacity) Units @Html.ToolTip("1 Unite = 1 m3") </div>
+                </div>
+                <div class="warehouse-info-box-item">
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <section class="table-interact-section">
+        <h5 class="table-interact-section-header">Transfer Includes Items:</h5>
+        <table class="entries-table">
+            <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Size @Html.ToolTip("In cm3")</th>
+                <th>Type</th>
+                <th>Price @Html.ToolTip("$ (In Dollars)")</th>
+                <th>Total Price</th>
+                <th>Space Needed @Html.ToolTip("In Units")</th>
+                <th>Transfer Amount</th>
+                
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (MovingItem movingItem in Model.Transfer.TransferItems)
+            {
+                <tr>
+                    <td class="item-image">
+                        <img src="@movingItem.Item.ImageUrlRender" alt="Item Image">
+                    </td>
+                    <td>@movingItem.Item.Name</td>
+                    <td>@movingItem.Item.Size</td>
+                    <td>@movingItem.Item.Type</td>
+                    <td>@movingItem.EstPrice</td>
+                    <td>@(movingItem.Amount * movingItem.EstPrice)</td>
+                    <td>@(movingItem.SpaceTaken)</td>
+                    <td >
+                        <input type="number" class="transfer-amount-input entries-table-disabled-input" disabled value="@movingItem.Amount">
+                    </td>
+                    
+                </tr>
+            }
+
+            </tbody>
+        </table>
+    </section>
+    <footer>
+        @Html.ErrorMessageSummary(Model.ErrorMessage)
+    </footer>
+    <div class="page-main-buttons">
+        @Html.ActionLink("Reject", "Reject", "Transfers", routeValues: new { transferId = Model.Transfer.Id }, htmlAttributes: new { @class = "btn-default page-main-button" })
+        @Html.ActionLink("Accept", "Accept", "Transfers", routeValues: new { transferId = Model.Transfer.Id }, htmlAttributes: new { @class = "btn-default page-main-button" })
+        @Html.ActionLink("Manage Transfers", "Index", "Transfers", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button shade2-background" })
+    </div>
+</form>
