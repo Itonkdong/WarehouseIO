@@ -44,3 +44,6 @@
 
 /*Add/Edit/View Transfer*/
 @import "make-edit-view-transfer.css";
+
+/*Error Page*/
+@import "error-page.css";

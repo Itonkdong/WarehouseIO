@@ -207,6 +207,7 @@
     <Compile Include="ControlClasses\EnumHandler.cs" />
     <Compile Include="ControlClasses\ErrorHandler.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\UserFetchOptions.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
@@ -319,6 +320,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Images\404-error-message-image.png" />
     <Content Include="Content\Images\default-item-picture.png" />
     <Content Include="Content\Images\default-profile-picture.jpg" />
     <Content Include="Content\Images\landing-image-1.jpg" />
@@ -329,6 +331,7 @@
     <Content Include="Content\Style\add-edit-warehouses.css" />
     <Content Include="Content\Style\auth.css" />
     <Content Include="Content\Style\dashboard.css" />
+    <Content Include="Content\Style\error-page.css" />
     <Content Include="Content\Style\general-add-edit-view.css" />
     <Content Include="Content\Style\global.css" />
     <Content Include="Content\Style\index.css" />
@@ -349,6 +352,7 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\Images\error-message-image-2.webp" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -418,6 +422,8 @@
     <Content Include="Views\WarehousesTest\Details.cshtml" />
     <Content Include="Views\WarehousesTest\Edit.cshtml" />
     <Content Include="Views\WarehousesTest\Index.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Error\GeneralError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
