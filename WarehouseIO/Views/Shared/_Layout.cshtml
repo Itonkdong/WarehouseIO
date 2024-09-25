@@ -3,8 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>@ViewBag.Title</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.1/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.1/dist/sweetalert2.min.css" rel="stylesheet">
+
+
     @Styles.Render("~/Content/Style/link.css")
     @Scripts.Render("~/bundles/modernizr")
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"/>
+
+    <!-- DataTables jQuery library -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- DataTables JavaScript -->
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+    <!-- Bootbox.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>
+
+
 </head>
 <body>
 
@@ -50,9 +69,9 @@
 
 </div>
 
-@Scripts.Render("~/bundles/jquery")
+@* @Scripts.Render("~/bundles/jquery") *@
 @Scripts.Render("~/bundles/bootstrap")
-@RenderSection("scripts", required: false)
+
 
 <script>
 
@@ -105,10 +124,12 @@
                     return;
                 }
             }
-            
+
         });
 
 
 </script>
+
+@RenderSection("scripts", required: false)
 </body>
 </html>

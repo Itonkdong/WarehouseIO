@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WarehouseIO.ControlClasses;
 using WarehouseIO.Models;
 using WarehouseIO.ViewModels;
 
@@ -19,7 +20,7 @@ namespace WarehouseIO.Controllers
         {
             return this._db
                 .Users
-                .First(user => user.Email == User.Identity.Name);
+                .FirstOrDefault(user => user.Email == User.Identity.Name);
         }
 
         private Warehouse GetWarehouse(int warehouseId)
@@ -36,6 +37,7 @@ namespace WarehouseIO.Controllers
 
             if (activeUser.Warehouses.Count == 0)
             {
+                this.SetError("You must have at least one warehouse. Create one or become operator of another.");
                 return RedirectToAction("Add", "Warehouses", routeValues: null);
             }
 
@@ -65,7 +67,12 @@ namespace WarehouseIO.Controllers
 
             warehouse = activeUser
                 .Warehouses
-                .First(warehouse1 => warehouse1.Id == warehouseId);
+                .FirstOrDefault(warehouse1 => warehouse1.Id == warehouseId);
+
+            if (warehouse is null)
+            {
+                return RedirectToAction("Index", "Warehouses");
+            }
             model = new ManageWarehouseViewModel(warehouse)
             {
                 AllWarehouses = allWarehouses
@@ -107,6 +114,12 @@ namespace WarehouseIO.Controllers
         {
             Warehouse warehouse = this.GetWarehouse(warehouseId);
 
+            if (warehouse is null)
+            {
+                this.SetError("Warehouse is null. Create one or become operator of another.");
+                return this.RedirectToAction("Add", "Warehouses");
+            }
+
             return View(warehouse);
         }
 
@@ -146,43 +159,5 @@ namespace WarehouseIO.Controllers
 
             base.Dispose(disposing);
         }
-
-        /*// POST: Warehouse/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Warehouse/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Warehouse/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }*/
     }
 }

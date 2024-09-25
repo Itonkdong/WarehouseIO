@@ -4,6 +4,10 @@
     font-weight: 700;
 }
 
+.register-page .page-error-message {
+    font-size: var(--fs-small);
+}
+
 .page-main-buttons {
     display: flex;
     justify-content: center;

@@ -9,6 +9,7 @@ namespace WarehouseIO.Models
 {
     public class Warehouse
     {
+        private const long LOW_STOCK_BOUND = 150; 
         public int Id { get; set; }
 
         [MaxLength(100)]
@@ -113,6 +114,27 @@ namespace WarehouseIO.Models
 
             return true;
 
+        }
+
+
+        public double GetWarehouseValue()
+        {
+            return this.StoredItems
+                .Select(i => i.Amount * i.EstPrice)
+                .Sum();
+        }
+
+        public bool IsWarehouseOnLowStock()
+        {
+            return this.CurrentCapacity <= LOW_STOCK_BOUND;
+        }
+
+        public int GetNumItemOfType(ItemType type)
+        {
+            return this.StoredItems
+                .Where(i => i.Type == type)
+                .Select(i=>i.Amount)
+                .Sum();
         }
     }
 }

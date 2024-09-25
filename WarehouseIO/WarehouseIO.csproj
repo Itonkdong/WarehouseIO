@@ -49,15 +49,43 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json.Bson, Version=1.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.Bson.1.0.2\lib\net45\Newtonsoft.Json.Bson.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.6.0.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.3.0\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.3.0\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -165,11 +193,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiControllers\ItemsController.cs" />
+    <Compile Include="ApiControllers\ShipmentsController.cs" />
+    <Compile Include="ApiControllers\TransfersController.cs" />
+    <Compile Include="ApiControllers\WarehousesController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="ControlClasses\ControllerExtender.cs" />
     <Compile Include="ControlClasses\EnumHandler.cs" />
     <Compile Include="ControlClasses\ErrorHandler.cs" />
@@ -229,6 +262,18 @@
     <Compile Include="Migrations\202409192007121_UpdatedItemModelChangedWarehouseToNullable.Designer.cs">
       <DependentUpon>202409192007121_UpdatedItemModelChangedWarehouseToNullable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202409221142269_ChangedTransfedId.cs" />
+    <Compile Include="Migrations\202409221142269_ChangedTransfedId.Designer.cs">
+      <DependentUpon>202409221142269_ChangedTransfedId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202409221150562_ChangedTransfedId2.cs" />
+    <Compile Include="Migrations\202409221150562_ChangedTransfedId2.Designer.cs">
+      <DependentUpon>202409221150562_ChangedTransfedId2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202409221307568_UpdatedShipmentModel.cs" />
+    <Compile Include="Migrations\202409221307568_UpdatedShipmentModel.Designer.cs">
+      <DependentUpon>202409221307568_UpdatedShipmentModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -238,6 +283,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MovingItem.cs" />
     <Compile Include="Models\Shipment.cs" />
+    <Compile Include="Models\ShipmentStatus.cs" />
     <Compile Include="Models\Transfer.cs" />
     <Compile Include="Models\TransferStatus.cs" />
     <Compile Include="Models\TryResult.cs" />
@@ -246,10 +292,12 @@
     <Compile Include="Models\Warehouse.cs" />
     <Compile Include="ViewModels\AddEditItemViewModel.cs" />
     <Compile Include="ViewModels\AViewModel.cs" />
+    <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\DetailsTransferHistoryViewModel.cs" />
     <Compile Include="ViewModels\MakeEditTransferViewModel.cs" />
     <Compile Include="ViewModels\MakeShipmentViewModel.cs" />
     <Compile Include="ViewModels\ManageOperatorsViewModel.cs" />
+    <Compile Include="ViewModels\ManageShipmentsViewModel.cs" />
     <Compile Include="ViewModels\ManageTransfersViewModel.cs" />
     <Compile Include="ViewModels\ManageWarehouseViewModel.cs" />
     <Compile Include="ViewModels\MovingItemViewModel.cs" />
@@ -431,6 +479,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202409192007121_UpdatedItemModelChangedWarehouseToNullable.resx">
       <DependentUpon>202409192007121_UpdatedItemModelChangedWarehouseToNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202409221142269_ChangedTransfedId.resx">
+      <DependentUpon>202409221142269_ChangedTransfedId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202409221150562_ChangedTransfedId2.resx">
+      <DependentUpon>202409221150562_ChangedTransfedId2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202409221307568_UpdatedShipmentModel.resx">
+      <DependentUpon>202409221307568_UpdatedShipmentModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

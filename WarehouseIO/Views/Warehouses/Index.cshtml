@@ -20,7 +20,6 @@
             @Html.DropDownListFor(m => m.WarehouseId, new SelectList(Model.AllWarehouses, "Id", "Name"), htmlAttributes: new { onchange = "this.form.submit();" })
             <span></span>
             @Html.ActionLink("Add Warehouse", "Add", "Warehouses", routeValues: null, htmlAttributes: new { @class = "btn-default btn-small background-color" })
-            @* @Html.ActionLink("Delete Warehouse", "Add", "Warehouses", routeValues: null, htmlAttributes: new { @class = "btn-default btn-small secondary-background" }) *@
 
         </h5>
         <div class="warehouse-info-box-items ">
@@ -51,7 +50,7 @@
             <div class="warehouse-info-box-item">
                 @if (Model.IsUserManagerInWarehouse(User.Identity.Name))
                 {
-                    @Html.ActionLink("Delete Warehouse", "Add", "Warehouses", routeValues: null, htmlAttributes: new { @class = "btn-default btn-small secondary-background" })
+                    @Html.ActionLink("Delete Warehouse", "Add", "Warehouses", routeValues: null, htmlAttributes: new { @class = "btn-default btn-small secondary-background", id = "warehouse-delete-button" })
                     @Html.ActionLink("Edit Warehouse Details", "Edit", "Warehouses", routeValues: new { warehouseId = Model.Warehouse.Id }, htmlAttributes: new { @class = "btn-default btn-small" })
                 }
 
@@ -62,7 +61,7 @@
     </section>
     <section class="table-interact-section">
         <h5 class="table-interact-section-header">Warehouse Stored Items</h5>
-        <table class="entries-table">
+        <table class="entries-table" id="warehouses-table">
             <thead>
             <tr>
                 <th class="colapse-column">Image</th>
@@ -107,8 +106,10 @@
                         <td>@item.Amount</td>
                         <td class="entries-table-options">
                             @Html.ActionLink("Edit", "Edit", "Item", routeValues: new { warehouseId = Model.Warehouse.Id, itemId = item.Id }, htmlAttributes: new { @class = "btn-default btn-small" })
-                            @Html.ActionLink("Remove", "Remove", "Item", routeValues: new { itemId = item.Id, warehouseId = Model.Warehouse.Id }, htmlAttributes: new { @class = "btn-default btn-small secondary-background" })
-                            @* <a href="#" class="btn-default btn-small secondary-background">Remove</a> *@
+                            @if (Model.IsUserManagerInWarehouse(User.Identity.Name))
+                            {
+                                @Html.ActionLink("Remove", "Remove", "Item", routeValues: new { itemId = item.Id, warehouseId = Model.Warehouse.Id }, htmlAttributes: new { @class = "btn-default btn-small secondary-background js-item-delete-button", data_id = item.Id })
+                            }
                         </td>
                     </tr>
                 }
@@ -121,12 +122,151 @@
     @*     <p class="page-error-message">Error Message: Fill all the inputs</p> *@
     @* </footer> *@
     <div class="page-main-buttons">
-        @Html.ActionLink("Add Item", "Add", "Item", routeValues: new { warehouseId = Model.Warehouse.Id }, htmlAttributes: new { @class = "btn-default page-main-button" })
-        @Html.ActionLink("Make Shipment", "Make", "Shipments", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button primary-background text-inverted-color" })
-        @Html.ActionLink("Make Transfer", "Make", "Transfers", routeValues: new {fromWarehouseId = Model.WarehouseId}, htmlAttributes: new { @class = "btn-default page-main-button primary-background text-inverted-color" })
-        @Html.ActionLink("Manage Operators", "Index", "Operators", routeValues: new {warehouseId = Model.WarehouseId }, htmlAttributes: new { @class = "btn-default page-main-button shade3-background" })
-        @* @Html.ActionLink("To Dashboard", "Dashboard", "Home", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button shade4-background" }) *@
-        @Html.ActionLinkButton("To Dashboard", "Dashboard", "Home", classList: "shade4-background")
+        @Html.ActionLink("Add Item", "Add", "Item", routeValues: new { warehouseId = Model.Warehouse.Id }, htmlAttributes: new { @class = "btn-default page-main-button", id = "test-button-1" })
+        @Html.ActionLink("Make Transfer", "Make", "Transfers", routeValues: new { fromWarehouseId = Model.WarehouseId }, htmlAttributes: new { @class = "btn-default page-main-button primary-background text-inverted-color" })
+
+        @Html.ActionLink("Make Shipment", "Make", "Shipments", routeValues: new { warehouseId = Model.Warehouse.Id }, htmlAttributes: new { @class = "btn-default page-main-button primary-background text-inverted-color" })
+        @Html.ActionLink("Manage Operators", "Index", "Operators", routeValues: new { warehouseId = Model.WarehouseId }, htmlAttributes: new { @class = "btn-default page-main-button shade3-background" })
+        @Html.ActionLinkButton("To Dashboard", "Dashboard", "Home", routeValues: new { warehouseId = Model.WarehouseId }, classList: "shade2-background")
 
     </div>
+}
+
+@section scripts
+{
+
+    <script type="text/javascript">
+
+
+        async function deleteEntity(itemId, controller)
+        {
+            const url = `/api/${controller}/${itemId}`;
+
+            let response;
+            try {
+                response = await fetch(url,
+                    {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });
+
+            } catch (e) {
+                return e;
+            }
+
+
+            if (!response.ok) {
+                return false;
+            }
+
+            return true;
+        }
+
+        $(document).ready(function() {
+            $('#warehouses-table').DataTable({
+                paging: true, // Enable pagination
+                searching: true, // Enable search bar
+                ordering: true, // Enable column-based sorting
+                pageLength: 4, // Number of entries per page
+                lengthChange: false, // Disable user changing page length
+                autoWidth: false, // Disable auto width adjustment
+                responsive: true, // Enable responsiveness
+                order: [[1, 'asc']], // Default ordering (by the second column "Name")
+            });
+        });
+
+        const warehouseDeleteButton = document.getElementById("warehouse-delete-button");
+
+        warehouseDeleteButton.addEventListener("click",
+            (e) => {
+
+                e.preventDefault();
+                Swal.fire({
+                    title: "Are you sure you want to delete this warehouse?",
+                    text: `You won't be able to revert this! 
+                    All Transfers from this warehouse will be deleted!`,
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!",
+                }).then(async (result) => {
+                    if (result.isConfirmed) {
+
+                        const result = await deleteEntity(@Model.WarehouseId, "Warehouses");
+                        console.log(result);
+
+                        if (result === true) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your warehouse has been deleted.",
+                                icon: "success"
+                            });
+                        } else {
+                            Swal.fire({
+                                title: "Error Occured!",
+                                text: `Error: ${result}`,
+                                icon: "error"
+                            });
+                        }
+
+
+                    }
+                });
+            });
+
+
+        const itemDeleteButtons = document.querySelectorAll(".js-item-delete-button");
+
+        console.log(itemDeleteButtons);
+        itemDeleteButtons.forEach(b => {
+            b.addEventListener("click",
+                (e) => {
+
+                    e.preventDefault();
+                    Swal.fire({
+                        title: "Are you sure you want to remove this item?",
+                        text: `You won't be able to revert this!`,
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "Yes, delete it!",
+                    }).then(async (result) => {
+                        if (result.isConfirmed) {
+                            const id = b.dataset["id"];
+                            const result = await deleteEntity(id, "Items");
+                            console.log(result);
+
+                            if (result === true) {
+                                Swal.fire({
+                                    title: "Deleted!",
+                                    text: "The item has been deleted.",
+                                    icon: "success"
+                                });
+
+                                setTimeout(() => {
+                                        location.reload();
+                                    },
+                                    1500);
+                            } else {
+                                Swal.fire({
+                                    title: "Error Occured!",
+                                    text: `Error: ${result}`,
+                                    icon: "error"
+                                });
+                            }
+
+
+                        }
+                    });
+                });
+
+        });
+
+        
+
+    </script>
 }

@@ -11,7 +11,9 @@ namespace WarehouseIO.Models
         [Display(Name = "Still Pending")]
         StillPending,
         Accepted,
-        Rejected
+        Rejected,
+        [Display(Name = "Destination Warehouse Not Exist Anymore")]
+        WarehouseDoesNotExistAnymore
 
     }
 }

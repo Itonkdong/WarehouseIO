@@ -1,12 +1,13 @@
 ﻿@using WarehouseIO.ControlClasses
 @using WarehouseIO.CustomHtmlHelpers
+@using WarehouseIO.Models
 @model WarehouseIO.ViewModels.MakeShipmentViewModel
 @{
     ViewBag.Title = "Make Shipment";
     string tempError = (string)TempData["ErrorMessage"];
 }
 
-@using (Html.BeginForm("Make", "Shipments", FormMethod.Post, htmlAttributes: new { @class = "type2-add-edit-view-page" }))
+@using (Html.BeginForm("Make", "Shipments", FormMethod.Post, htmlAttributes: new { @class = "type2-add-edit-view-page", id="make-shipment-form" }))
 {
     <header>
         <h1>Make Shipment</h1>
@@ -56,24 +57,21 @@
             </div>
             <div class="make-shipping-interact-section-input">
                 @Html.LabelFor(m => m.ShippingTo)
-                @Html.TextBoxFor(m=>m.ShippingTo)
+                @Html.TextBoxFor(m => m.ShippingTo)
             </div>
-            @*<div class="make-shipping-interact-section-input">
-                <label for="est-price">Est. Price</label>
-                <input type="text" id="est-price" disabled>
-            </div>*@
         </div>
-        <table class="entries-table">
+        <table class="entries-table" id="warehouse-items-table">
             <thead>
-            <tr>
-                <th>Include</th>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Size @Html.ToolTip("In cm3")</th>
-                <th>Type</th>
-                <th>Available Amount</th>
-                <th>Shipping Amount</th>
-            </tr>
+                <tr>
+                    <th class="colapse-column">ID</th>
+                    <th>Include All</th>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Size @Html.ToolTip("In cm3")</th>
+                    <th>Type</th>
+                    <th>Available</th>
+                    <th>To Ship</th>
+                </tr>
             </thead>
             <tbody>
 
@@ -85,9 +83,23 @@
             {
                 for (var i = 0; i < Model.AllWarehouseItem.Count; i++)
                 {
+                    MovingItem item = Model.Shipment?.GetItem(Model.AllWarehouseItem[i]);
+
+                    if (item != null)
+                    {
+                        Model.AllWarehouseItem[i].TransferAmount = item.Amount;
+                    }
+
+                    if (!string.IsNullOrEmpty(Model.Shipment?.ShippingTo))
+                    {
+                        Model.ShippingTo = Model.Shipment?.ShippingTo;
+                    }
+
                     <tr>
+                        <td class="colapse-column">@Html.DisplayTextFor(m => m.AllWarehouseItem[i].Id)</td>
+
                         <td>
-                            @Html.CheckBoxFor(model => model.AllWarehouseItem[i].Included, htmlAttributes: new { @class = "include-checkbox" })
+                            @Html.CheckBoxFor(model => model.AllWarehouseItem[i].IncludeAll, htmlAttributes: new { @class = "include-checkbox" })
                         </td>
                         <td class="item-image">
                             <img src="@Model.AllWarehouseItem[i].ImageUrlRender" alt="Item Image">
@@ -108,20 +120,6 @@
                     </tr>
                 }
             }
-            @*<tr>
-                <td>
-                    <input type="checkbox" class="include-checkbox">
-                </td>
-                <td>Planks</td>
-                <td>30</td>
-                <td>Material</td>
-                <td>700</td>
-                <td>
-                    <input type="number" class="transfer-amount-input">
-                </td>
-            </tr>*@
-
-
             </tbody>
         </table>
     </section>
@@ -130,7 +128,9 @@
     </footer>
     <div class="page-main-buttons">
         <button class="btn-default page-main-button">Commit Shipment</button>
-        @Html.ActionLink("To Dashboard", "Dashboard", "Home", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button" })
+        @Html.ActionLink("Manage Shipments", "Index", "Shipments", routeValues: new { warehouseId = Model.WarehouseId }, htmlAttributes: new { @class = "btn-default page-main-button shade3-background" })
+        @Html.ActionLink("To Dashboard", "Dashboard", "Home", routeValues: new { warehouseId = Model.WarehouseId }, htmlAttributes: new { @class = "btn-default page-main-button shade2-background" })
+
     </div>
 }
 
@@ -145,5 +145,6 @@
                 const url = '@Url.Action("Make", "Shipments")' + '?warehouseId=' + warehousesList.value;
                 window.location.href = url;
             });
+
     </script>
 }

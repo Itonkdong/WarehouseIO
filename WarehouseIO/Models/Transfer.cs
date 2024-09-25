@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using WarehouseIO.ControlClasses;
@@ -24,7 +25,10 @@ namespace WarehouseIO.Models
 
         public virtual Warehouse ToWarehouse { get; set; }
 
+        [Display(Name = "Made On")]
         public DateTime MadeOn { get; set; }
+        
+        [Display(Name = "Closed On")]
         public DateTime? ClosedOn { get; set; }
 
 
@@ -55,6 +59,35 @@ namespace WarehouseIO.Models
 
         public Transfer()
         {
+        }
+
+        public TryResult TryReject(ApplicationDbContext? db = null)
+        {
+            db ??= new ApplicationDbContext();
+
+
+
+            foreach (MovingItem movingItem in this.TransferItems)
+            {
+                movingItem.Item.Amount += movingItem.Amount;
+            }
+
+            try
+            {
+                this.Status = TransferStatus.Rejected;
+                this.ClosedOn = DateTime.Now;
+
+                /*
+                db.Entry(this).State = EntityState.Modified;
+                db.SaveChanges();*/
+            }
+            catch (Exception e)
+            {
+                return new TryResult(false, e);
+            }
+
+            return new TryResult(true, null);
+
         }
 
         protected bool Equals(Transfer other)

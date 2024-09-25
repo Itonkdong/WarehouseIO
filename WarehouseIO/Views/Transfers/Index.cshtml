@@ -15,132 +15,339 @@
 
     <section class="table-interact-section">
         <h5 class="table-interact-section-header">Transfer History</h5>
-        <table class="entries-table">
+        <table class="entries-table" id="transfer-history-table">
             <thead>
 
-            <tr>
-                <th class="colapse-column">Transfer Id</th>
-                <th>From Warehouse</th>
-                <th>To Warehouse</th>
-                <th>Made On</th>
-                <th class="expand-column">By</th>
-                <th>Closed On</th>
-                <th>Options</th>
-            </tr>
+                <tr>
+                    <th class="colapse-column">ID</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Made On</th>
+                    @* <th class="expand-column">By</th> *@
+                    <th>Closed On</th>
+                    <th>Options</th>
+                </tr>
             </thead>
             <tbody>
-            @if (Model.AllTransfers.Count == 0)
-            {
-                <tr>
-                    <td>Empty transfer history</td>
-                </tr>
-            }
-            else
-            {
-                for (var i = 0; i < Model.AllTransfers.Count; i++)
+                @if (Model.AllTransfers.Count == 0)
                 {
                     <tr>
-                        <td class="colapse-column">@Html.DisplayTextFor(m => m.AllTransfers[i].Id)</td>
-                        <td>@Html.DisplayTextFor(m => m.AllTransfers[i].FromWarehouse.Name)</td>
-                        <td>@Html.DisplayTextFor(m => m.AllTransfers[i].ToWarehouse.Name)</td>
-                        <td>@Html.DisplayTextFor(m => m.AllTransfers[i].MadeOn)</td>
-                        <td class="expand-column">@Html.DisplayTextFor(m => m.AllTransfers[i].MadeByUser.Email)</td>
-                        @if (Model.AllTransfers[i].Status == TransferStatus.StillPending)
-                        {
-                            <td>
-                                @EnumHandler.GetDisplayName(Model.AllTransfers[i].Status)
-                            </td>
-                        }
-                        else
-                        {
-                            if (Model.AllTransfers[i].Status == TransferStatus.Rejected)
-                            {
-                                <td>@Html.DisplayTextFor(m => m.AllTransfers[i].ClosedOn) @Html.ToolTip(Model.AllTransfers[i].TransferStatusString, tooltipIcon: "\u274e")</td>
-                            }
-                            else
-                            {
-                                <td>@Html.DisplayTextFor(m => m.AllTransfers[i].ClosedOn) @Html.ToolTip(Model.AllTransfers[i].TransferStatusString, tooltipIcon: "\u2705")</td>
-                            }
-                        }
-                        <td class="entries-table-options">
-                            @if (Model.AllTransfers[i].Status == TransferStatus.StillPending)
-                            {
-                                if (Model.AllTransfers[i].MadeByUser.Email == User.Identity.Name)
-                                {
-                                    @Html.ActionLink("Delete", "Delete", "Transfers", routeValues: new { transferId = Model.AllTransfers[i].Id }, htmlAttributes: new { @class = "btn-default btn-small secondary-background" })
-                                    @Html.ActionLink("Edit", "Edit", "Transfers", routeValues: new { transferId = Model.AllTransfers[i].Id }, htmlAttributes: new { @class = "btn-default btn-small " })
-
-                                }
-                                @Html.ActionLink("Details", "DetailsTransferHistory", "Transfers", routeValues: new { transferId = Model.AllTransfers[i].Id }, htmlAttributes: new { @class = "btn-default btn-small shade2-background" })
-
-                            }
-                            else
-                            {
-                                if (User.Identity.Name == Model.AllTransfers[i].MadeByUser.Email)
-                                {
-                                    @Html.ActionLink("Delete", "Delete", "Transfers", routeValues: new { transferId = Model.AllTransfers[i].Id }, htmlAttributes: new { @class = "btn-default btn-small secondary-background" })
-                                }
-
-                                @Html.ActionLink("Details", "DetailsTransferHistory", "Transfers", routeValues: new { transferId = Model.AllTransfers[i].Id }, htmlAttributes: new { @class = "btn-default btn-small shade2-background" })
-                            }
-                        </td>
+                        <td>Empty transfer history</td>
                     </tr>
                 }
-            }
+                else
+                {
+                    for (var i = 0; i < Model.AllTransfers.Count; i++)
+                    {
+            <tr>
+                <td class="colapse-column">@Html.DisplayTextFor(m => m.AllTransfers[i].Id)</td>
+                <td>@Html.DisplayTextFor(m => m.AllTransfers[i].FromWarehouse.Name)</td>
+                <td>@Html.DisplayTextFor(m => m.AllTransfers[i].ToWarehouse.Name)</td>
+                <td>@Html.DisplayTextFor(m => m.AllTransfers[i].MadeOn)</td>
+                @* <td class="expand-column">@Html.DisplayTextFor(m => m.AllTransfers[i].MadeByUser.Email)</td> *@
+                @if (Model.AllTransfers[i].Status == TransferStatus.StillPending)
+                {
+                    <td>
+                        @EnumHandler.GetDisplayName(Model.AllTransfers[i].Status)
+                    </td>
+                }
+                else
+                {
+                    if (Model.AllTransfers[i].Status == TransferStatus.Rejected)
+                    {
+                        <td>@Html.DisplayTextFor(m => m.AllTransfers[i].ClosedOn) @Html.ToolTip(Model.AllTransfers[i].TransferStatusString, tooltipIcon: "\u274e")</td>
+                    }
+                    else if (Model.AllTransfers[i].Status == TransferStatus.WarehouseDoesNotExistAnymore)
+                    {
+                        <td>@Html.DisplayTextFor(m => m.AllTransfers[i].ClosedOn) @Html.ToolTip(EnumHandler.GetDisplayName(Model.AllTransfers[i].Status), tooltipIcon: "\u26d4")</td>
+
+                    }
+                    else
+                    {
+                        <td>@Html.DisplayTextFor(m => m.AllTransfers[i].ClosedOn) @Html.ToolTip(Model.AllTransfers[i].TransferStatusString, tooltipIcon: "\u2705")</td>
+                    }
+                }
+                <td class="entries-table-options">
+                    @if (Model.AllTransfers[i].Status == TransferStatus.StillPending)
+                    {
+                        if (Model.AllTransfers[i].MadeByUser.Email == User.Identity.Name)
+                        {
+                            @Html.ActionLink("Edit", "Edit", "Transfers", routeValues: new { transferId = Model.AllTransfers[i].Id }, htmlAttributes: new { @class = "btn-default btn-small " })
+
+                            @Html.ActionLink("Delete", "Delete", "Transfers", routeValues: new { transferId = Model.AllTransfers[i].Id }, htmlAttributes: new { @class = "btn-default btn-small primary-background js-single-transfer-delete-button", data_id = Model.AllTransfers[i].Id })
+
+                        }
+                        @Html.ActionLink("Details", "DetailsTransferHistory", "Transfers", routeValues: new { transferId = Model.AllTransfers[i].Id }, htmlAttributes: new { @class = "btn-default btn-small shade2-background" })
+
+                    }
+                    else
+                    {
+                        @*if (User.Identity.Name == Model.AllTransfers[i].MadeByUser.Email)
+                        {
+                            @Html.ActionLink("Delete", "Delete", "Transfers", routeValues: new { transferId = Model.AllTransfers[i].Id }, htmlAttributes: new { @class = "btn-default btn-small secondary-background" })
+                        }*@
+
+                        @Html.ActionLink("Details", "DetailsTransferHistory", "Transfers", routeValues: new { transferId = Model.AllTransfers[i].Id }, htmlAttributes: new { @class = "btn-default btn-small shade2-background" })
+                    }
+                </td>
+            </tr>
+                    }
+                }
             </tbody>
         </table>
     </section>
     <section class="table-interact-section">
         <h5 class="table-interact-section-header">Pending Transfers</h5>
-        <table class="entries-table">
+        <table class="entries-table" id="pending-transfer-table">
             <thead>
-            <tr>
-                <th class="colapse-column">Transfer Id</th>
-                <th>From Warehouse</th>
-                <th>To Warehouse</th>
-                <th>Made On</th>
-                <th class="expand-column">Made By Operator</th>
-                <th>Est. Price @Html.ToolTip("$ (In Dollars)")</th>
-                <th>Options</th>
-            </tr>
+                <tr>
+                    <th class="colapse-column">ID</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Made On</th>
+                    <th class="expand-column">By</th>
+                    <th class="colapse-column">Price @Html.ToolTip("Estimated Price in $ (Dollars)")</th>
+                    <th>Options</th>
+                </tr>
             </thead>
             <tbody>
-            @if (Model.TransfersToAcceptOrReject.Count == 0)
-            {
-                <tr>
-                    <td>No pending transfers</td>
-                </tr>
-            }
-            else
-            {
-                for (var i = 0; i < Model.TransfersToAcceptOrReject.Count; i++)
+                @if (Model.TransfersToAcceptOrReject.Count == 0)
                 {
                     <tr>
-                        <td class="colapse-column">@Html.DisplayTextFor(m => m.TransfersToAcceptOrReject[i].Id)</td>
-                        <td>@Html.DisplayTextFor(m => m.TransfersToAcceptOrReject[i].FromWarehouse.Name)</td>
-                        <td>@Html.DisplayTextFor(m => m.TransfersToAcceptOrReject[i].ToWarehouse.Name)</td>
-                        <td>@Html.DisplayTextFor(m => m.TransfersToAcceptOrReject[i].MadeOn)</td>
-                        <td class="expand-column">@Html.DisplayTextFor(m => m.TransfersToAcceptOrReject[i].MadeByUser.Email)</td>
-                        <td>@Html.DisplayTextFor(m => m.TransfersToAcceptOrReject[i].EstTransferValue)</td>
-                        <td class="entries-table-options">
-                            @Html.ActionLink("Reject", "Reject", "Transfers", routeValues: new { transferId = Model.TransfersToAcceptOrReject[i].Id }, htmlAttributes: new { @class = "btn-default btn-small secondary-background" })
-                            @Html.ActionLink("Accept", "Accept", "Transfers", routeValues: new { transferId = Model.TransfersToAcceptOrReject[i].Id }, htmlAttributes: new { @class = "btn-default btn-small " })
-                            @Html.ActionLink("Details", "DetailsPendingTransfer", "Transfers", routeValues: new { transferId = Model.TransfersToAcceptOrReject[i].Id }, htmlAttributes: new { @class = "btn-default btn-small shade2-background" })
-
-                        </td>
+                        <td>No pending transfers</td>
                     </tr>
                 }
-            }
+                else
+                {
+                    for (var i = 0; i < Model.TransfersToAcceptOrReject.Count; i++)
+                    {
+                        <tr>
+                            <td class="colapse-column">@Html.DisplayTextFor(m => m.TransfersToAcceptOrReject[i].Id)</td>
+                            <td>@Html.DisplayTextFor(m => m.TransfersToAcceptOrReject[i].FromWarehouse.Name)</td>
+                            <td>@Html.DisplayTextFor(m => m.TransfersToAcceptOrReject[i].ToWarehouse.Name)</td>
+                            <td>@Html.DisplayTextFor(m => m.TransfersToAcceptOrReject[i].MadeOn)</td>
+                            <td class="expand-column">@Html.DisplayTextFor(m => m.TransfersToAcceptOrReject[i].MadeByUser.Email)</td>
+                            <td class="colapse-column">@Html.DisplayTextFor(m => m.TransfersToAcceptOrReject[i].EstTransferValue)</td>
+                            <td class="entries-table-options">
+                                @Html.ActionLink("Accept", "Accept", "Transfers", routeValues: new { transferId = Model.TransfersToAcceptOrReject[i].Id }, htmlAttributes: new { @class = "btn-default btn-small " })
+
+                                @Html.ActionLink("Reject", "Reject", "Transfers", routeValues: new { transferId = Model.TransfersToAcceptOrReject[i].Id }, htmlAttributes: new { @class = "btn-default btn-small secondary-background" })
+                                @Html.ActionLink("Details", "DetailsPendingTransfer", "Transfers", routeValues: new { transferId = Model.TransfersToAcceptOrReject[i].Id }, htmlAttributes: new { @class = "btn-default btn-small shade2-background" })
+
+                            </td>
+                        </tr>
+                    }
+                }
             </tbody>
         </table>
     </section>
     <footer>
         @Html.ErrorMessageSummary(Model.ErrorMessage, tempError)
     </footer>
-    <div class="page-main-buttons">
-        @Html.ActionLink("Delete All", "DeleteAll", "Transfers", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button " })
-        @Html.ActionLink("Reject All", "RejectAll", "Transfers", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button " })
-        @Html.ActionLink("Accept All", "AcceptAll", "Transfers", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button shade2-background" })
-        @Html.ActionLink("To Dashboard", "Dashboard", "Home", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button shade3-background" })
+    <div class="page-main-buttons  ">
+
+        @Html.ActionLink("Accept All", "AcceptAll", "Transfers", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button accent-background", id = "accept-all-button" })
+
+        @Html.ActionLink("Reject All", "RejectAll", "Transfers", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button secondary-background ", id = "reject-all-button" })
+        @Html.ActionLink("Delete All", "DeleteAll", "Transfers", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button primary-background", id= "delete-all-button" })
+
+        @Html.ActionLink("To Dashboard", "Dashboard", "Home", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button shade2-background" })
     </div>
 </form>
+
+@section scripts
+{
+
+    <script>
+
+        $(document).ready(function () {
+            $('#transfer-history-table').DataTable({
+                paging: true,    // Enable pagination
+                searching: true, // Enable search bar
+                ordering: true,  // Enable column-based sorting
+                pageLength: 1,   // Number of entries per page
+                lengthChange: false, // Disable user changing page length
+                autoWidth: false,    // Disable auto width adjustment
+                responsive: true,    // Enable responsiveness
+                order: [[3, 'dsc']], // Default ordering (by the second column "Name")
+            });
+        });
+
+        $(document).ready(function () {
+            $('#pending-transfer-table').DataTable({
+                paging: true,    // Enable pagination
+                searching: true, // Enable search bar
+                ordering: true,  // Enable column-based sorting
+                pageLength: 2,   // Number of entries per page
+                lengthChange: false, // Disable user changing page length
+                autoWidth: false,    // Disable auto width adjustment
+                responsive: true,    // Enable responsiveness
+                order: [[3, 'dsc']], // Default ordering (by the second column "Name")
+            });
+        });
+
+
+        async function deleteEntity(itemId, controller)
+        {
+            const url = `/api/${controller}/${itemId}`;
+
+            let response;
+            try {
+                response = await fetch(url,
+                    {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });
+
+            } catch (e) {
+                return e;
+            }
+
+
+            if (!response.ok) {
+                return false;
+            }
+
+            return true;
+        }
+
+        function deleteRow(button, table) {
+            // Get the row containing the clicked button
+            var row = button.parentNode.parentNode;
+
+            // Delete the row from the table
+            table.deleteRow(row.rowIndex);
+        }
+
+
+
+        const deleteButtons = document.querySelectorAll(".js-single-transfer-delete-button");
+        const table = document.querySelector("#transfer-history-table");
+
+        deleteButtons.forEach(b => {
+            b.addEventListener("click",
+                (e) => {
+
+                    e.preventDefault();
+                    Swal.fire({
+                        title: "Are you sure you want to delete this transfer?",
+                        text: `You won't be able to revert this!`,
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "Yes, delete it!",
+                    }).then(async (result) => {
+                        if (result.isConfirmed) {
+                            const id = b.dataset["id"];
+                            const result = await deleteEntity(id, "Transfers");
+                            console.log(result);
+
+                            if (result === true) {
+
+                                Swal.fire({
+                                    title: "Deleted!",
+                                    text: "The transfer has been deleted.",
+                                    icon: "success"
+                                });
+
+                                setTimeout(() => {
+                                        location.reload();
+                                    },
+                                    1500);
+                            } else {
+                                Swal.fire({
+                                    title: "Error Occured!",
+                                    text: `Error: ${result}`,
+                                    icon: "error"
+                                });
+                            }
+
+
+                        }
+                    });
+                });
+
+        });
+
+
+        const deleteAllButton = document.querySelector("#delete-all-button");
+
+        deleteAllButton.addEventListener("click",
+            (e) => {
+
+                e.preventDefault();
+                Swal.fire({
+                    title: "Are you sure you want to delete all available transfers?",
+                    text: `You won't be able to revert this!`,
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete them!",
+                }).then(async (result) => {
+                    if (result.isConfirmed) {
+
+                        // Continue with the default behavior if you want
+                        window.location.href = e.target.href;
+
+
+                    }
+                });
+            });
+
+
+        const acceptAllButton = document.querySelector("#accept-all-button");
+
+        acceptAllButton.addEventListener("click",
+            (e) => {
+
+                e.preventDefault();
+                Swal.fire({
+                    title: "Are you sure you want to accept all pending transfers?",
+                    text: `You won't be able to revert this!`,
+                    icon: "question",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, accept them!",
+                }).then(async (result) => {
+                    if (result.isConfirmed) {
+
+                        // Continue with the default behavior if you want
+                        window.location.href = e.target.href;
+
+
+                    }
+                });
+            });
+
+        const rejectAllButton = document.querySelector("#reject-all-button");
+
+        rejectAllButton.addEventListener("click",
+            (e) => {
+
+                e.preventDefault();
+                Swal.fire({
+                    title: "Are you sure you want to reject all pending transfers?",
+                    text: `You won't be able to revert this!`,
+                    icon: "question",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, reject them!",
+                }).then(async (result) => {
+                    if (result.isConfirmed) {
+
+                        // Continue with the default behavior if you want
+                        window.location.href = e.target.href;
+
+
+                    }
+                });
+            });
+
+    </script>
+}

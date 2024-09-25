@@ -86,6 +86,7 @@ namespace WarehouseIO.Models
         {
             return options switch
             {
+
                 UserFetchOptions.IncludeWarehouseStoredItems =>
                     this
                         .Warehouses
@@ -158,7 +159,30 @@ namespace WarehouseIO.Models
                 UserFetchOptions.Default => this
                     .Warehouses
                     .ToList(),
-                
+                UserFetchOptions.IncludeShipments => this
+                    .Warehouses
+                    .Select(w =>
+                    {
+                        return db
+                            .Warehouses
+                            .Include(warehouse => warehouse.Shipments)
+                            .First(warehouse => warehouse.Id == w.Id);
+                    })
+                    .ToList(),
+                UserFetchOptions.IncludeEverything => this
+                    .Warehouses
+                    .Select(w =>
+                    {
+                        return db
+                            .Warehouses
+                            .Include(warehouse => warehouse.Shipments)
+                            .Include(warehouse => warehouse.TransfersFromWarehouse)
+                            .Include(warehouse => warehouse.StoredItems)
+                            .Include(warehouse => warehouse.Operators)
+
+                            .First(warehouse => warehouse.Id == w.Id);
+                    })
+                    .ToList(),
                 _ => throw new ArgumentOutOfRangeException(nameof(options), options, null)
             };
         }
@@ -202,7 +226,12 @@ namespace WarehouseIO.Models
             // Configuring the relationship between Transfer and MovingItems
             modelBuilder.Entity<Transfer>()
                 .HasMany(t => t.TransferItems) // Transfer has many MovingItems
-                .WithRequired(i=>i.Transfer) // MovingItem must be associated with a Transfer
+                .WithOptional(i=>i.Transfer) // MovingItem must be associated with a Transfer
+                .WillCascadeOnDelete(true); // Enable cascade delete
+
+            modelBuilder.Entity<Shipment>()
+                .HasMany(t => t.ShippingItems) // Transfer has many MovingItems
+                .WithOptional(i => i.Shipment) // MovingItem must be associated with a Transfer
                 .WillCascadeOnDelete(true); // Enable cascade delete
 
 
@@ -215,6 +244,18 @@ namespace WarehouseIO.Models
                     m.MapLeftKey("WarehouseId");
                     m.MapRightKey("UserId");
                 });
+
+            // modelBuilder.Entity<MovingItem>()
+            //     .HasOptional(m => m.Transfer)  // A MovingItem can have one Transfer (optional)
+            //     .WithMany(t => t.TransferItems)  // A Transfer can have many MovingItems
+            //     .HasForeignKey(m => m.TransferId); // TransferId is the FK in MovingItem
+            //
+            // // Optionally, configure Shipment similarly if needed
+            // modelBuilder.Entity<MovingItem>()
+            //     .HasOptional(m => m.Shipment)  // A MovingItem can have one Shipment (optional)
+            //     .WithMany(s=>s.ShippingItems)                   // No collection of MovingItems in Shipment
+            //     .HasForeignKey(m => m.ShipmentId); // ShipmentId is the FK in MovingItem
+
 
 
             base.OnModelCreating(modelBuilder);

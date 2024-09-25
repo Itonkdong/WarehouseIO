@@ -18,12 +18,7 @@ namespace WarehouseIO.Controllers
         // GET: Item/Create
 
         private readonly ApplicationDbContext _db = new ApplicationDbContext();
-        private ApplicationUser GetActiveUser()
-        {
-            return this._db
-                .Users
-                .First(user => user.Email == User.Identity.Name);
-        }
+
 
         private Warehouse GetWarehouse(int warehouseId)
         {
@@ -63,7 +58,8 @@ namespace WarehouseIO.Controllers
 
             if (warehouse is null)
             {
-                return RedirectToAction("Index", "Home");
+                this.SetError("Warehouse is null. Create another one.");
+                return RedirectToAction("Add", "Warehouses");
             }
 
             AddEditItemViewModel model = this.MakeAddEditItemViewModel(warehouse);
@@ -82,7 +78,6 @@ namespace WarehouseIO.Controllers
                 return View(model);
             }
 
-            int a = 1;
 
             Item item = new Item
             {
@@ -96,6 +91,13 @@ namespace WarehouseIO.Controllers
                 WarehouseId = warehouse.Id,
                 Warehouse = warehouse
             };
+
+            if (item.Size == 0)
+            {
+                this.SetError("An item size can not be zero.");
+                model = this.MakeAddEditItemViewModel(warehouse, item);
+                return View(model);
+            }
 
             this._db
                 .Items
@@ -113,7 +115,19 @@ namespace WarehouseIO.Controllers
         {
             Warehouse warehouse = this.GetWarehouse(warehouseId);
 
+            if (warehouse is null)
+            {
+                this.SetError("Warehouse is null. Create another one.");
+                return RedirectToAction("Add", "Warehouses");
+            }
+
             Item item = this.GetItem(itemId, warehouse);
+
+            if (item is null)
+            {
+                this.SetError("Item is null. Create one.");
+                return RedirectToAction("Add", "Item", routeValues: new {warehouseId = warehouseId});
+            }
 
             AddEditItemViewModel model = this.MakeAddEditItemViewModel(warehouse, item);
 
@@ -128,6 +142,19 @@ namespace WarehouseIO.Controllers
         {
             Warehouse warehouse = this.GetWarehouse(model.WarehouseId);
             Item item = this.GetItem(model.Id, warehouse);
+
+            if (warehouse is null)
+            {
+                this.SetError("Warehouse is null. Create another one.");
+                return RedirectToAction("Add", "Warehouses");
+            }
+
+            if (item is null)
+            {
+                this.SetError("Item is null. Create one.");
+                return RedirectToAction("Add", "Item", routeValues: new { warehouseId = warehouse.Id });
+            }
+
             if (!ModelState.IsValid)
             {
                 model = this.MakeAddEditItemViewModel(warehouse, item);
@@ -148,6 +175,13 @@ namespace WarehouseIO.Controllers
                 WarehouseId = warehouse.Id,
                 Warehouse = warehouse
             };
+
+            if (updatedItem.Size == 0)
+            {
+                this.SetError("An item size can not be zero.");
+                model = this.MakeAddEditItemViewModel(warehouse, item);
+                return View(model);
+            }
 
 
             try

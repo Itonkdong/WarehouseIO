@@ -1,4 +1,5 @@
-﻿@using WarehouseIO.CustomHtmlHelpers
+﻿@using WarehouseIO.ControlClasses
+@using WarehouseIO.CustomHtmlHelpers
 @using WarehouseIO.Models
 @model WarehouseIO.ViewModels.DetailsTransferHistoryViewModel
 @{
@@ -71,8 +72,23 @@
 
     </section>
     <section class="table-interact-section">
-        <h5 class="table-interact-section-header">Transfer Includes Items:</h5>
-        <table class="entries-table">
+        @* <h5 class="table-interact-section-header">Transfer Includes Items:</h5> *@
+        <div class="table-interact-section-header make-shipping-interact-section">
+            <div class="make-shipping-interact-section-title">
+                Transfer Includes Items:
+            </div>
+            <div class="make-shipping-interact-section-input">
+                @Html.LabelFor(m => m.Transfer.MadeOn):
+
+                @Html.DisplayTextFor(m => m.Transfer.MadeOn)
+                &nbsp; &nbsp; | &nbsp; &nbsp;
+                By :
+
+                @Html.DisplayTextFor(m => m.Transfer.MadeByUser.Email)
+
+            </div>
+        </div>
+        <table class="entries-table" id="transfer-included-items">
             <thead>
             <tr>
                 <th>Image</th>
@@ -81,9 +97,9 @@
                 <th>Type</th>
                 <th>Price @Html.ToolTip("$ (In Dollars)")</th>
                 <th>Total Price</th>
-                <th>Space Needed @Html.ToolTip("In Units")</th>
-                <th>Transfer Amount</th>
-                
+                <th>Space @Html.ToolTip("Needed Space In Units")</th>
+                <th>Amount</th>
+
             </tr>
             </thead>
             <tbody>
@@ -102,7 +118,7 @@
                     <td >
                         <input type="number" class="transfer-amount-input entries-table-disabled-input" disabled value="@movingItem.Amount">
                     </td>
-                    
+
                 </tr>
             }
 
@@ -113,8 +129,28 @@
         @Html.ErrorMessageSummary(Model.ErrorMessage)
     </footer>
     <div class="page-main-buttons">
-        @Html.ActionLink("Reject", "Reject", "Transfers", routeValues: new { transferId = Model.Transfer.Id }, htmlAttributes: new { @class = "btn-default page-main-button" })
         @Html.ActionLink("Accept", "Accept", "Transfers", routeValues: new { transferId = Model.Transfer.Id }, htmlAttributes: new { @class = "btn-default page-main-button" })
-        @Html.ActionLink("Manage Transfers", "Index", "Transfers", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button shade2-background" })
+        @Html.ActionLink("Reject", "Reject", "Transfers", routeValues: new { transferId = Model.Transfer.Id }, htmlAttributes: new { @class = "btn-default page-main-button shade4-background" })
+        @Html.ActionLink("Manage Transfers", "Index", "Transfers", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button shade3-background" })
+        @Html.ActionLink("To Dashboard", "Index", "Transfers", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button shade2-background" })
     </div>
 </form>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $('#transfer-included-items').DataTable({
+                paging: true,
+                searching: true,
+                ordering: true,
+                pageLength: 3,
+                lengthChange: false,
+                autoWidth: false,
+                responsive: true,
+                order: [[1, 'asc']],
+            });
+        });
+
+    </script>
+}

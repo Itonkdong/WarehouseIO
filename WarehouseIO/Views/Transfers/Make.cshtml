@@ -89,7 +89,7 @@
         <table class="entries-table">
             <thead>
             <tr>
-                <th>Include</th>
+                <th>Include All</th>
                 <th>Image</th>
                 <th>Name</th>
                 <th>Size @Html.ToolTip("In cm3")</th>
@@ -110,7 +110,7 @@
                 {
                     <tr>
                         <td>
-                            @Html.CheckBoxFor(model => model.AllFromWarehouseItems[i].Included, htmlAttributes: new { @class = "include-checkbox" })
+                            @Html.CheckBoxFor(model => model.AllFromWarehouseItems[i].IncludeAll, htmlAttributes: new { @class = "include-checkbox" })
                         </td>
                         <td class="item-image">
                             <img src="@Model.AllFromWarehouseItems[i].ImageUrlRender" alt="Item Image">
@@ -139,7 +139,8 @@
     </footer>
     <div class="page-main-buttons">
         <button class="btn-default page-main-button">Make Transfer</button>
-        @Html.ActionLink("To Dashboard", "Dashboard", "Home", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button" })
+        @Html.ActionLink("Manage Transfers", "Index", "Transfers", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button shade3-background" })
+        @Html.ActionLink("To Dashboard", "Dashboard", "Home", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button shade2-background" })
 
     </div>
 }

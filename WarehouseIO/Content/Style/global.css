@@ -350,51 +350,80 @@ input:active
 }
 
 .background-color {
-    background-color: var(--background); !important;
+    background-color: var(--background) !important;
 }
 
 .primary-color {
-    color: var(--primary); !important;
+    color: var(--primary) !important;
 }
 
 .secondary-color {
-    color: var(--secondary); !important;
+    color: var(--secondary) !important;
 }
 
 .accent-color {
-    color: var(--accent); !important;
+    color: var(--accent) !important;
 }
 
 .primary-background {
-    background-color: var(--primary); !important;
+    background-color: var(--primary) !important;
+    color: var(--text-inverted) !important;
 }
 
 .secondary-background {
-    background-color: var(--secondary); !important;
+    background-color: var(--secondary) !important;
+    color: var(--text) !important;
 }
 
 .accent-background {
-    background-color: var(--accent); !important;
+    background-color: var(--accent) !important;
+    color: var(--text) !important;
 }
 
 .shade1-background{
-    background-color: var(--shade-1); !important;
+    background-color: var(--shade-1) !important;
 }
 
 .shade2-background{
-    background-color: var(--shade-2); !important;
+    background-color: var(--shade-2) !important;
+    color: var(--text) !important;
 }
 
-.shade3-background{
-    background-color: var(--shade-3); !important;
+.shade3-background {
+    background-color: var(--shade-3) !important;
+    color: var(--text) !important;
 }
 
-.shade4-background{
-    background-color: var(--shade-4); !important;
+.shade4-background {
+    background-color: var(--shade-4) !important;
+    color: var(--text) !important;
 }
 
 .shade5-background{
-    background-color: var(--shade-5); !important;
+    background-color: var(--shade-5) !important;
 }
 
 /*====================================*/
+
+
+/*============Pop-up costume style==============*/
+
+
+div.swal2-popup {
+    background: var(--shade-1) !important;
+    color: var(--text) !important;
+    font-size: var(--fs-small) !important;
+    border-radius: var(--br-sml) !important;
+}
+
+div.swal2-popup button {
+    border-radius: var(--br-sml) !important;
+}
+
+    button.swal2-confirm {
+        background-color: var(--accent) !important;
+    }
+
+button.swal2-cancel{
+    background-color: var(--shade-3) !important;
+}

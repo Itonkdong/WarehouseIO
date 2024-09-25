@@ -5,7 +5,6 @@
     grid-template-rows: auto 1.3fr 2fr;
     padding: 1rem 3rem;
     gap: 1rem;
-
 }
 
 .dashboard-page header {
@@ -25,14 +24,11 @@
     align-items: center;
 }
 
-.dashboard-page header h1 {
-    font-size: var(--fs-big);
-}
+.dashboard-page header h1 { font-size: var(--fs-big); }
 
 .dashboard-page header label {
     flex-grow: 1;
     font-size: var(--fs-small);
-
 }
 
 .dashboard-page header select {
@@ -98,7 +94,32 @@
 
 .dashboard-summary-graph-container {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    justify-self: center;
 }
+
+#operatorsChart {
+    /*flex-basis: 0;*/
+    /*flex-grow: 1;*/
+    padding: 0;
+    /*width: 168px !important;*/
+    /*height: 127px !important;*/
+    width: 60% !important;
+    height: 100% !important;
+}
+
+#capacityChart {
+    /*flex-basis: 0;*/
+    /*flex-grow: 1;*/
+    padding: 0;
+    /*width: 168px !important;*/
+    /*height: 127px !important;*/
+    width: 60% !important;
+    height: 100% !important;
+}
+
 
 .dashboard-summary-graph-container > div {
     flex-basis: 0;
@@ -140,9 +161,7 @@
     gap: 0.6rem;
 }
 
-.dashboard-analytics-container > div {
-    border-radius: var(--br-sml);
-}
+.dashboard-analytics-container > div { border-radius: var(--br-sml); }
 
 .storage-info-container {
     background-color: var(--shade-1);
@@ -154,6 +173,7 @@
     gap: 1rem;
     font-size: var(--fs-mid);
     padding: 1em;
+    justify-content: center;
 }
 
 .notifications-container {
@@ -179,8 +199,10 @@
 }
 
 .transfer-history-wrapper {
-    flex-grow: 1;
-
+     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 .transfer-history-header {
@@ -188,17 +210,19 @@
     align-items: center;
 }
 
-.transfer-history-header > h3 {
-    flex-grow: 1;
-}
+.transfer-history-header > h3 { flex-grow: 1; }
 
 .transfer-history-table-header {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    display: flex;
+    /* grid-template-columns: repeat(5, 1fr); */
+    justify-content: center;
+    align-items: center;
 }
 
-.transfer-history-table-header div {
+.transfer-history-table-header > div {
     text-align: center;
+    flex-basis: 0;
+    flex-grow: 1;
 }
 
 
@@ -206,29 +230,34 @@
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
-    justify-content: space-evenly;
+    row-gap: 0.5rem;
+    justify-content: flex-start;
     height: 100%;
 }
 
 .transfer-history-item {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    /* display: grid; */
+    /* grid-template-columns: repeat(5, 1fr); */
+    display: flex;
     background-color: var(--primary);
     color: var(--text-inverted);
     border-radius: var(--br-big);
-    padding: 0.5em;
+    padding: 0.5em 0;
     align-items: center;
     justify-items: center;
 }
 
-.transfer-history-item a {
-    padding: 0.3em 0.7em;
+.transfer-history-item > div {
+    flex-basis: 0;
+    flex-grow: 1;
+    text-align: center
 }
-.transfer-history-item a:hover
-{
-    box-shadow: var(--shadow-2-inverted);
 
+.transfer-history-item a {
+     padding: 0.3em 0.7em;
 }
+
+.transfer-history-item a:hover { box-shadow: var(--shadow-2-inverted); }
 
 .storage-graph-container {
     flex-grow: 1;
@@ -236,11 +265,9 @@
     grid-template-columns: auto 1fr;
     grid-template-rows: 1fr auto;
     gap: 0.5rem;
-
 }
 
-.storage-graph-container > div {
-}
+.storage-graph-container > div { }
 
 .y-axis {
     display: flex;
@@ -280,29 +307,16 @@
     position: absolute;
     left: 0;
     width: 100%;
-
 }
 
-.tube:nth-child(1) .water {
-    bottom: -20px;
-}
+.tube:nth-child(1) .water { bottom: -20px; }
 
-.tube:nth-child(2) .water {
-    bottom: -50px;
-}
+.tube:nth-child(2) .water { bottom: -50px; }
 
-.tube:nth-child(3) .water {
-    bottom: -10px;
-}
+.tube:nth-child(3) .water { bottom: -10px; }
 
-.tube:nth-child(4) .water {
-    bottom: -70px;
-}
+.tube:nth-child(4) .water { bottom: -70px; }
 
-.tube:nth-child(5) .water {
-    bottom: -100px;
-}
+.tube:nth-child(5) .water { bottom: -100px; }
 
-.tube:nth-child(6) .water {
-    bottom: -170px;
-}
+.tube:nth-child(6) .water { bottom: -170px; }

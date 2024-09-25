@@ -11,6 +11,8 @@ namespace WarehouseIO.Controllers
         IncludeWarehouseStoredItems,
         IncludeTransfers,
         IncludeTransfersWithTransferItems,
-        IncludeWarehouseStoredItemsAndTransfers
+        IncludeWarehouseStoredItemsAndTransfers,
+        IncludeShipments,
+        IncludeEverything
     }
 }

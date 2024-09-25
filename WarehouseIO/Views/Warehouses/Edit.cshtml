@@ -34,7 +34,7 @@
                 @Html.LabelFor(m => m.MaxCapacity, htmlAttributes: new { @class = "" })
                 @Html.TextBoxFor(m => m.MaxCapacity, htmlAttributes: new { @class = "", type = "number" })
             </div>
-            @Html.HiddenFor(m => m.Id, htmlAttributes: new { @class = ""})
+            @Html.HiddenFor(m => m.Id, htmlAttributes: new { @class = "" })
 
         </div>
     </div>
@@ -46,7 +46,7 @@
         else if (!string.IsNullOrEmpty(errorMessage))
         {
             @Html.ValidationSummary("", new { @class = "page-error-message" })
-    
+
         }
         else
         {
@@ -57,8 +57,8 @@
     </footer>
     <div class="page-main-buttons">
         <button class="btn-default page-main-button">Save</button>
-        @Html.ActionLink("Manage Warehouse", "Index", "Warehouses", routeValues: new {warehouseId = Model.Id}, htmlAttributes: new { @class = "btn-default page-main-button" })
-        @Html.ActionLink("To Dashboard", "Dashboard", "Home", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button" })
+        @Html.ActionLink("Manage Warehouse", "Index", "Warehouses", routeValues: new { warehouseId = Model.Id }, htmlAttributes: new { @class = "btn-default page-main-button" })
+        @Html.ActionLink("To Dashboard", "Dashboard", "Home", routeValues: new {warehouseId = Model.Id}, htmlAttributes: new { @class = "btn-default page-main-button shade2-background" })
 
     </div>
 }

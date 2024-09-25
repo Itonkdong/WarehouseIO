@@ -20,6 +20,8 @@ namespace WarehouseIO.ViewModels
 
         public List<Warehouse> AllWarehouses { get; set; }
 
+        public Shipment Shipment { get; set; }  
+
 
         public MakeShipmentViewModel()
         {

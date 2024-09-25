@@ -58,7 +58,7 @@
             <span>Current Operators</span><span>Add Operator </span>
         </h5>
         <div>
-            <table class="entries-table">
+            <table class="entries-table" id="operators-table">
                 <thead>
                 <tr>
                     <th class="colapse-column">Image</th>
@@ -97,20 +97,20 @@
                             {
                                 if (User.Identity.Name == warehouseOperator.Email)
                                 {
-                                    @Html.ActionLink("Leave", "Remove", "Operators", routeValues: new { email = warehouseOperator.Email, warehouseId = Model.WarehouseId }, htmlAttributes: new { @class = "btn-default btn-small" })
+                                    @Html.ActionLink("Leave", "Remove", "Operators", routeValues: new { email = warehouseOperator.Email, warehouseId = Model.WarehouseId }, htmlAttributes: new { @class = "btn-default btn-small primary-background" })
                                 }
                                 else
                                 {
-                                    @Html.ActionLink("Remove", "Remove", "Operators", routeValues: new { email = warehouseOperator.Email, warehouseId = Model.WarehouseId }, htmlAttributes: new { @class = "btn-default btn-small" })
+                                    @Html.ActionLink("Remove", "Remove", "Operators", routeValues: new { email = warehouseOperator.Email, warehouseId = Model.WarehouseId }, htmlAttributes: new { @class = "btn-default btn-small primary-background" })
                                 }
 
                                 if (Model.IsUserManagerInWarehouse(warehouseOperator.Email))
                                 {
-                                    @Html.ActionLink("Demote", "Demote", "Operators", routeValues: new { email = warehouseOperator.Email, warehouseId = Model.WarehouseId }, htmlAttributes: new { @class = "btn-default btn-small shade2-background" })
+                                    @Html.ActionLink("Demote", "Demote", "Operators", routeValues: new { email = warehouseOperator.Email, warehouseId = Model.WarehouseId }, htmlAttributes: new { @class = "btn-default btn-small secondary-background" })
                                 }
                                 else
                                 {
-                                    @Html.ActionLink("Promote", "Promote", "Operators", routeValues: new { email = warehouseOperator.Email, warehouseId = Model.WarehouseId }, htmlAttributes: new { @class = "btn-default btn-small shade2-background" })
+                                    @Html.ActionLink("Promote", "Promote", "Operators", routeValues: new { email = warehouseOperator.Email, warehouseId = Model.WarehouseId }, htmlAttributes: new { @class = "btn-default btn-small secondary-background" })
                                 }
                             }
                             else
@@ -151,14 +151,15 @@
         @Html.ErrorMessageSummary(Model.ErrorMessage, tempErrorMessage)
     </footer>
     <div class="page-main-buttons">
+
+        @Html.ActionLink("Leave", "Remove", "Operators", routeValues: new { email = User.Identity.Name, warehouseId = Model.WarehouseId }, htmlAttributes: new { @class = "btn-default page-main-button primary-background " })
         @if (isUserManagerInWarehouse)
         {
-            @Html.ActionLink("Demote Myself", "Demote", "Operators", routeValues: new { email = User.Identity.Name, warehouseId = Model.WarehouseId }, htmlAttributes: new { @class = "btn-default page-main-button " })
+            @Html.ActionLink("Demote Myself", "Demote", "Operators", routeValues: new { email = User.Identity.Name, warehouseId = Model.WarehouseId }, htmlAttributes: new { @class = "btn-default page-main-button secondary-background " })
         }
-        @Html.ActionLink("Leave", "Remove", "Operators", routeValues: new { email = User.Identity.Name, warehouseId = Model.WarehouseId }, htmlAttributes: new { @class = "btn-default page-main-button " })
 
+        @Html.ActionLink("To Dashboard", "Dashboard", "Home", routeValues: new { warehouseId = Model.WarehouseId }, htmlAttributes: new { @class = "btn-default page-main-button shade2-background" })
 
-        <button class="btn-default page-main-button shade1-background">To Dashboard</button>
     </div>
 }
 
@@ -174,5 +175,18 @@
                 const url = '@Url.Action("Index", "Operators")' + '?warehouseId=' + warehousesList.value;
                 window.location.href = url;
             });
+
+        $(document).ready(function () {
+            $('#operators-table').DataTable({
+                paging: true,    // Enable pagination
+                searching: true, // Enable search bar
+                ordering: true,  // Enable column-based sorting
+                pageLength: 3,   // Number of entries per page
+                lengthChange: false, // Disable user changing page length
+                autoWidth: false,    // Disable auto width adjustment
+                responsive: true,    // Enable responsiveness
+                order: [[1, 'asc']], // Default ordering (by the second column "Name")
+            });
+        });
     </script>
 }

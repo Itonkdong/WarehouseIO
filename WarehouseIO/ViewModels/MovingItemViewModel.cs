@@ -12,7 +12,7 @@ namespace WarehouseIO.ViewModels
         public const string DEFAULT_IMAGE_URL = "/Content/Images/default-item-picture.png";
 
         public int Id { get; set; } 
-        public bool Included { get; set; }
+        public bool IncludeAll { get; set; }
 
         public string ImageUrl { get; set; }
 

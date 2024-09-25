@@ -3,232 +3,67 @@
   "WorkspaceRootPath": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\models\\movingitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\models\\movingitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|d:\\fax\\it mvc project\\warehouseio\\warehouseio\\warehouseio\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|d:\\fax\\it mvc project\\warehouseio\\warehouseio\\warehouseio\\views\\shipments\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\views\\shipments\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|d:\\fax\\it mvc project\\warehouseio\\warehouseio\\warehouseio\\views\\transfers\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\views\\transfers\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|d:\\fax\\it mvc project\\warehouseio\\warehouseio\\warehouseio\\controllers\\transferscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\controllers\\transferscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_WarehouseIO_20240908085221/True/SqlTable/dbo.Items.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|d:\\fax\\it mvc project\\warehouseio\\warehouseio\\warehouseio\\apicontrollers\\shipmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\apicontrollers\\shipmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|d:\\fax\\it mvc project\\warehouseio\\warehouseio\\warehouseio\\controllers\\shipmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\controllers\\shipmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\controllers\\transferscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\controllers\\transferscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|d:\\fax\\it mvc project\\warehouseio\\warehouseio\\warehouseio\\models\\shipment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\models\\shipment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|d:\\fax\\it mvc project\\warehouseio\\warehouseio\\warehouseio\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|d:\\fax\\it mvc project\\warehouseio\\warehouseio\\warehouseio\\apicontrollers\\transferscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\apicontrollers\\transferscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|d:\\fax\\it mvc project\\warehouseio\\warehouseio\\warehouseio\\viewmodels\\makeshipmentviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\viewmodels\\makeshipmentviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|d:\\fax\\it mvc project\\warehouseio\\warehouseio\\warehouseio\\views\\shipments\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\views\\shipments\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|d:\\fax\\it mvc project\\warehouseio\\warehouseio\\warehouseio\\content\\style\\auth.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\content\\style\\auth.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|d:\\fax\\it mvc project\\warehouseio\\warehouseio\\warehouseio\\views\\transfers\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\views\\transfers\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\views\\warehouses\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|d:\\fax\\it mvc project\\warehouseio\\warehouseio\\warehouseio\\views\\warehouses\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\views\\warehouses\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|d:\\fax\\it mvc project\\warehouseio\\warehouseio\\warehouseio\\views\\transfers\\detailstransferhistory.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\views\\transfers\\detailstransferhistory.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|d:\\fax\\it mvc project\\warehouseio\\warehouseio\\warehouseio\\views\\item\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\views\\item\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|d:\\fax\\it mvc project\\warehouseio\\warehouseio\\warehouseio\\apicontrollers\\itemscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\apicontrollers\\itemscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|d:\\fax\\it mvc project\\warehouseio\\warehouseio\\warehouseio\\views\\shipments\\make.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\views\\shipments\\make.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\views\\transfers\\make.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\views\\transfers\\make.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|d:\\fax\\it mvc project\\warehouseio\\warehouseio\\warehouseio\\views\\operators\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\views\\operators\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\controllers\\operatorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\controllers\\operatorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\viewmodels\\makeedittransferviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\viewmodels\\makeedittransferviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|d:\\fax\\it mvc project\\warehouseio\\warehouseio\\warehouseio\\viewmodels\\managewarehouseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\viewmodels\\managewarehouseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\viewmodels\\manageoperatorsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\viewmodels\\manageoperatorsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|d:\\fax\\it mvc project\\warehouseio\\warehouseio\\warehouseio\\controllers\\warehousescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\controllers\\warehousescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\controllers\\itemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\controllers\\itemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\models\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\models\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|d:\\fax\\it mvc project\\warehouseio\\warehouseio\\warehouseio\\migrations\\202409192007121_updateditemmodelchangedwarehousetonullable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\migrations\\202409192007121_updateditemmodelchangedwarehousetonullable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|d:\\fax\\it mvc project\\warehouseio\\warehouseio\\warehouseio\\content\\style\\global.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\content\\style\\global.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\views\\warehouses\\add.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\views\\warehouses\\add.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\views\\shipments\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\views\\shipments\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\views\\transfers\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\views\\transfers\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\models\\warehouse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\models\\warehouse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\models\\identitymodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\models\\identitymodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_WarehouseIO_20240908085221/True/SqlTable/dbo.Warehouses.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_WarehouseIO_20240908085221/True/SqlTable/dbo.ApplicationUserWarehouses.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_WarehouseIO_20240908085221/True/SqlTable/dbo.WarehouseManagers.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\migrations\\202409191136101_addedmanagerstowarehousemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\migrations\\202409191136101_addedmanagerstowarehousemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\content\\style\\make-edit-view-transfer.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\content\\style\\make-edit-view-transfer.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\content\\style\\manage-warhouses.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\content\\style\\manage-warhouses.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\views\\transfers\\detailspendingtransfer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\views\\transfers\\detailspendingtransfer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\views\\transfers\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\views\\transfers\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\viewmodels\\aviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\viewmodels\\aviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\controlclasses\\errorhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\controlclasses\\errorhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\views\\transfers\\detailstransferhistory.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\views\\transfers\\detailstransferhistory.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\viewmodels\\movingitemviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\viewmodels\\movingitemviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\views\\item\\add.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\views\\item\\add.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\models\\tryresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\models\\tryresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_WarehouseIO_20240908085221/True/SqlTable/dbo.Items.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\views\\item\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\views\\item\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\controllers\\managecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\controllers\\managecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\content\\style\\make-view-shipments.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\content\\style\\make-view-shipments.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\content\\style\\type2-add-edit-view.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\content\\style\\type2-add-edit-view.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\viewmodels\\detailstransferhistoryviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\viewmodels\\detailstransferhistoryviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\controlclasses\\controllerextender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\controlclasses\\controllerextender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_WarehouseIO_20240908085221/True/SqlTable/dbo.MovingItems.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\viewmodels\\managetransfersviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\viewmodels\\managetransfersviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\models\\manageviewmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\models\\manageviewmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\models\\transferstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\models\\transferstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_WarehouseIO_20240908085221/True/SqlTable/dbo.Transfers.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\migrations\\202409161906463_cascadedeletetransferitemsintransfer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\migrations\\202409161906463_cascadedeletetransferitemsintransfer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_WarehouseIO_20240908085221/True/SqlTable/dbo.__MigrationHistory.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\customhtmlhelpers\\customhtmlhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\customhtmlhelpers\\customhtmlhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\models\\transfer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\models\\transfer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\migrations\\202409110952108_addedtransferstatusstringandestpricepermovingitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\migrations\\202409110952108_addedtransferstatusstringandestpricepermovingitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\warehouseio\\controllers\\userfetchoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288789A0-E109-431D-9EF7-A008B347BF11}|WarehouseIO\\WarehouseIO.csproj|solutionrelative:warehouseio\\controllers\\userfetchoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_WarehouseIO_20240908085221/True/SqlTable/dbo.AspNetUsers.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
     }
   ],
   "DocumentGroupContainers": [
@@ -237,713 +72,213 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "DockedWidth": 243,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Account\\Login.cshtml",
-              "RelativeDocumentMoniker": "WarehouseIO\\Views\\Account\\Login.cshtml",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Account\\Login.cshtml",
-              "RelativeToolTip": "WarehouseIO\\Views\\Account\\Login.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-19T21:37:02.343Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "auth.css",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Content\\Style\\auth.css",
-              "RelativeDocumentMoniker": "WarehouseIO\\Content\\Style\\auth.css",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Content\\Style\\auth.css",
-              "RelativeToolTip": "WarehouseIO\\Content\\Style\\auth.css",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAAAC4AAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-09-19T21:35:02.287Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ShipmentsController.cs",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Controllers\\ShipmentsController.cs",
-              "RelativeDocumentMoniker": "WarehouseIO\\Controllers\\ShipmentsController.cs",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Controllers\\ShipmentsController.cs",
-              "RelativeToolTip": "WarehouseIO\\Controllers\\ShipmentsController.cs",
-              "ViewState": "AQIAAFcAAAAAAAAAAAAAAF8AAAAqAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-19T20:55:43.768Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "MakeShipmentViewModel.cs",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\ViewModels\\MakeShipmentViewModel.cs",
-              "RelativeDocumentMoniker": "WarehouseIO\\ViewModels\\MakeShipmentViewModel.cs",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\ViewModels\\MakeShipmentViewModel.cs",
-              "RelativeToolTip": "WarehouseIO\\ViewModels\\MakeShipmentViewModel.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAA8AAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-19T20:51:10.886Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Operators\\Index.cshtml",
-              "RelativeDocumentMoniker": "WarehouseIO\\Views\\Operators\\Index.cshtml",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Operators\\Index.cshtml",
-              "RelativeToolTip": "WarehouseIO\\Views\\Operators\\Index.cshtml",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAAABgAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-18T19:11:00.443Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Make.cshtml",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Transfers\\Make.cshtml",
-              "RelativeDocumentMoniker": "WarehouseIO\\Views\\Transfers\\Make.cshtml",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Transfers\\Make.cshtml",
-              "RelativeToolTip": "WarehouseIO\\Views\\Transfers\\Make.cshtml",
-              "ViewState": "AQIAAIMAAAAAAAAAAAAawI0AAAAyAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-11T09:37:48.043Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "TransfersController.cs",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Controllers\\TransfersController.cs",
-              "RelativeDocumentMoniker": "WarehouseIO\\Controllers\\TransfersController.cs",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Controllers\\TransfersController.cs",
-              "RelativeToolTip": "WarehouseIO\\Controllers\\TransfersController.cs",
-              "ViewState": "AQIAAIMAAAAAAAAAAAA/wLEAAAA3AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T08:12:15.893Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "MovingItem.cs",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Models\\MovingItem.cs",
-              "RelativeDocumentMoniker": "WarehouseIO\\Models\\MovingItem.cs",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Models\\MovingItem.cs",
-              "RelativeToolTip": "WarehouseIO\\Models\\MovingItem.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:46:19.83Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "ManageOperatorsViewModel.cs",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\ViewModels\\ManageOperatorsViewModel.cs",
-              "RelativeDocumentMoniker": "WarehouseIO\\ViewModels\\ManageOperatorsViewModel.cs",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\ViewModels\\ManageOperatorsViewModel.cs",
-              "RelativeToolTip": "WarehouseIO\\ViewModels\\ManageOperatorsViewModel.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAkwBgAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-18T19:47:00.376Z",
+              "Title": "Web.config",
+              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Web.config",
+              "RelativeDocumentMoniker": "WarehouseIO\\Web.config",
+              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Web.config",
+              "RelativeToolTip": "WarehouseIO\\Web.config",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-09-25T17:41:58.693Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "OperatorsController.cs",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Controllers\\OperatorsController.cs",
-              "RelativeDocumentMoniker": "WarehouseIO\\Controllers\\OperatorsController.cs",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Controllers\\OperatorsController.cs",
-              "RelativeToolTip": "WarehouseIO\\Controllers\\OperatorsController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-18T19:10:53.698Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Warehouses\\Index.cshtml",
-              "RelativeDocumentMoniker": "WarehouseIO\\Views\\Warehouses\\Index.cshtml",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Warehouses\\Index.cshtml",
-              "RelativeToolTip": "WarehouseIO\\Views\\Warehouses\\Index.cshtml",
-              "ViewState": "AQIAAGkAAAAAAAAAAAAAAIMAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-16T18:48:01.14Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Make.cshtml",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Shipments\\Make.cshtml",
-              "RelativeDocumentMoniker": "WarehouseIO\\Views\\Shipments\\Make.cshtml",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Shipments\\Make.cshtml",
-              "RelativeToolTip": "WarehouseIO\\Views\\Shipments\\Make.cshtml",
-              "ViewState": "AQIAAG0AAAAAAAAAAAAAAD8AAAAUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-19T21:04:36.351Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "Warehouse.cs",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Models\\Warehouse.cs",
-              "RelativeDocumentMoniker": "WarehouseIO\\Models\\Warehouse.cs",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Models\\Warehouse.cs",
-              "RelativeToolTip": "WarehouseIO\\Models\\Warehouse.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-18T00:15:26.738Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "WarehousesController.cs",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Controllers\\WarehousesController.cs",
-              "RelativeDocumentMoniker": "WarehouseIO\\Controllers\\WarehousesController.cs",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Controllers\\WarehousesController.cs",
-              "RelativeToolTip": "WarehouseIO\\Controllers\\WarehousesController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-19T19:54:58.647Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "MakeEditTransferViewModel.cs",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\ViewModels\\MakeEditTransferViewModel.cs",
-              "RelativeDocumentMoniker": "WarehouseIO\\ViewModels\\MakeEditTransferViewModel.cs",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\ViewModels\\MakeEditTransferViewModel.cs",
-              "RelativeToolTip": "WarehouseIO\\ViewModels\\MakeEditTransferViewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T18:12:20.741Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "ManageWarehouseViewModel.cs",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\ViewModels\\ManageWarehouseViewModel.cs",
-              "RelativeDocumentMoniker": "WarehouseIO\\ViewModels\\ManageWarehouseViewModel.cs",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\ViewModels\\ManageWarehouseViewModel.cs",
-              "RelativeToolTip": "WarehouseIO\\ViewModels\\ManageWarehouseViewModel.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAASwBsAAAA+AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-19T20:15:37.12Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "IdentityModels.cs",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Models\\IdentityModels.cs",
-              "RelativeDocumentMoniker": "WarehouseIO\\Models\\IdentityModels.cs",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Models\\IdentityModels.cs",
-              "RelativeToolTip": "WarehouseIO\\Models\\IdentityModels.cs",
-              "ViewState": "AQIAAC8AAAAAAAAAAAAiwDsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T08:21:15.828Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "202409192007121_UpdatedItemModelChangedWarehouseToNullable.cs",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Migrations\\202409192007121_UpdatedItemModelChangedWarehouseToNullable.cs",
-              "RelativeDocumentMoniker": "WarehouseIO\\Migrations\\202409192007121_UpdatedItemModelChangedWarehouseToNullable.cs",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Migrations\\202409192007121_UpdatedItemModelChangedWarehouseToNullable.cs",
-              "RelativeToolTip": "WarehouseIO\\Migrations\\202409192007121_UpdatedItemModelChangedWarehouseToNullable.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAcAAAAhAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-19T20:07:16.634Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "ItemController.cs",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Controllers\\ItemController.cs",
-              "RelativeDocumentMoniker": "WarehouseIO\\Controllers\\ItemController.cs",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Controllers\\ItemController.cs",
-              "RelativeToolTip": "WarehouseIO\\Controllers\\ItemController.cs",
-              "ViewState": "AQIAALoAAAAAAAAAAAAuwMoAAAA+AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T17:10:05.802Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "Item.cs",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Models\\Item.cs",
-              "RelativeDocumentMoniker": "WarehouseIO\\Models\\Item.cs",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Models\\Item.cs",
-              "RelativeToolTip": "WarehouseIO\\Models\\Item.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAAwAwAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:46:26.72Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "dbo.ApplicationUserWarehouses [Data]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_WarehouseIO_20240908085221/True/SqlTable/dbo.ApplicationUserWarehouses.sql",
-              "ToolTip": "dbo.ApplicationUserWarehouses [Data]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2024-09-11T10:50:22.541Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "global.css",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Content\\Style\\global.css",
-              "RelativeDocumentMoniker": "WarehouseIO\\Content\\Style\\global.css",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Content\\Style\\global.css",
-              "RelativeToolTip": "WarehouseIO\\Content\\Style\\global.css",
-              "ViewState": "AQIAAGMBAAAAAAAAAAAAAHcBAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-09-19T20:00:12.989Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "Add.cshtml",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Warehouses\\Add.cshtml",
-              "RelativeDocumentMoniker": "WarehouseIO\\Views\\Warehouses\\Add.cshtml",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Warehouses\\Add.cshtml",
-              "RelativeToolTip": "WarehouseIO\\Views\\Warehouses\\Add.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-18T19:42:37.918Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Shipments\\Index.cshtml",
-              "RelativeDocumentMoniker": "WarehouseIO\\Views\\Shipments\\Index.cshtml",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Shipments\\Index.cshtml",
-              "RelativeToolTip": "WarehouseIO\\Views\\Shipments\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAD4vw4AAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-19T13:27:47.927Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "WarehouseIO\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "WarehouseIO\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAuAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-19T13:58:45.304Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Transfers\\Index.cshtml",
-              "RelativeDocumentMoniker": "WarehouseIO\\Views\\Transfers\\Index.cshtml",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Transfers\\Index.cshtml",
-              "RelativeToolTip": "WarehouseIO\\Views\\Transfers\\Index.cshtml",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAAABkAAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-11T08:47:44.071Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "dbo.Warehouses [Data]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_WarehouseIO_20240908085221/True/SqlTable/dbo.Warehouses.sql",
-              "ToolTip": "dbo.Warehouses [Data]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2024-09-19T12:18:04.646Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "202409191136101_AddedManagersToWarehouseModel.cs",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Migrations\\202409191136101_AddedManagersToWarehouseModel.cs",
-              "RelativeDocumentMoniker": "WarehouseIO\\Migrations\\202409191136101_AddedManagersToWarehouseModel.cs",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Migrations\\202409191136101_AddedManagersToWarehouseModel.cs",
-              "RelativeToolTip": "WarehouseIO\\Migrations\\202409191136101_AddedManagersToWarehouseModel.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-19T11:36:14.696Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "dbo.WarehouseManagers [Data]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_WarehouseIO_20240908085221/True/SqlTable/dbo.WarehouseManagers.sql",
-              "ToolTip": "dbo.WarehouseManagers [Data]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2024-09-19T11:38:08.386Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "manage-warhouses.css",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Content\\Style\\manage-warhouses.css",
-              "RelativeDocumentMoniker": "WarehouseIO\\Content\\Style\\manage-warhouses.css",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Content\\Style\\manage-warhouses.css",
-              "RelativeToolTip": "WarehouseIO\\Content\\Style\\manage-warhouses.css",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-09-18T20:52:42.994Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "make-edit-view-transfer.css",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Content\\Style\\make-edit-view-transfer.css",
-              "RelativeDocumentMoniker": "WarehouseIO\\Content\\Style\\make-edit-view-transfer.css",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Content\\Style\\make-edit-view-transfer.css",
-              "RelativeToolTip": "WarehouseIO\\Content\\Style\\make-edit-view-transfer.css",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAACgAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-09-18T20:53:12.544Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "DetailsPendingTransfer.cshtml",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Transfers\\DetailsPendingTransfer.cshtml",
-              "RelativeDocumentMoniker": "WarehouseIO\\Views\\Transfers\\DetailsPendingTransfer.cshtml",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Transfers\\DetailsPendingTransfer.cshtml",
-              "RelativeToolTip": "WarehouseIO\\Views\\Transfers\\DetailsPendingTransfer.cshtml",
-              "ViewState": "AQIAADwAAAAAAAAAAAAAAFsAAAAUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-17T17:09:07.338Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Transfers\\Edit.cshtml",
               "RelativeDocumentMoniker": "WarehouseIO\\Views\\Transfers\\Edit.cshtml",
               "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Transfers\\Edit.cshtml",
               "RelativeToolTip": "WarehouseIO\\Views\\Transfers\\Edit.cshtml",
-              "ViewState": "AQIAAHsAAAAAAAAAAAAAAJEAAAAAAAAA",
+              "ViewState": "AQIAAJIAAAAAAAAAAAAAAKYAAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-17T18:09:17.955Z"
+              "WhenOpened": "2024-09-25T15:03:04.846Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "AViewModel.cs",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\ViewModels\\AViewModel.cs",
-              "RelativeDocumentMoniker": "WarehouseIO\\ViewModels\\AViewModel.cs",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\ViewModels\\AViewModel.cs",
-              "RelativeToolTip": "WarehouseIO\\ViewModels\\AViewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAxAAAA",
+              "DocumentIndex": 8,
+              "Title": "TransfersController.cs",
+              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\ApiControllers\\TransfersController.cs",
+              "RelativeDocumentMoniker": "WarehouseIO\\ApiControllers\\TransfersController.cs",
+              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\ApiControllers\\TransfersController.cs",
+              "RelativeToolTip": "WarehouseIO\\ApiControllers\\TransfersController.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAUwCUAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-18T19:47:11.207Z"
+              "WhenOpened": "2024-09-25T14:58:01.539Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
-              "Title": "ErrorHandler.cs",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\ControlClasses\\ErrorHandler.cs",
-              "RelativeDocumentMoniker": "WarehouseIO\\ControlClasses\\ErrorHandler.cs",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\ControlClasses\\ErrorHandler.cs",
-              "RelativeToolTip": "WarehouseIO\\ControlClasses\\ErrorHandler.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA8AAAAnAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T08:13:39.904Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 37,
-              "Title": "Add.cshtml",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Item\\Add.cshtml",
-              "RelativeDocumentMoniker": "WarehouseIO\\Views\\Item\\Add.cshtml",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Item\\Add.cshtml",
-              "RelativeToolTip": "WarehouseIO\\Views\\Item\\Add.cshtml",
-              "ViewState": "AQIAADwAAAAAAAAAAAAswE8AAABrAAAA",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Shipments\\Index.cshtml",
+              "RelativeDocumentMoniker": "WarehouseIO\\Views\\Shipments\\Index.cshtml",
+              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Shipments\\Index.cshtml",
+              "RelativeToolTip": "WarehouseIO\\Views\\Shipments\\Index.cshtml",
+              "ViewState": "AQIAAGoAAAAAAAAAAAAAAHIAAADiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-18T18:54:52.187Z"
+              "WhenOpened": "2024-09-25T15:40:00.064Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 14,
+              "Title": "ItemsController.cs",
+              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\ApiControllers\\ItemsController.cs",
+              "RelativeDocumentMoniker": "WarehouseIO\\ApiControllers\\ItemsController.cs",
+              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\ApiControllers\\ItemsController.cs",
+              "RelativeToolTip": "WarehouseIO\\ApiControllers\\ItemsController.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-25T14:58:04.611Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Shipment.cs",
+              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Models\\Shipment.cs",
+              "RelativeDocumentMoniker": "WarehouseIO\\Models\\Shipment.cs",
+              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Models\\Shipment.cs",
+              "RelativeToolTip": "WarehouseIO\\Models\\Shipment.cs",
+              "ViewState": "AQIAAFQAAAAAAAAAAAAcwGgAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-25T14:55:39.905Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ShipmentsController.cs",
+              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\ApiControllers\\ShipmentsController.cs",
+              "RelativeDocumentMoniker": "WarehouseIO\\ApiControllers\\ShipmentsController.cs",
+              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\ApiControllers\\ShipmentsController.cs",
+              "RelativeToolTip": "WarehouseIO\\ApiControllers\\ShipmentsController.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAB0AAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-25T14:54:02.222Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TransfersController.cs",
+              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Controllers\\TransfersController.cs",
+              "RelativeDocumentMoniker": "WarehouseIO\\Controllers\\TransfersController.cs",
+              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Controllers\\TransfersController.cs",
+              "RelativeToolTip": "WarehouseIO\\Controllers\\TransfersController.cs",
+              "ViewState": "AQIAAKYCAAAAAAAAAAAiwMACAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-25T14:52:13.363Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ShipmentsController.cs",
+              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Controllers\\ShipmentsController.cs",
+              "RelativeDocumentMoniker": "WarehouseIO\\Controllers\\ShipmentsController.cs",
+              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Controllers\\ShipmentsController.cs",
+              "RelativeToolTip": "WarehouseIO\\Controllers\\ShipmentsController.cs",
+              "ViewState": "AQIAAPsAAAAAAAAAAAAwwB8BAABDAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-25T14:51:47.842Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "dbo.Items [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_WarehouseIO_20240908085221/True/SqlTable/dbo.Items.sql",
+              "ToolTip": "dbo.Items [Data]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2024-09-25T15:13:36.014Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Transfers\\Index.cshtml",
+              "RelativeDocumentMoniker": "WarehouseIO\\Views\\Transfers\\Index.cshtml",
+              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Transfers\\Index.cshtml",
+              "RelativeToolTip": "WarehouseIO\\Views\\Transfers\\Index.cshtml",
+              "ViewState": "AQIAADIBAAAAAAAAAAAcwEgBAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-25T15:21:04.208Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "DetailsTransferHistory.cshtml",
               "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Transfers\\DetailsTransferHistory.cshtml",
               "RelativeDocumentMoniker": "WarehouseIO\\Views\\Transfers\\DetailsTransferHistory.cshtml",
               "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Transfers\\DetailsTransferHistory.cshtml",
               "RelativeToolTip": "WarehouseIO\\Views\\Transfers\\DetailsTransferHistory.cshtml",
-              "ViewState": "AQIAAFoAAAAAAAAAAAAAAHEAAAAyAAAA",
+              "ViewState": "AQIAANcAAAAAAAAAAAAcwPgAAABHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-16T21:41:20.232Z"
+              "WhenOpened": "2024-09-25T15:18:52.144Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
-              "Title": "MovingItemViewModel.cs",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\ViewModels\\MovingItemViewModel.cs",
-              "RelativeDocumentMoniker": "WarehouseIO\\ViewModels\\MovingItemViewModel.cs",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\ViewModels\\MovingItemViewModel.cs",
-              "RelativeToolTip": "WarehouseIO\\ViewModels\\MovingItemViewModel.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAAwAgAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:47:12.812Z"
+              "DocumentIndex": 9,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Shipments\\Details.cshtml",
+              "RelativeDocumentMoniker": "WarehouseIO\\Views\\Shipments\\Details.cshtml",
+              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Shipments\\Details.cshtml",
+              "RelativeToolTip": "WarehouseIO\\Views\\Shipments\\Details.cshtml",
+              "ViewState": "AQIAAKYAAAAAAAAAAAAAAMgAAAA5AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-25T15:45:04.01Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
-              "Title": "TryResult.cs",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Models\\TryResult.cs",
-              "RelativeDocumentMoniker": "WarehouseIO\\Models\\TryResult.cs",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Models\\TryResult.cs",
-              "RelativeToolTip": "WarehouseIO\\Models\\TryResult.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-18T18:16:29.77Z"
+              "DocumentIndex": 11,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Warehouses\\Index.cshtml",
+              "RelativeDocumentMoniker": "WarehouseIO\\Views\\Warehouses\\Index.cshtml",
+              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Warehouses\\Index.cshtml",
+              "RelativeToolTip": "WarehouseIO\\Views\\Warehouses\\Index.cshtml",
+              "ViewState": "AQIAAJUAAAAAAAAAAAAowH4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-25T15:21:08.186Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
-              "Title": "dbo.Items [Data]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_WarehouseIO_20240908085221/True/SqlTable/dbo.Items.sql",
-              "ToolTip": "dbo.Items [Data]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2024-09-17T23:47:38.378Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 13,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Item\\Edit.cshtml",
               "RelativeDocumentMoniker": "WarehouseIO\\Views\\Item\\Edit.cshtml",
               "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Item\\Edit.cshtml",
               "RelativeToolTip": "WarehouseIO\\Views\\Item\\Edit.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAIEAAAAAAAAAAAAwwJ0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-17T18:43:20.013Z"
+              "WhenOpened": "2024-09-25T15:02:25Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
-              "Title": "make-view-shipments.css",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Content\\Style\\make-view-shipments.css",
-              "RelativeDocumentMoniker": "WarehouseIO\\Content\\Style\\make-view-shipments.css",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Content\\Style\\make-view-shipments.css",
-              "RelativeToolTip": "WarehouseIO\\Content\\Style\\make-view-shipments.css",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAmwB0AAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-09-16T22:19:06.841Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 41,
-              "Title": "ManageController.cs",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Controllers\\ManageController.cs",
-              "RelativeDocumentMoniker": "WarehouseIO\\Controllers\\ManageController.cs",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Controllers\\ManageController.cs",
-              "RelativeToolTip": "WarehouseIO\\Controllers\\ManageController.cs",
-              "ViewState": "AQIAACkAAAAAAAAAAAAcwDYAAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T17:47:28.102Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 43,
-              "Title": "type2-add-edit-view.css",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Content\\Style\\type2-add-edit-view.css",
-              "RelativeDocumentMoniker": "WarehouseIO\\Content\\Style\\type2-add-edit-view.css",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Content\\Style\\type2-add-edit-view.css",
-              "RelativeToolTip": "WarehouseIO\\Content\\Style\\type2-add-edit-view.css",
-              "ViewState": "AQIAALwAAAAAAAAAAAAkwOwAAAAcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-09-11T08:54:17.993Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 44,
-              "Title": "DetailsTransferHistoryViewModel.cs",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\ViewModels\\DetailsTransferHistoryViewModel.cs",
-              "RelativeDocumentMoniker": "WarehouseIO\\ViewModels\\DetailsTransferHistoryViewModel.cs",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\ViewModels\\DetailsTransferHistoryViewModel.cs",
-              "RelativeToolTip": "WarehouseIO\\ViewModels\\DetailsTransferHistoryViewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T21:44:11.141Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 46,
-              "Title": "dbo.MovingItems [Data]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_WarehouseIO_20240908085221/True/SqlTable/dbo.MovingItems.sql",
-              "ToolTip": "dbo.MovingItems [Data]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2024-09-11T09:53:19.392Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 49,
-              "Title": "TransferStatus.cs",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Models\\TransferStatus.cs",
-              "RelativeDocumentMoniker": "WarehouseIO\\Models\\TransferStatus.cs",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Models\\TransferStatus.cs",
-              "RelativeToolTip": "WarehouseIO\\Models\\TransferStatus.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T10:47:37.954Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 45,
-              "Title": "ControllerExtender.cs",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\ControlClasses\\ControllerExtender.cs",
-              "RelativeDocumentMoniker": "WarehouseIO\\ControlClasses\\ControllerExtender.cs",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\ControlClasses\\ControllerExtender.cs",
-              "RelativeToolTip": "WarehouseIO\\ControlClasses\\ControllerExtender.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAAAYwEAAAAAuAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T20:40:01.101Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 47,
-              "Title": "ManageTransfersViewModel.cs",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\ViewModels\\ManageTransfersViewModel.cs",
-              "RelativeDocumentMoniker": "WarehouseIO\\ViewModels\\ManageTransfersViewModel.cs",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\ViewModels\\ManageTransfersViewModel.cs",
-              "RelativeToolTip": "WarehouseIO\\ViewModels\\ManageTransfersViewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAeAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:33:45.298Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 48,
-              "Title": "ManageViewModels.cs",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Models\\ManageViewModels.cs",
-              "RelativeDocumentMoniker": "WarehouseIO\\Models\\ManageViewModels.cs",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Models\\ManageViewModels.cs",
-              "RelativeToolTip": "WarehouseIO\\Models\\ManageViewModels.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T21:11:32.25Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 50,
-              "Title": "dbo.Transfers [Data]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_WarehouseIO_20240908085221/True/SqlTable/dbo.Transfers.sql",
-              "ToolTip": "dbo.Transfers [Data]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2024-09-16T18:25:29.401Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 52,
-              "Title": "dbo.__MigrationHistory [Data]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_WarehouseIO_20240908085221/True/SqlTable/dbo.__MigrationHistory.sql",
-              "ToolTip": "dbo.__MigrationHistory [Data]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2024-09-16T19:05:48.463Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 51,
-              "Title": "202409161906463_CascadeDeleteTransferItemsInTransfer.cs",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Migrations\\202409161906463_CascadeDeleteTransferItemsInTransfer.cs",
-              "RelativeDocumentMoniker": "WarehouseIO\\Migrations\\202409161906463_CascadeDeleteTransferItemsInTransfer.cs",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Migrations\\202409161906463_CascadeDeleteTransferItemsInTransfer.cs",
-              "RelativeToolTip": "WarehouseIO\\Migrations\\202409161906463_CascadeDeleteTransferItemsInTransfer.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAABnAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T19:06:50.773Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 53,
-              "Title": "CustomHtmlHelper.cs",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\CustomHtmlHelpers\\CustomHtmlHelper.cs",
-              "RelativeDocumentMoniker": "WarehouseIO\\CustomHtmlHelpers\\CustomHtmlHelper.cs",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\CustomHtmlHelpers\\CustomHtmlHelper.cs",
-              "RelativeToolTip": "WarehouseIO\\CustomHtmlHelpers\\CustomHtmlHelper.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABsAAABLAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T18:36:57.569Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 57,
-              "Title": "UserFetchOptions.cs",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Controllers\\UserFetchOptions.cs",
-              "RelativeDocumentMoniker": "WarehouseIO\\Controllers\\UserFetchOptions.cs",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Controllers\\UserFetchOptions.cs",
-              "RelativeToolTip": "WarehouseIO\\Controllers\\UserFetchOptions.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAqAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T08:21:58.752Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 54,
-              "Title": "Transfer.cs",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Models\\Transfer.cs",
-              "RelativeDocumentMoniker": "WarehouseIO\\Models\\Transfer.cs",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Models\\Transfer.cs",
-              "RelativeToolTip": "WarehouseIO\\Models\\Transfer.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAQwCEAAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:42:47.429Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 56,
-              "Title": "202409110952108_AddedTransferStatusStringAndEstPricePerMovingItem.cs",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Migrations\\202409110952108_AddedTransferStatusStringAndEstPricePerMovingItem.cs",
-              "RelativeDocumentMoniker": "WarehouseIO\\Migrations\\202409110952108_AddedTransferStatusStringAndEstPricePerMovingItem.cs",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Migrations\\202409110952108_AddedTransferStatusStringAndEstPricePerMovingItem.cs",
-              "RelativeToolTip": "WarehouseIO\\Migrations\\202409110952108_AddedTransferStatusStringAndEstPricePerMovingItem.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:52:15.281Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 55,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "WarehouseIO\\Views\\Home\\Index.cshtml",
-              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "WarehouseIO\\Views\\Home\\Index.cshtml",
-              "ViewState": "AQIAAAEAAAAAAAAAAAAAAAgAAAAuAAAA",
+              "DocumentIndex": 15,
+              "Title": "Make.cshtml",
+              "DocumentMoniker": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Shipments\\Make.cshtml",
+              "RelativeDocumentMoniker": "WarehouseIO\\Views\\Shipments\\Make.cshtml",
+              "ToolTip": "D:\\Fax\\IT MVC Project\\WarehouseIO\\WarehouseIO\\WarehouseIO\\Views\\Shipments\\Make.cshtml",
+              "RelativeToolTip": "WarehouseIO\\Views\\Shipments\\Make.cshtml",
+              "ViewState": "AQIAAEIAAAAAAAAAAAAwwF8AAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-16T17:24:08.746Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 58,
-              "Title": "dbo.AspNetUsers [Data]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_WarehouseIO_20240908085221/True/SqlTable/dbo.AspNetUsers.sql",
-              "ToolTip": "dbo.AspNetUsers [Data]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2024-09-11T10:50:13.893Z"
+              "WhenOpened": "2024-09-25T14:51:53.772Z",
+              "EditorCaption": ""
             }
           ]
         }

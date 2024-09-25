@@ -1,34 +1,46 @@
-﻿
+﻿@using System.Activities.Statements
+@using WarehouseIO.ControlClasses
+@using WarehouseIO.CustomHtmlHelpers
+@using WarehouseIO.Models
+@model WarehouseIO.ViewModels.DashboardViewModel
+
 @{
     ViewBag.Title = "Dashboard";
+    string tempError = (string)TempData["ErrorMessage"];
+    List<Transfer> transfers = Model.Warehouse.TransfersFromWarehouse.ToList();
 }
 
 <div class="dashboard-page">
     <header>
         <div>
-            <h1>Analytics</h1>
+            <h1>Analytics For</h1>
             <label for="warehouse-dashboard-selector">
-                <select id="warehouse-dashboard-selector">
-                    <option>WH-1-Main</option>
-                    <option>WH-2-Main</option>
-                </select>
+                @*
+                    <select id="warehouse-dashboard-selector">
+                        <option>WH-1-Main</option>
+                        <option>WH-2-Main</option>
+                    </select>
+                *@
+                @Html.DropDownListFor(m => m.WarehouseId, new SelectList(Model.AllWarehouses, "Id", "Name"), htmlAttributes: new { id = "warehouse-name" })
+
             </label>
-            <a href="#" class="btn-default btn-small">Manage Warehouse</a>
+            @Html.ActionLink("Manage Warehouse", "Index", "Warehouses", routeValues: new { warehouseId = Model.Warehouse.Id }, htmlAttributes: new { @class = "btn-default btn-small" })
+
+            @* <a href="#" class="btn-default btn-small">Manage Warehouse</a> *@
         </div>
         <h3>
-            WH-1-Main
+            @Html.DisplayTextFor(m => m.Warehouse.Name)
         </h3>
-
 
     </header>
     <div class="dashboard-summary-container">
         <div class="dashboard-summary-element">
             <div class="dashboard-summary-element-header">
-                <h5>Transfers</h5>
+                <h5>Transfers @Html.ToolTip("From Warehouse")</h5>
                 <div class="dashboard-summary-icon">&#128470;</div>
             </div>
             <div class="dashboard-summary-value">
-                756
+                @Html.DisplayTextFor(m => m.Warehouse.TransfersFromWarehouse.Count)
             </div>
 
         </div>
@@ -38,61 +50,35 @@
                 <div class="dashboard-summary-icon">&#128470;</div>
             </div>
             <div class="dashboard-summary-value">
-                12
+                @Html.DisplayTextFor(m => m.Warehouse.Shipments.Count)
             </div>
 
         </div>
         <div class="dashboard-summary-long-element">
             <div class="dashboard-summary-element-header">
-                <h5>Operators</h5>
+                <h5>Operators and Managers</h5>
                 <div class="dashboard-summary-icon">&#128470;</div>
             </div>
             <div class="dashboard-summary-value">
-                12
+                @Html.DisplayTextFor(m => m.Warehouse.Operators.Count)
             </div>
             <div class="dashboard-summary-graph-container">
-                <div class="dashboard-summary-legend">
-                    <div class="legend-item">
-                        <div class="legend-color"></div>
-                        <div class="legend-meaning">Old</div>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color"></div>
-                        <div class="legend-meaning">New</div>
-                    </div>
-                </div>
-                <div class="dashboard-summary-graph-wrapper">
-                    <div class="graph">
-
-                    </div>
-                </div>
+                <canvas id="operatorsChart" width="5" height="5"></canvas>
             </div>
 
 
         </div>
         <div class="dashboard-summary-long-element">
             <div class="dashboard-summary-element-header">
-                <h5>Current Capacity (Units)</h5>
+                <h5>Current Capacity @Html.ToolTip("In Units (1 Unit = 1 m3)")</h5>
                 <div class="dashboard-summary-icon">&#128470;</div>
             </div>
             <div class="dashboard-summary-value">
-                1200/1500
+                @Html.DisplayTextFor(m => m.Warehouse.CurrentCapacity)/@Html.DisplayTextFor(m => m.Warehouse.MaxCapacity)
             </div>
             <div class="dashboard-summary-graph-container">
-                <div class="dashboard-summary-legend">
-                    <div class="legend-item">
-                        <div class="legend-color"></div>
-                        <div class="legend-meaning">Free</div>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color"></div>
-                        <div class="legend-meaning">Occupied</div>
-                    </div>
-                </div>
-                <div class="dashboard-summary-graph-wrapper">
-                    <div class="graph">
-                    </div>
-                </div>
+                <canvas id="capacityChart" width="5" height="5"></canvas>
+
             </div>
 
 
@@ -103,69 +89,41 @@
                 <div class="dashboard-summary-icon">&#128470;</div>
             </div>
             <div class="dashboard-summary-value">
-                1500
+                @Html.DisplayTextFor(m => m.Warehouse.MaxCapacity)
             </div>
 
         </div>
         <div class="dashboard-summary-element">
             <div class="dashboard-summary-element-header">
-                <h5>Warehouse Value</h5>
+                <h5>Warehouse Value @Html.ToolTip("$ (In Dollars)")</h5>
                 <div class="dashboard-summary-icon">&#128470;</div>
             </div>
             <div class="dashboard-summary-value">
-                45 000
+                @Model.Warehouse.GetWarehouseValue()
             </div>
         </div>
     </div>
     <div class="dashboard-analytics-container">
         <div class="storage-info-container  ">
             <h3>Storage Info</h3>
-            <div class="storage-graph-container">
-                <div class="y-axis">
-                    <div>400</div>
-                    <div>200</div>
-                    <div>100</div>
-                    <div>50</div>
-                    <div>0</div>
-                </div>
-                <div class="storage-graph">
-                    <div class="tube">
-                        <div class="water"></div>
-                    </div>
-                    <div class="tube">
-                        <div class="water"></div>
-                    </div>
-                    <div class="tube">
-                        <div class="water"></div>
-                    </div>
-                    <div class="tube">
-                        <div class="water"></div>
-                    </div>
-                    <div class="tube">
-                        <div class="water"></div>
-                    </div>
-                    <div class="tube">
-                        <div class="water"></div>
-                    </div>
-                </div>
-                <div></div>
-                <div class="x-axis">
-                    <div>Wood</div>
-                    <div>Metal</div>
-                    <div>Electric</div>
-                    <div>Grass</div>
-                    <div>Mud</div>
-                    <div>Stone</div>
-                </div>
-            </div>
+            <canvas id="storageInfoChart"></canvas>
         </div>
         <div class="notifications-container">
             <h3>
                 Notification Center
             </h3>
-            <p>
-                Low Warehouse Stock!
-            </p>
+            @if (Model.Warehouse.IsWarehouseOnLowStock())
+            {
+                <p>
+                    Low Warehouse Stock!
+                </p>
+            }
+            else
+            {
+                <p>
+                    No New Notifications
+                </p>
+            }
 
         </div>
         <div class="transfer-history-container">
@@ -175,34 +133,59 @@
             </div>
             <div class="transfer-history-wrapper">
                 <div class="transfer-history-table-header">
-                    <div>To Warehouse</div>
-                    <div>Location</div>
-                    <div>Made On</div>
-                    <div># Items</div>
-                    <div>Options</div>
+                    <div class="colapse-column">ID</div>
+                    <div>To</div>
+                    <div class="expand-column">Made On</div>
+                    <div class="expand-column">Closed On</div>
+                    <div class="colapse-column">Options</div>
                 </div>
+
                 <div class="transfer-history-items">
-                    <div class="transfer-history-item">
-                        <div>WH-1-Main</div>
-                        <div>Voin Draskoci</div>
-                        <div>17.05.2023</div>
-                        <div>12</div>
-                        <a class="btn-default btn-small shade2-background" href="#">Details</a>
-                    </div>
-                    <div class="transfer-history-item">
-                        <div>WH-1-Main</div>
-                        <div>Voin Draskoci</div>
-                        <div>17.05.2023</div>
-                        <div>12</div>
-                        <a class="btn-default btn-small shade2-background" href="#">Details</a>
-                    </div>
-                    <div class="transfer-history-item">
-                        <div>WH-1-Main</div>
-                        <div>Voin Draskoci</div>
-                        <div>17.05.2023</div>
-                        <div>12</div>
-                        <a class="btn-default btn-small shade2-background" href="#">Details</a>
-                    </div>
+                    @if (transfers.Count == 0)
+                    {
+                        <div class="transfer-history-item">
+                            <div>There are no transfers from this warehouse</div>
+
+                        </div>
+                    }
+                    else
+                    {
+                        for (var i = 0; i < Math.Min(3, Model.Warehouse.TransfersFromWarehouse.Count); i++)
+                        {
+                            <div class="transfer-history-item">
+                                <div class="colapse-column">@transfers[i].Id</div>
+                                <div>@transfers[i].ToWarehouse.Name</div>
+                                <div class="expand-column">@transfers[i].MadeOn.ToString("d")</div>
+                                @if (transfers[i].Status == TransferStatus.StillPending)
+                                {
+                                    <div class="expand-column">
+                                        @EnumHandler.GetDisplayName(transfers[i].Status)
+                                    </div>
+                                }
+                                else
+                                {
+                                    if (transfers[i].Status == TransferStatus.Rejected)
+                                    {
+                                        <div class="expand-column">@transfers[i].ClosedOn.Value.ToString("d") @Html.ToolTip(transfers[i].TransferStatusString, tooltipIcon: "\u274e")</div>
+                                    }
+                                    else if (transfers[i].Status == TransferStatus.WarehouseDoesNotExistAnymore)
+                                    {
+                                        <div class="expand-column">@transfers[i].ClosedOn.Value.ToString("d") @Html.ToolTip(EnumHandler.GetDisplayName(transfers[i].Status), tooltipIcon: "\u26d4")</div>
+
+                                    }
+                                    else
+                                    {
+                                        <div class="expand-column">@transfers[i].ClosedOn.Value.ToString("d") @Html.ToolTip(transfers[i].TransferStatusString, tooltipIcon: "\u2705")</div>
+                                    }
+                                }
+                                <div class="colapse-column entries-table-options">
+                                    @Html.ActionLink("Details", "DetailsTransferHistory", "Transfers", routeValues: new { transferId = transfers[i].Id }, htmlAttributes: new { @class = "btn-default btn-small shade2-background" })
+
+                                </div>
+                            </div>
+                        }
+                    }
+
 
                 </div>
             </div>
@@ -212,3 +195,105 @@
     </div>
 </div>
 
+@section scripts
+{
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+
+        const warehousesList = document.getElementById('warehouse-name');
+
+        warehousesList.addEventListener('change',
+            () => {
+                const url = '@Url.Action("Dashboard", "Home")' + '?warehouseId=' + warehousesList.value;
+                window.location.href = url;
+            });
+
+
+        var ctx = document.getElementById('storageInfoChart').getContext('2d');
+        var storageChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Wood', 'Metal', 'Electronics', 'Building Material', 'Food'],
+                datasets: [{
+                    label: 'Items',
+                    data: [@Model.Warehouse.GetNumItemOfType(ItemType.Wood),
+                        @Model.Warehouse.GetNumItemOfType(ItemType.Metal),
+                        @Model.Warehouse.GetNumItemOfType(ItemType.Electronics),
+                        @Model.Warehouse.GetNumItemOfType(ItemType.BuildingMaterial),
+                        @Model.Warehouse.GetNumItemOfType(ItemType.Food)],
+                    backgroundColor: '#502956',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 0,
+                    borderRadius: 5,
+                    color: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',  
+                        labels: {
+                            color: '#fff' 
+                        }
+                    }
+                }
+
+            }
+        });
+
+
+        // Operators and Managers Pie Chart
+        var ctxOperators = document.getElementById('operatorsChart').getContext('2d');
+        var operatorsChart = new Chart(ctxOperators, {
+            type: 'pie',
+            data: {
+                labels: ['Operators', 'Managers'],
+                datasets: [{
+                    data: [@Model.Warehouse.Operators.Count - @Model.Warehouse.Managers.Count, @Model.Warehouse.Managers.Count],
+                    backgroundColor: ['#502956', '#a4d4ce'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#fff'
+                        }
+                    }
+                }
+            }
+        });
+
+
+        // Current Capacity Pie Chart
+        var ctxCapacity = document.getElementById('capacityChart').getContext('2d');
+        var capacityChart = new Chart(ctxCapacity, {
+            type: 'pie',
+            data: {
+                labels: ['Free', 'Occupied'],
+                datasets: [{
+                    data: [@Model.Warehouse.MaxCapacity - @Model.Warehouse.CurrentCapacity, @Model.Warehouse.CurrentCapacity],
+                    backgroundColor: ['#502956', '#a4d4ce'],
+                    borderWidth: 0
+
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#fff'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+}

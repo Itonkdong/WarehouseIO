@@ -1,4 +1,5 @@
 ﻿@using WarehouseIO.ControlClasses
+@using WarehouseIO.CustomHtmlHelpers
 @using WarehouseIO.Models
 @model WarehouseIO.Models.Warehouse
 @{
@@ -38,20 +39,13 @@
         </div>
     </div>
     <footer>
-        @if (ErrorHandler.DoesErrorExist(errorMessage, viewBagErrorMessage, tempDataErrorMessage))
-        {
-            <p class="page-error-message">@ErrorHandler.GetFirstExistingError(errorMessage, viewBagErrorMessage, tempDataErrorMessage)</p>
-        }
-        else
-        {
-            <p class="page-error-message">
-                &#8203;
-            </p>
-        }
+        @Html.ErrorMessageSummary(errorMessage, viewBagErrorMessage, tempDataErrorMessage)
     </footer>
     <div class="page-main-buttons">
         <button class="btn-default page-main-button">Add</button>
-        @Html.ActionLink("To Dashboard", "Dashboard", "Home", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button" })
+        @Html.ActionLink("Manage Warehouse", "Index", "Warehouses", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button" })
+
+        @Html.ActionLink("To Dashboard", "Dashboard", "Home", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button shade2-background" })
 
     </div>
 }

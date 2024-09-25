@@ -70,7 +70,9 @@ namespace WarehouseIO.Controllers
             List<Warehouse> allUserWarehouses =
                 activeUser.GetAllMyWarehouses(db, UserFetchOptions.IncludeTransfersWithTransferItems);
 
-            List<Transfer> allTransfers = this.GetAllTransfers(allUserWarehouses);
+            List<Transfer> allTransfers = this.GetAllTransfers(allUserWarehouses)
+                .OrderByDescending(t=>t.MadeOn)
+                .ToList();
 
             List<Transfer> pendingTransfers = this.GetAllPendingTransfers(allTransfers, allUserWarehouses, activeUser);
 
@@ -178,8 +180,16 @@ namespace WarehouseIO.Controllers
             Warehouse toWarehouse = activeUser.GetWarehouse(model.ToWarehouseId);
 
             List<MovingItem> movingItems = model.AllFromWarehouseItems
-                .Where(item => item.Included)
-                .Where(item => item.TransferAmount != 0)
+                .Where(item => item.IncludeAll || item.TransferAmount != 0)
+                .Select(movingItemViewModel =>
+                {
+                    if (movingItemViewModel.IncludeAll)
+                    {
+                        movingItemViewModel.TransferAmount = (int) movingItemViewModel.AvailableAmount;
+                    }
+
+                    return movingItemViewModel;
+                })
                 .Select(item => new MovingItem(item))
                 .ToList();
 
@@ -188,6 +198,27 @@ namespace WarehouseIO.Controllers
                 TempData["ErrorMessage"] = ErrorHandler.ErrorMessages.TRANSFER_HAS_NO_ITEMS;
                 return RedirectToAction("Make", "Transfers",
                     routeValues: new { fromWarehouseId = model.FromWarehouseId, toWarehouseId = model.ToWarehouseId });
+            }
+
+            foreach (MovingItem movingItem in movingItems)
+            {
+                Item item = fromWarehouse.StoredItems.FirstOrDefault(i => i.Id == movingItem.ItemId);
+
+                if (item is null)
+                {
+                    this.SetError($"Item with id: {movingItem.ItemId} is missing from warehouse.");
+                    return RedirectToAction("Make", "Transfers",
+                        routeValues: new { fromWarehouseId = model.FromWarehouseId, toWarehouseId = model.ToWarehouseId });
+                }
+
+                if (item.Amount < movingItem.Amount)
+                {
+                    this.SetError($"Insufficient amounts of the item: {item.Name}.");
+                    return RedirectToAction("Make", "Transfers",
+                        routeValues: new { fromWarehouseId = model.FromWarehouseId, toWarehouseId = model.ToWarehouseId });
+                }
+
+                item.Amount -= movingItem.Amount;
             }
 
             Transfer transfer = new Transfer()
@@ -277,8 +308,16 @@ namespace WarehouseIO.Controllers
 
 
             List<MovingItemViewModel> updatedTransferItems = model.AllFromWarehouseItems
-                .Where(i => i.Included)
-                .Where(i => i.TransferAmount > 0)
+                .Where(item => item.IncludeAll || item.TransferAmount != 0)
+                .Select(movingItemViewModel =>
+                {
+                    if (movingItemViewModel.IncludeAll)
+                    {
+                        movingItemViewModel.TransferAmount += (int) movingItemViewModel.AvailableAmount ;
+                    }
+
+                    return movingItemViewModel;
+                })
                 .ToList();
 
 
@@ -295,6 +334,7 @@ namespace WarehouseIO.Controllers
 
             removeTheseItems.ForEach(item =>
             {
+                item.Item.Amount += item.Amount;
                 this._db.MovingItems.Remove(item);
                 transfer.TransferItems.Remove(item);
             });
@@ -308,13 +348,9 @@ namespace WarehouseIO.Controllers
                     .FirstOrDefault(item => item.ItemId == movingItemVm.Id);
 
 
-                if (movingItemVm.TransferAmount > movingItemVm.AvailableAmount || movingItemVm.TransferAmount < 0)
-                {
-                    invalidTransferAmounts.Add(movingItemVm.Name);
-                }
-
                 if (transferItem == null)
                 {
+                    
                     transferItem = new MovingItem
                     {
                         ItemId = movingItemVm.Id,
@@ -323,12 +359,40 @@ namespace WarehouseIO.Controllers
                         Amount = movingItemVm.TransferAmount,
                         EstPrice = movingItemVm.EstPrice,
                     };
+
+                    if (movingItemVm.TransferAmount > movingItemVm.AvailableAmount || movingItemVm.TransferAmount < 0)
+                    {
+                        invalidTransferAmounts.Add(movingItemVm.Name);
+                        movingItemVm.TransferAmount = 0;
+                        transferItem.Amount = 0;
+                    }
+                    else
+                    {
+                        transferItem.Item.Amount -= movingItemVm.TransferAmount;
+                    }
                     transfer.TransferItems.Add(transferItem);
                 }
                 else
                 {
-                    transferItem.Amount = movingItemVm.TransferAmount;
+                    
+
+                    int dif = (transferItem.Amount - movingItemVm.TransferAmount);
+                    if (-dif > movingItemVm.AvailableAmount || movingItemVm.TransferAmount < 0)
+                    {
+                        invalidTransferAmounts.Add(movingItemVm.Name);
+                         movingItemVm.TransferAmount = transferItem.Amount;
+
+                    }
+                    else
+                    {
+                        transferItem.Item.Amount += dif;
+                        transferItem.Amount = movingItemVm.TransferAmount;
+
+
+                    }
                     transferItem.EstPrice = movingItemVm.EstPrice;
+                    
+
                     this._db.Entry(transferItem).State = EntityState.Modified;
                 }
             }
@@ -345,6 +409,10 @@ namespace WarehouseIO.Controllers
                 model = this.GetReturnBackModel(transfer);
                 model.ErrorMessage =
                     $"Items: {string.Join(", ", invalidTransferAmounts)} have invalid transfer amount.";
+
+                // MVC PLEASE GO AND UNALIVE YOURSELF.....
+
+                ModelState.Clear();
 
                 return View(model);
             }
@@ -387,6 +455,19 @@ namespace WarehouseIO.Controllers
                 return new TryResult(false, new NullReferenceException());
             }
 
+            foreach (MovingItem movingItem in transfer.TransferItems)
+            {
+                if (movingItem.Item.WarehouseId != null)
+                {
+                    movingItem.Item.Amount += movingItem.Amount;
+                }
+                else
+                {
+                    movingItem.Item.Amount = movingItem.Amount;
+                    movingItem.Item.WarehouseId = transfer.FromWarehouseId;
+                }
+            }
+
             try
             {
                 transfer.Status = TransferStatus.Rejected;
@@ -417,10 +498,7 @@ namespace WarehouseIO.Controllers
                 foreach (MovingItem movingItem in movingItems)
                 {
                     Item item = movingItem.Item;
-                    if (item.Amount < movingItem.Amount)
-                    {
-                        return new TryResult(false, new Exception($"Insufficient amounts of the item: {item.Name}. Please inform the operator or reject the transfer with id {transfer.Id}."));
-                    }
+                    
 
 
                     Item itemInToWarehouse =
@@ -451,7 +529,6 @@ namespace WarehouseIO.Controllers
                         this._db.Entry(itemInToWarehouse).State = EntityState.Modified;
                     }
 
-                    item.Amount -= movingItem.Amount;
                 }
 
                 if (!transfer.ToWarehouse.HasEnoughSpace())
@@ -529,13 +606,24 @@ namespace WarehouseIO.Controllers
 
         public ActionResult Delete(int transferId)
         {
-            Transfer transfer = this._db.Transfers.FirstOrDefault(t => t.Id == transferId);
+            Transfer transfer = this._db.Transfers
+                .Include(transfer => transfer.TransferItems.Select(movingItem => movingItem.Item))
+                .FirstOrDefault(t => t.Id == transferId);
 
             if (transfer is null)
             {
                 return RedirectToAction("Index", "Transfers");
             }
 
+            if (transfer.Status == TransferStatus.StillPending)
+            {
+                foreach (MovingItem movingItem in transfer.TransferItems)
+                {
+                    movingItem.Item.Amount += movingItem.Amount;
+                }
+            }
+
+            
             this._db.Transfers.Remove(transfer);
             this._db.SaveChanges();
 
@@ -551,7 +639,7 @@ namespace WarehouseIO.Controllers
             List<Transfer> allTransfers = this.GetAllTransfers(allUserWarehouses);
 
             List<Transfer> transfersToDelete = allTransfers
-                .Where(t=>t.MadeByUserId == activeUser.Id)
+                .Where(t=>t.MadeByUserId == activeUser.Id && t.Status == TransferStatus.StillPending)
                 .ToList();
 
             if (transfersToDelete.Count == 0)
@@ -559,7 +647,24 @@ namespace WarehouseIO.Controllers
                 this.SetError("You do not have any transfers to delete.");
                 return RedirectToAction("Index", "Transfers");
             }
-            transfersToDelete.ForEach(t => this._db.Transfers.Remove(t));
+
+            foreach (Transfer transfer in transfersToDelete)
+            {
+                foreach (MovingItem movingItem in transfer.TransferItems)
+                {
+                    if (movingItem.Item.WarehouseId != null)
+                    {
+                        movingItem.Item.Amount += movingItem.Amount;
+                    }
+                    else
+                    {
+                        movingItem.Item.Amount = movingItem.Amount;
+                        movingItem.Item.WarehouseId = transfer.FromWarehouseId;
+                    }
+                }
+
+                this._db.Transfers.Remove(transfer);
+            }
 
             this._db.SaveChanges();
 

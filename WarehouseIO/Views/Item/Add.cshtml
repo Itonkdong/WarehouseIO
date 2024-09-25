@@ -1,5 +1,6 @@
 ﻿@using System.Web.UI.WebControls
 @using WarehouseIO.ControlClasses
+@using WarehouseIO.CustomHtmlHelpers
 @using WarehouseIO.Models
 @using WarehouseIO.ViewModels
 @model WarehouseIO.ViewModels.AddEditItemViewModel
@@ -7,6 +8,7 @@
 @{
     ViewBag.Title = "Add Item";
     string errorMessage = ErrorHandler.MissingInputsErrorMessage<AddEditItemViewModel>(ViewData, AddEditItemViewModel.GetPropertiesNames());
+    string tempError = (string)TempData["ErrorMessage"];
 }
 
 
@@ -87,20 +89,11 @@
         </div>
     </section>
     <footer>
-        @if (!string.IsNullOrEmpty(errorMessage))
-        {
-            <p class="page-error-message">@errorMessage</p>
-        }
-        else
-        {
-            <p class="page-error-message">
-                &#8203;
-            </p>
-        }
+        @Html.ErrorMessageSummary(errorMessage, tempError)
     </footer>
     <div class="page-main-buttons">
         <button class="btn-default page-main-button">Add</button>
-        @Html.ActionLink("To Dashboard", "Dashboard", "Home", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button " })
+        @Html.ActionLink("To Dashboard", "Dashboard", "Home", routeValues: new {warehouseId = Model.WarehouseId}, htmlAttributes: new { @class = "btn-default page-main-button shade2-background" })
     </div>
 }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Drawing;
 using WarehouseIO.CustomAttributes;
 
 namespace WarehouseIO.Models
@@ -86,6 +87,11 @@ namespace WarehouseIO.Models
         [MustBeTrue(ErrorMessage = "You must accept Therms Of Service")]
         [Display(Name = "Accept Therms Of Service")]
         public bool AcceptThermsOfService { get; set; }
+
+        public static List<string> GetPropertiesNames()
+        {
+            return new List<string>() { nameof(Name), nameof(Email), nameof(Password), nameof(AcceptThermsOfService)};
+        }
     }
 
     public class ResetPasswordViewModel

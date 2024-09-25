@@ -1,113 +1,234 @@
-﻿
+﻿@using WarehouseIO.ControlClasses
+@using WarehouseIO.CustomHtmlHelpers
+@using WarehouseIO.Models
+@model WarehouseIO.Models.Shipment
 @{
     ViewBag.Title = "Details Shipment";
+    string tempError = (string)TempData["ErrorMessage"];
 }
 
 <form class="type2-add-edit-view-page">
     <header>
-        <h1>Details For Shipment: 12332</h1>
+        <h1>
+            Details For Shipment [ID: @Model.Id, Status:
+            @if (Model.Status == ShipmentStatus.Finalized)
+            {
+                @Html.ToolTip(Model.ShipmentStatusString, "✅")
+            }
+            else
+            {
+                @Html.ToolTip(Model.ShipmentStatusString, "⌛")
+
+            }
+
+            ]
+        </h1>
     </header>
     <section class="warehouse-info-box">
         <h5 class="warehouse-info-box-header">
             Warehouse Info
         </h5>
+
         <div class="warehouse-info-box-items">
             <div class="warehouse-info-box-item">
-                <h5>Name:</h5>
-                <div>WH-1-MAIN</div>
+                <h5>
+                    @Html.DisplayNameFor(m => m.FromWarehouse.Name):
+                </h5>
+                <div>@Html.DisplayTextFor(m => m.FromWarehouse.Name)</div>
             </div>
             <div class="warehouse-info-box-item">
-                <h5>Description:</h5>
-                <div>My Favourite Warehouse</div>
-            </div>
-            <div class="warehouse-info-box-item">
-                <h5>Location:</h5>
-                <div>Voin Draskoci</div>
-            </div>
-            <div class="warehouse-info-box-item">
-                <h5>Capacity:</h5>
-                <div><span>1200</span>/<span>1500</span> Units</div>
-            </div>
-            <div class="warehouse-info-box-item">
-                <a href="#" class="btn-default btn-small">Manage Warehouse</a>
+                <h5>
+                    @Html.DisplayNameFor(m => m.FromWarehouse.Description):
+                </h5>
+                <div>@Html.DisplayTextFor(m => m.FromWarehouse.Description)</div>
             </div>
 
+            <div class="warehouse-info-box-item">
+                <h5>
+                    @Html.DisplayNameFor(m => m.FromWarehouse.Location):
+                </h5>
+                <div>@Html.DisplayTextFor(m => m.FromWarehouse.Location)</div>
+            </div>
+            <div class="warehouse-info-box-item">
+                <h5>
+                    @Html.DisplayNameFor(m => m.FromWarehouse.CurrentCapacity):
+                </h5>
+                <div>@Html.DisplayTextFor(m => m.FromWarehouse.CurrentCapacity)/@Html.DisplayTextFor(m => m.FromWarehouse.MaxCapacity) Units @Html.ToolTip("1 Unite = 1 cm3") </div>
+            </div>
+            <div class="warehouse-info-box-item">
+                @Html.ActionLink("Manage Warehouse", "Index", "Warehouses", routeValues: new { warehouseId = Model.FromWarehouse.Id }, htmlAttributes: new { @class = "btn-default btn-small" })
+
+            </div>
         </div>
 
     </section>
     <section class="table-interact-section">
         <div class="table-interact-section-header make-shipping-interact-section">
             <div class="make-shipping-interact-section-title">
-                Shipping Included Items:
+                Shipping Includes Items:
             </div>
             <div class="make-shipping-interact-section-input">
-                <label for="shipping-to">Shipped To</label>
-                <input type="text" id="shipping-to" disabled>
-            </div>
-            <div class="make-shipping-interact-section-input">
-                <label for="est-price">Est. Price</label>
-                <input type="text" id="est-price" disabled>
-            </div>
+
+                @if (Model.Status == ShipmentStatus.Finalized)
+                {
+                    @Html.LabelFor(m => m.FinalizedOn)
+                    <span>:</span>
+                    @Html.DisplayTextFor(m => m.FinalizedOn)
+                }
+                else
+                {
+                    @Html.DisplayTextFor(m => m.ShipmentStatusString)
+                }
+                &nbsp; &nbsp; | &nbsp; &nbsp;
+                @Html.LabelFor(m => m.ShippingTo)
+                :
+                @Html.DisplayTextFor(m => m.ShippingTo)
 
 
+            </div>
         </div>
-        <table class="entries-table">
+        <table class="entries-table" id="shipping-included-items">
             <thead>
                 <tr>
+                    <th class="colapse-column">ID</th>
+                    <th class="colapse-column">Image</th>
                     <th>Name</th>
-                    <th>Size (cm3)</th>
                     <th>Type</th>
                     <th>Available Amount</th>
-                    <th>Transfer Amount</th>
+                    <th>Shipping Amount</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Planks</td>
-                    <td>30</td>
-                    <td>Material</td>
-                    <td>700</td>
-                    <td>
-                        <input type="number" class="transfer-amount-input" disabled>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Planks</td>
-                    <td>30</td>
-                    <td>Material</td>
-                    <td>700</td>
-                    <td>
-                        <input type="number" class="transfer-amount-input" disabled>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Planks</td>
-                    <td>30</td>
-                    <td>Material</td>
-                    <td>700</td>
-                    <td>
-                        <input type="number" class="transfer-amount-input" disabled>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Planks</td>
-                    <td>30</td>
-                    <td>Material</td>
-                    <td>700</td>
-                    <td>
-                        <input type="number" class="transfer-amount-input" disabled>
-                    </td>
-                </tr>
+
+                @foreach (MovingItem movingItem in Model.ShippingItems)
+                {
+                    <tr>
+                        <td class="colapse-column">@movingItem.ItemId</td>
+
+
+                        <td class="item-image colapse-column">
+                            <img src="@movingItem.Item.ImageUrlRender" alt="Item Image">
+                        </td>
+                        <td>@movingItem.Item.Name</td>
+                        <td>@movingItem.Item.Type</td>
+                        <td>@movingItem.Item.Amount</td>
+                        <td>
+                            <input type="number" class="transfer-amount-input entries-table-disabled-input" disabled value="@movingItem.Amount">
+                        </td>
+                    </tr>
+                }
+
 
             </tbody>
         </table>
     </section>
     <footer>
-        <p class="page-error-message">Error Message: Fill all the inputs</p>
+        @Html.ErrorMessageSummary(tempError)
     </footer>
-    <div class="page-main-buttons">
-        <button class="btn-default page-main-button">Cancel Shipment</button>
-        <button class="btn-default page-main-button">To Dashboard</button>
+    <div class="page-main-buttons ">
+
+        @if (Model.Status == ShipmentStatus.Preparing)
+        {
+            @Html.ActionLink("Finalize", "Finalize", "Shipments", routeValues: new { shipmentId = Model.Id }, htmlAttributes: new { @class = "btn-default page-main-button" })
+
+            @Html.ActionLink("Cancel", "Cancel", "Shipments", routeValues: new { shipmentId = Model.Id }, htmlAttributes: new { @class = "btn-default page-main-button", id= "js-shipment-delete-button" })
+        }
+
+        @Html.ActionLink("Manage Shipments", "Index", "Shipments", routeValues: null, htmlAttributes: new { @class = "btn-default page-main-button shade3-background" })
+
+        @Html.ActionLink("To Dashboard", "Dashboard", "Home", routeValues: new { warehouseId = Model.FromWarehouseId }, htmlAttributes: new { @class = "btn-default page-main-button shade2-background" })
+
+
     </div>
 </form>
 
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $('#shipping-included-items').DataTable({
+                paging: true,
+                searching: true,
+                ordering: true,
+                pageLength: 3,
+                lengthChange: false,
+                autoWidth: false,
+                responsive: true,
+                order: [[1, 'asc']],
+            });
+        });
+
+        async function deleteEntity(itemId, controller) {
+            const url = `/api/${controller}/${itemId}`;
+
+            let response;
+            try {
+                response = await fetch(url,
+                    {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });
+
+            } catch (e) {
+                return e;
+            }
+
+
+            if (!response.ok) {
+                return false;
+            }
+
+            return true;
+        }
+
+
+        const deleteButton = document.querySelector("#js-shipment-delete-button");
+
+        deleteButton.addEventListener("click",
+            (e) => {
+
+                e.preventDefault();
+                Swal.fire({
+                    title: "Are you sure you want to cancel this shipment?",
+                    text: `You won't be able to revert this!`,
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, cancel it!",
+                }).then(async (result) => {
+                    if (result.isConfirmed) {
+                        const id = @Model.Id;
+                        const result = await deleteEntity(id, "Shipments");
+                        console.log(result);
+
+                        if (result === true) {
+                            Swal.fire({
+                                title: "Canceled!",
+                                text: "The shipment has been canceled.",
+                                icon: "success"
+                            });
+
+                            setTimeout(() => {
+                                    window.location.href = '@Url.Action("Index", "Shipments")' + "?warehouseId=" + @Model.FromWarehouseId;
+                                },
+                                1500);
+                        } else {
+                            Swal.fire({
+                                title: "Error Occured!",
+                                text: `Error: ${result}`,
+                                icon: "error"
+                            });
+                        }
+
+
+                    }
+                });
+            });
+
+
+    </script>
+}

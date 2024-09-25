@@ -1,6 +1,12 @@
-﻿@model WarehouseIO.Models.RegisterViewModel
+﻿@using WarehouseIO.ControlClasses
+@using WarehouseIO.CustomHtmlHelpers
+@using WarehouseIO.Models
+@model WarehouseIO.Models.RegisterViewModel
 @{
     ViewBag.Title = "Register";
+    string errorMessage = ErrorHandler.MissingInputsErrorMessage<RegisterViewModel>(ViewData, RegisterViewModel.GetPropertiesNames());
+    string fullErrorMessage = ErrorHandler.GetValidationSummaryFullErrorMessage<RegisterViewModel>(ViewData, RegisterViewModel.GetPropertiesNames());
+    
 }
 
 <div class="auth-page register-page ">
@@ -36,7 +42,7 @@
 
         </div>
         <button class="btn-default">Register</button>
-        @* <p class="auth-error-message">Error: Fill all the inputs</p> *@
+
         @Html.ValidationSummary("", new { @class = "auth-error-message" })
     }
     <div class="auth-image-container register-auth-image-container">
@@ -44,6 +50,6 @@
     </div>
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+@* @section Scripts { *@
+@*     @Scripts.Render("~/bundles/jqueryval") *@
+@* } *@
